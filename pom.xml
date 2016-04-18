@@ -9,5 +9,6 @@
     <modules>
         <module>augusteiner-poo-aulas</module>
     <module>augusteiner-poo-lista1</module>
+    <module>augusteiner-poo-minesweeper</module>
   </modules>
 </project>
