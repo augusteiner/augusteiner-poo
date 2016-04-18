@@ -12,6 +12,15 @@ import java.util.Scanner;
  */
 public class App {
     public static void main(String[] args) {
+        q1();
+        q2();
+        q3();
+        q4();
+        q5();
+        q6();
+        q7();
+        q8();
+        q9();
         q10();
     }
 
@@ -21,7 +30,6 @@ public class App {
         double interMin = 10;
 
         double num;
-        double curr;
 
         int dentro = 0;
         int fora = 0;
