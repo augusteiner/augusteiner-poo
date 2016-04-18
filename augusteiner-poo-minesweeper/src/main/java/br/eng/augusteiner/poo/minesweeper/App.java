@@ -22,12 +22,12 @@ public class App {
 
         campo = iniciarCampo(9, 8);
         adicionarBombasPseudoAleatorias(campo);
-        numerarBombasProximas(campo);
+        numerarProximidadeBombas(campo);
 
         imprimirCampo(out, campo);
     }
 
-    private static void numerarBombasProximas(char[][] field) {
+    private static void numerarProximidadeBombas(char[][] field) {
 
         for (int i = 0; i < field.length; i++) {
 
