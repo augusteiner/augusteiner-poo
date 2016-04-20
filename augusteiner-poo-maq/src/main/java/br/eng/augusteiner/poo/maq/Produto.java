@@ -69,6 +69,10 @@ public class Produto {
     @Override
     public String toString() {
 
-        return String.format("#%s - %s : R$ %.2f", getCodigo(), getNome(), getPreco());
+        return String.format(
+            "#%s - %s : R$ %.2f",
+            getCodigo(),
+            getNome(),
+            getPreco());
     }
 }
