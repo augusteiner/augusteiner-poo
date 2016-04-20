@@ -5,7 +5,9 @@ package br.eng.augusteiner.poo.aulas;
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class Aula2 {
+
     public static void main(String[] args) {
+
         int a = 8;
         int b = 7;
 
