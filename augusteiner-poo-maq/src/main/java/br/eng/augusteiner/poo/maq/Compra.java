@@ -12,16 +12,16 @@ public class Compra {
     private Moeda[] entrada;
     private Moeda[] troco;
 
-    private Date date;
+    private Date data;
 
-    public Compra(Produto produto, Moeda[] entrada, Moeda[] troco, Date date) {
+    public Compra(Produto produto, Moeda[] entrada, Moeda[] troco, Date data) {
 
         this.produto = produto;
 
         this.entrada = entrada;
         this.troco = troco;
 
-        this.date = date;
+        this.data = data;
     }
 
     public Produto getProduto() {
@@ -54,14 +54,14 @@ public class Compra {
         this.troco = troco;
     }
 
-    public Date getDate() {
+    public Date getData() {
 
-        return date;
+        return data;
     }
 
-    public void setDate(Date date) {
+    public void setData(Date data) {
 
-        this.date = date;
+        this.data = data;
     }
 
     public double getValorEntrada() {
@@ -79,7 +79,7 @@ public class Compra {
 
         return String.format(
             "#%s: %s R$ %s - R$ %s = R$ %s",
-            getDate(),
+            getData(),
             getProduto().getNome(),
             getProduto().getPreco(),
             getValorEntrada(),
