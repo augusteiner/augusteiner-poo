@@ -50,12 +50,14 @@ public class Aula1 {
     private static void multiplosDe(int num, boolean dumb) {
 
         if (dumb) {
+
             for (int i = 4; i <= 200; i++) {
                 if (i % 4 == 0) {
                     System.out.println(i);
                 }
             }
         } else {
+
             multiplosDe(num);
         }
     }
@@ -63,6 +65,7 @@ public class Aula1 {
     private static void multiplosDe(int num) {
 
         for (int i = num; i <= 200; i += num) {
+
             System.out.println(i);
         }
     }
@@ -72,18 +75,19 @@ public class Aula1 {
         return divisoresDe(num, true);
     }
 
-    public static Integer[] divisoresDe(int num, boolean stopOnFirst) {
+    public static Integer[] divisoresDe(int num, boolean pararNaPrimeiraOcorrencia) {
 
         ArrayList<Integer> divisores = new ArrayList<Integer>();
 
         divisores.add(1);
 
         for (int i = 2; i <= num / 2; i++) {
+
             if (num % i == 0) {
                 // divisor = i;
                 divisores.add(i);
 
-                if (stopOnFirst) {
+                if (pararNaPrimeiraOcorrencia) {
                     // Não é necessário mais procurar
                     break;
                 }

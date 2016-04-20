@@ -34,5 +34,9 @@ public class App {
 
         System.out.println(m25);
         System.out.println(m10);
+
+        System.out.println(Util.moedasToDouble(
+            m25,
+            m10));
     }
 }

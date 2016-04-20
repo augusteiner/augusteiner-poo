@@ -6,7 +6,8 @@ package br.eng.augusteiner.poo.maq;
  */
 public class Util {
 
-    public static double moedasToDouble(Moeda[] moedas) {
+    public static double moedasToDouble(Moeda... moedas) {
+
         double valor = 0;
 
         for (int i = 0; i < moedas.length; i++) {
