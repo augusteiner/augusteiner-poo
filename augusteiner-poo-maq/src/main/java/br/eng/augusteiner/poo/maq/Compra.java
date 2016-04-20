@@ -78,7 +78,8 @@ public class Compra {
     public String toString() {
 
         return String.format(
-            "%s R$ %s - R$ %s = R$ %s",
+            "#%s: %s R$ %s - R$ %s = R$ %s",
+            getDate(),
             getProduto().getNome(),
             getProduto().getPreco(),
             getValorEntrada(),
