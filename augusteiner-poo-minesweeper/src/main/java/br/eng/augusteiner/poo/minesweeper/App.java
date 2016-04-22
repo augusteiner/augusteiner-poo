@@ -5,7 +5,6 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 import java.io.PrintStream;
-import java.util.Scanner;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -18,7 +17,6 @@ public class App {
         char[][] campo = null;
 
         PrintStream out = System.out;
-        Scanner scn = new Scanner(System.in);
 
         campo = iniciarCampo(9, 8);
         adicionarBombasPseudoAleatorias(campo);
@@ -36,10 +34,16 @@ public class App {
                 // XXX se tem uma bomba
                 if (field[i][j] == '*') {
 
-                    // XXX scaneando a matriz 3x3 ao redor da bomba
-                    for (int z = max(i - 1, 0); z < min(i + 2, field.length); z++) {
+                    final int iMin = max(i - 1, 0);
+                    final int iMax = min(i + 2, field.length);
 
-                        for (int w = max(j - 1, 0); w < min(j + 2, field[i].length); w++) {
+                    final int jMin = max(j - 1, 0);
+                    final int jMax = min(j + 2, field[i].length);
+
+                    // XXX scaneando a matriz 3x3 ao redor da bomba
+                    for (int z = iMin; z < iMax; z++) {
+
+                        for (int w = jMin; w < jMax; w++) {
 
                             if (field[z][w] == '*') {
 

@@ -21,10 +21,16 @@ public class Aula1 {
 
         if (ehPar(x)) {
 
-            System.out.println(String.format("%s é %s", x, "par"));
+            System.out.println(String.format(
+                "%s é %s",
+                x,
+                "par"));
         } else {
 
-            System.out.println(String.format("%s é %s", x, "ímpar"));
+            System.out.println(String.format(
+                "%s é %s",
+                x,
+                "ímpar"));
         }
 
         multiplosDe(4, false);
@@ -35,10 +41,15 @@ public class Aula1 {
 
         if (divisores.length == 2) {
 
-            System.out.println(String.format("%s é primo", num));
+            System.out.println(String.format(
+                "%s é primo",
+                num));
         } else {
 
-            System.out.println(String.format("%s não é primo, pois é divisível por %s", num, divisores[1]));
+            System.out.println(String.format(
+                "%s não é primo, pois é divisível por %s",
+                num,
+                divisores[1]));
         }
     }
 
@@ -47,12 +58,16 @@ public class Aula1 {
         return num % 2 == 0;
     }
 
-    private static void multiplosDe(int num, boolean dumb) {
+    private static void multiplosDe(
+        int num,
+        boolean dumb) {
 
         if (dumb) {
 
             for (int i = 4; i <= 200; i++) {
+
                 if (i % 4 == 0) {
+
                     System.out.println(i);
                 }
             }
@@ -75,7 +90,9 @@ public class Aula1 {
         return divisoresDe(num, true);
     }
 
-    public static Integer[] divisoresDe(int num, boolean pararNaPrimeiraOcorrencia) {
+    public static Integer[] divisoresDe(
+        int num,
+        boolean pararNaPrimeiraOcorrencia) {
 
         ArrayList<Integer> divisores = new ArrayList<Integer>();
 

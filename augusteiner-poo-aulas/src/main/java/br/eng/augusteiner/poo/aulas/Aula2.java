@@ -1,10 +1,14 @@
 
 package br.eng.augusteiner.poo.aulas;
 
+import java.io.PrintStream;
+
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class Aula2 {
+
+    static final PrintStream out = System.out;
 
     public static void main(String[] args) {
 
@@ -14,9 +18,18 @@ public class Aula2 {
         int c = a++;
         int d = ++b;
 
-        System.out.println(String.format("a: %s", a));
-        System.out.println(String.format("b: %s", b));
-        System.out.println(String.format("c: %s", c));
-        System.out.println(String.format("d: %s", d));
+        println("a: %s", a);
+        println("b: %s", b);
+        println("c: %s", c);
+        println("d: %s", d);
+    }
+
+    private static void println(
+        String format,
+        Object... args) {
+
+        out.println(String.format(
+            format,
+            args));
     }
 }
