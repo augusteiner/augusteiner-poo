@@ -21,51 +21,55 @@ public class Triangulo {
 
     public Ponto getP1() {
 
-        return p1;
+        return this.p1;
     }
 
     public Ponto getP2() {
 
-        return p2;
+        return this.p2;
     }
 
     public Ponto getP3() {
 
-        return p3;
+        return this.p3;
     }
 
-    public double getA() {
+    public double getTamanhoA() {
 
-        return getP1().distancia(getP2());
+        return Segmento.tamanho(getP1(), getP2());
     }
 
-    private double getB() {
+    public double getTamanhoB() {
 
-        return getP2().distancia(getP3());
+        return Segmento.tamanho(getP2(), getP3());
     }
 
-    private double getC() {
+    public double getTamanhoC() {
 
-        return getP3().distancia(getP1());
+        return Segmento.tamanho(getP3(), getP1());
     }
 
     public double perimetro() {
 
-        return getA() + getB() + getC();
+        return getTamanhoA() + getTamanhoB() + getTamanhoC();
     }
 
-    private double getSemiperimetro() {
+    /**
+     * Semiperímetro do triângulo
+     *
+     * @return
+     */
+    public double getSemiperimetro() {
 
         return perimetro() / 2;
     }
 
     public double area() {
 
-        // Semiperímetro do triângulo
         double s = getSemiperimetro();
 
         // XXX https://en.wikipedia.org/wiki/Heron%27s_formula
-        return sqrt(s * (s - getA()) * (s - getB()) * (s - getC()));
+        return sqrt(s * (s - getTamanhoA()) * (s - getTamanhoB()) * (s - getTamanhoC()));
     }
 
     @Override

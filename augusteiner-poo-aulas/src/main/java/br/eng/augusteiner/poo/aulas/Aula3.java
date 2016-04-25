@@ -18,7 +18,7 @@ public class Aula3 {
 
         System.out.println("---------------------");
 
-        System.out.println(String.format("Fatos do triângulo %s:", t1));
+        System.out.println(String.format("Fatos do triângulo %s", t1));
         System.out.println(String.format("Perímetro do triângulo é: %s", t1.perimetro()));
         System.out.println(String.format("Area do triângulo é: %s", t1.area()));
     }
