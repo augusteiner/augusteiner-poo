@@ -71,6 +71,6 @@ public class Triangulo {
     @Override
     public String toString() {
 
-        return getClass().getSimpleName();
+        return String.format("{%s; %s; %s}", getP1(), getP2(), getP3());
     }
 }

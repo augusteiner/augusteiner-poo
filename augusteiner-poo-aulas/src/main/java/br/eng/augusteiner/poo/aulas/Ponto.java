@@ -46,6 +46,6 @@ public class Ponto {
     @Override
     public String toString() {
 
-        return getClass().getSimpleName();
+        return String.format("(%s, %s)", getX(), getY());
     }
 }
