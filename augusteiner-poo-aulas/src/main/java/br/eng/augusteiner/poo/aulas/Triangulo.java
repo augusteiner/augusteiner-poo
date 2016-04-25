@@ -1,46 +1,71 @@
 
 package br.eng.augusteiner.poo.aulas;
 
+import static java.lang.Math.sqrt;
+
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class Triangulo {
 
-    private Ponto a;
-    private Ponto b;
-    private Ponto c;
+    private Ponto p1;
+    private Ponto p2;
+    private Ponto p3;
 
-    public Triangulo(Ponto a, Ponto b, Ponto c) {
+    public Triangulo(Ponto p1, Ponto p2, Ponto p3) {
 
-        this.a = a;
-        this.b = b;
-        this.c = c;
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
     }
 
-    public Ponto getA() {
+    public Ponto getP1() {
 
-        return a;
+        return p1;
     }
 
-    public Ponto getB() {
+    public Ponto getP2() {
 
-        return b;
+        return p2;
     }
 
-    public Ponto getC() {
+    public Ponto getP3() {
 
-        return c;
+        return p3;
+    }
+
+    public double getA() {
+
+        return getP1().distancia(getP2());
+    }
+
+    private double getB() {
+
+        return getP2().distancia(getP3());
+    }
+
+    private double getC() {
+
+        return getP3().distancia(getP1());
     }
 
     public double perimetro() {
 
-        return a.distancia(b) + b.distancia(c) + c.distancia(a);
+        return getA() + getB() + getC();
+    }
+
+    private double getSemiperimetro() {
+
+        return perimetro() / 2;
     }
 
     public double area() {
 
-        // TODO implementar
-        return 0;
+        // Semiperímetro do triângulo
+        double s = getSemiperimetro();
+
+        // XXX https://en.wikipedia.org/wiki/Heron%27s_formula
+        return sqrt(s * (s - getA()) * (s - getB()) * (s - getC()));
     }
 
     @Override
