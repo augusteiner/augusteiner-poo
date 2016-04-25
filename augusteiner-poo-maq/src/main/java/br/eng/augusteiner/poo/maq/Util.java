@@ -11,6 +11,7 @@ public class Util {
         double valor = 0;
 
         for (int i = 0; i < moedas.length; i++) {
+
             valor += moedas[i].getValor();
         }
 
