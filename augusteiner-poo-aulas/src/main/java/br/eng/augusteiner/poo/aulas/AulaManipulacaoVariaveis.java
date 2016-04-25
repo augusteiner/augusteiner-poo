@@ -6,7 +6,7 @@ import java.io.PrintStream;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Aula2 {
+public class AulaManipulacaoVariaveis {
 
     static final PrintStream out = System.out;
 

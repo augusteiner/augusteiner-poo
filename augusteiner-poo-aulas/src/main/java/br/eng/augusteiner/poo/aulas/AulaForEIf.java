@@ -3,7 +3,10 @@ package br.eng.augusteiner.poo.aulas;
 
 import java.util.ArrayList;
 
-public class Aula1 {
+/**
+ * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
+ */
+public class AulaForEIf {
 
     public static void main(String[] args) {
 

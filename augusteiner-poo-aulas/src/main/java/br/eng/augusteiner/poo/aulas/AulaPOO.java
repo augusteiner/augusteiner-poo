@@ -4,7 +4,7 @@ package br.eng.augusteiner.poo.aulas;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Aula3 {
+public class AulaPOO {
 
     public static void main(String[] args) {
 
