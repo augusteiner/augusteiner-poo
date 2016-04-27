@@ -21,5 +21,13 @@ public class AulaPOO {
         System.out.println(String.format("Fatos do triângulo %s", t1));
         System.out.println(String.format("Perímetro do triângulo é: %s", t1.perimetro()));
         System.out.println(String.format("Area do triângulo é: %s", t1.area()));
+
+        System.out.println("---------------------");
+
+        Circulo c1 = new Circulo(Ponto.ORIGEM, p1);
+
+        System.out.println(String.format("Fatos do circunferência %s", c1));
+        System.out.println(String.format("Comprimento da circunferência: %s", c1.permimetro()));
+        System.out.println(String.format("Área da circunferência: %s", c1.area()));
     }
 }

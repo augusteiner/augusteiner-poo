@@ -34,31 +34,26 @@ public class Triangulo {
         return this.p3;
     }
 
-    public double getTamanhoA() {
+    public double getTamanhoAB() {
 
         return Segmento.tamanho(getP1(), getP2());
     }
 
-    public double getTamanhoB() {
+    public double getTamanhoBC() {
 
         return Segmento.tamanho(getP2(), getP3());
     }
 
-    public double getTamanhoC() {
+    public double getTamanhoCA() {
 
         return Segmento.tamanho(getP3(), getP1());
     }
 
     public double perimetro() {
 
-        return getTamanhoA() + getTamanhoB() + getTamanhoC();
+        return getTamanhoAB() + getTamanhoBC() + getTamanhoCA();
     }
 
-    /**
-     * Semiperímetro do triângulo
-     *
-     * @return
-     */
     public double getSemiperimetro() {
 
         return perimetro() / 2;
@@ -69,7 +64,7 @@ public class Triangulo {
         double s = getSemiperimetro();
 
         // XXX https://en.wikipedia.org/wiki/Heron%27s_formula
-        return sqrt(s * (s - getTamanhoA()) * (s - getTamanhoB()) * (s - getTamanhoC()));
+        return sqrt(s * (s - getTamanhoAB()) * (s - getTamanhoBC()) * (s - getTamanhoCA()));
     }
 
     @Override
