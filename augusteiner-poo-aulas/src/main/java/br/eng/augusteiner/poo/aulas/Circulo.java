@@ -18,6 +18,11 @@ public class Circulo {
         this.p1 = p1;
     }
 
+    public Ponto getP1() {
+
+        return p1;
+    }
+
     public Ponto getCentro() {
 
         return centro;
@@ -25,7 +30,7 @@ public class Circulo {
 
     public double raio() {
 
-        return centro.distancia(p1);
+        return getCentro().distancia(getP1());
     }
 
     public double permimetro() {
