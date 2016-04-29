@@ -42,7 +42,7 @@ public class EquacaoSegundoGrau {
         double x1;
         double x2;
 
-        delta = sqrt(pow(getB(), 2) - 4 * getA() * getC());
+        delta = delta();
 
         x1 = bascara(delta);
         x2 = bascara(-delta);
@@ -51,6 +51,11 @@ public class EquacaoSegundoGrau {
             x1,
             x2 };
     }
+
+    public double delta() {
+
+        // XXX sqrt(b² - 4ac)
+        return sqrt(pow(getB(), 2) - 4 * getA() * getC());
     }
 
     public double bascara(double delta) {

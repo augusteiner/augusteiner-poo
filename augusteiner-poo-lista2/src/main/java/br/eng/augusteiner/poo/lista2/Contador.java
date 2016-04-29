@@ -10,6 +10,11 @@ public class Contador {
 
     private int i;
 
+    public Contador() {
+
+        this(0);
+    }
+
     public Contador(int i) {
 
         setI(i);
@@ -133,6 +138,11 @@ public class Contador {
         setI(getI() - n);
 
         return getI();
+    }
+
+    public static Contador novo() {
+
+        return new Contador();
     }
 
     @Override
