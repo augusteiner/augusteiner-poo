@@ -6,25 +6,83 @@ package br.eng.augusteiner.poo.lista2;
  */
 public class App {
 
+    private static final String SEPARADOR = "------------------------";
+
     public static void main(String[] args) {
 
-        Autor a1 = new Autor("Nascimento", "José Augusto de Araújo");
-        Livro l1 = new Livro(a1, 2016, 5, "Como criar classes em Java");
+        Autor autor1 = new Autor("Nascimento", "José Augusto de Araújo");
+        Livro livro1 = new Livro(autor1, 2016, 5, "Como criar classes em Java");
 
-        System.out.println(l1);
+        sysout(
+            "Livro 1: %s",
+            livro1);
 
-        EquacaoSegundoGrau eq1 = new EquacaoSegundoGrau(1, -6, -27);
-        double raizes[] = eq1.raizes();
+        sysout(SEPARADOR);
 
-        System.out.println(String.format("%s ~> (x1: %s, x2: %s)", eq1, raizes[0], raizes[1]));
+        EquacaoSegundoGrau equacao1 = new EquacaoSegundoGrau(1, -6, -27);
+        double raizes[] = equacao1.raizes();
 
-        Contador c1 = new Contador(2);
+        sysout(
+            "Equação: %s ~> (x': %s, x'': %s)",
+            equacao1,
+            raizes[0],
+            raizes[1]);
 
-        System.out.println(c1.decrementar(false));
+        sysout(SEPARADOR);
 
-        System.out.println(c1.decrementar(false));
-        System.out.println(c1);
+        Contador contador1 = new Contador(2);
 
-        System.out.println(c1.decrementar());
+        sysout(
+            "Contador: %s",
+            contador1.decrementar(false));
+
+        sysout(
+            "Contador: %s",
+            contador1.decrementar(false));
+        sysout(
+            "Contador: %s",
+            contador1);
+
+        sysout(
+            "Contador: %s",
+            contador1.decrementar());
+
+        sysout(SEPARADOR);
+
+        Lampada lampada1 = new Lampada();
+
+        sysout(
+            "Lâmpada: %s",
+            lampada1);
+
+        sysout(SEPARADOR);
+
+        Lampada lampada2 = new LampadaContador();
+
+        lampada2.acender();
+        lampada2.acender();
+        sysout(
+            "Lâmpada: %s",
+            lampada2);
+        lampada2.apagar();
+        lampada2.acender();
+        lampada2.meiaLuz();
+        sysout(
+            "Lâmpada: %s",
+            lampada2);
+    }
+
+    private static void sysout(
+        String formato,
+        Object... args) {
+
+        System.out.println(String.format(
+            formato,
+            args));
+    }
+
+    private static void sysout(Object texto) {
+
+        System.out.println(texto);
     }
 }
