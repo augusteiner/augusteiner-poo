@@ -60,9 +60,14 @@ public class Livro {
         this.titulo = titulo;
     }
 
+    @Override
     public String toString() {
 
-        return String.format("%s, %s. %s. %d ed", getAutor().getUltimoNome().toUpperCase(), getAutor()
-            .getPrimeiroNome(), getTitulo(), getEdicao());
+        return String.format(
+            "%s, %s. %s. %d ed",
+            getAutor().getUltimoNome().toUpperCase(),
+            getAutor().getPrimeiroNome(),
+            getTitulo(),
+            getEdicao());
     }
 }

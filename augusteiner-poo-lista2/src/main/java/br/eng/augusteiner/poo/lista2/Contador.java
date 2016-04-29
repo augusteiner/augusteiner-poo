@@ -135,8 +135,11 @@ public class Contador {
         return getI();
     }
 
+    @Override
     public String toString() {
 
-        return String.format("%d", this.getI());
+        return String.format(
+            "%d",
+            this.getI());
     }
 }

@@ -17,7 +17,10 @@ public class Autor {
 
     public String getNome() {
 
-        return String.format("%s %s", getPrimeiroNome(), getUltimoNome());
+        return String.format(
+            "%s %s",
+            getPrimeiroNome(),
+            getUltimoNome());
     }
 
     public String getPrimeiroNome() {
@@ -40,6 +43,7 @@ public class Autor {
         this.ultimoNome = ultimoNome;
     }
 
+    @Override
     public String toString() {
 
         return getNome();
