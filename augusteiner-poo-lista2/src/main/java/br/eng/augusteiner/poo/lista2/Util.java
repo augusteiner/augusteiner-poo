@@ -6,6 +6,11 @@ package br.eng.augusteiner.poo.lista2;
  */
 public class Util {
 
+    public static void sysout() {
+
+        System.out.println();
+    }
+
     public static void sysout(Object texto) {
 
         System.out.println(texto);

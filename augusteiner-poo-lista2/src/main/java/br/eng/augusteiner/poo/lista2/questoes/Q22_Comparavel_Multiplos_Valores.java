@@ -8,7 +8,7 @@ import br.eng.augusteiner.poo.lista2.classes.Comparavel;
 /**
  * @author José Nascimento joseaugustodearaujonascimento@gmail.com
  */
-public class Q22_Comparavel_com_Multiplos_Valores {
+public class Q22_Comparavel_Multiplos_Valores {
 
     public static final double VALOR_TESTE = 5.0;
 

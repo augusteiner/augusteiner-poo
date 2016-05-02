@@ -8,7 +8,7 @@ import br.eng.augusteiner.poo.lista2.classes.Comparavel;
 /**
  * @author José Nascimento joseaugustodearaujonascimento@gmail.com
  */
-public class Q21_Comparavel_com_Dois_Valores {
+public class Q21_Comparavel_Dois_Valores {
 
     private static final String VALOR_TESTE = "Eu sou assim";
 
