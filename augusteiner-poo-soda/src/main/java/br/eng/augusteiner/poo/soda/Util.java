@@ -1,5 +1,7 @@
 
-package br.eng.augusteiner.poo.maq;
+package br.eng.augusteiner.poo.soda;
+
+import br.eng.augusteiner.poo.soda.classes.Moeda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>

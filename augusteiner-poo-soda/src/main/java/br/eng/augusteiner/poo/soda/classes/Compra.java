@@ -1,7 +1,9 @@
 
-package br.eng.augusteiner.poo.maq;
+package br.eng.augusteiner.poo.soda.classes;
 
 import java.util.Date;
+
+import br.eng.augusteiner.poo.soda.Util;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>

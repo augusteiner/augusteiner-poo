@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.maq;
+package br.eng.augusteiner.poo.soda.classes;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>

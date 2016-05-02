@@ -8,10 +8,10 @@
         <artifactId>augusteiner-poo</artifactId>
         <version>0.1.0-RELEASE</version>
     </parent>
-    <groupId>br.eng.augusteiner.poo.maq</groupId>
-    <artifactId>augusteiner-poo-maq</artifactId>
+    <groupId>br.eng.augusteiner.poo.soda</groupId>
+    <artifactId>augusteiner-poo-soda</artifactId>
     <version>0.1.0-RELEASE</version>
-    <name>augusteiner-poo-maq</name>
+    <name>augusteiner-poo-soda</name>
     <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
