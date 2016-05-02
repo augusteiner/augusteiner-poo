@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.lista2;
+package br.eng.augusteiner.poo.lista2.classes;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
@@ -14,7 +14,10 @@ public class EquacaoSegundoGrau {
     private double b;
     private double c;
 
-    public EquacaoSegundoGrau(double a, double b, double c) {
+    public EquacaoSegundoGrau(
+        double a,
+        double b,
+        double c) {
 
         this.a = a;
         this.b = b;

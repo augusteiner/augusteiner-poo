@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.lista2;
+package br.eng.augusteiner.poo.lista2.classes;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>

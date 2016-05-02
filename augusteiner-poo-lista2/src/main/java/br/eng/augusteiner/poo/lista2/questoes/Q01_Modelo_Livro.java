@@ -3,8 +3,8 @@ package br.eng.augusteiner.poo.lista2.questoes;
 
 import static br.eng.augusteiner.poo.lista2.Util.sysout;
 
-import br.eng.augusteiner.poo.lista2.Autor;
-import br.eng.augusteiner.poo.lista2.Livro;
+import br.eng.augusteiner.poo.lista2.classes.Autor;
+import br.eng.augusteiner.poo.lista2.classes.Livro;
 
 /**
  * @author José Nascimento joseaugustodearaujonascimento@gmail.com

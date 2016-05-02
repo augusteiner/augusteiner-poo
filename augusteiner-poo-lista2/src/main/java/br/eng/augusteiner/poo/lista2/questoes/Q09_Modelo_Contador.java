@@ -3,7 +3,7 @@ package br.eng.augusteiner.poo.lista2.questoes;
 
 import static br.eng.augusteiner.poo.lista2.Util.sysout;
 
-import br.eng.augusteiner.poo.lista2.Contador;
+import br.eng.augusteiner.poo.lista2.classes.Contador;
 
 /**
  * @author José Nascimento joseaugustodearaujonascimento@gmail.com

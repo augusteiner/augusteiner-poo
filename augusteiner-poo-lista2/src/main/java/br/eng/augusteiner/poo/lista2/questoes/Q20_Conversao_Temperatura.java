@@ -1,8 +1,8 @@
 
 package br.eng.augusteiner.poo.lista2.questoes;
 
-import static br.eng.augusteiner.poo.lista2.ConversaoDeTemperatura.*;
 import static br.eng.augusteiner.poo.lista2.Util.sysout;
+import static br.eng.augusteiner.poo.lista2.classes.ConversaoDeTemperatura.*;
 
 /**
  * @author José Nascimento joseaugustodearaujonascimento@gmail.com

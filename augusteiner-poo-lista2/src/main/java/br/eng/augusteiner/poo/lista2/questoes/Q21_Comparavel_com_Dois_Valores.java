@@ -3,7 +3,7 @@ package br.eng.augusteiner.poo.lista2.questoes;
 
 import static br.eng.augusteiner.poo.lista2.Util.sysout;
 
-import br.eng.augusteiner.poo.lista2.Comparavel;
+import br.eng.augusteiner.poo.lista2.classes.Comparavel;
 
 /**
  * @author José Nascimento joseaugustodearaujonascimento@gmail.com

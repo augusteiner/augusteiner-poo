@@ -3,8 +3,8 @@ package br.eng.augusteiner.poo.lista2.questoes;
 
 import static br.eng.augusteiner.poo.lista2.Util.sysout;
 
-import br.eng.augusteiner.poo.lista2.Lampada;
-import br.eng.augusteiner.poo.lista2.LampadaComPotencia;
+import br.eng.augusteiner.poo.lista2.classes.Lampada;
+import br.eng.augusteiner.poo.lista2.classes.LampadaComPotencia;
 
 /**
  * @author José Nascimento joseaugustodearaujonascimento@gmail.com

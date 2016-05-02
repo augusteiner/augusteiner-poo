@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.lista2;
+package br.eng.augusteiner.poo.lista2.classes;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -44,7 +44,9 @@ public class Contador {
      */
     public int incrementar(boolean f) {
 
-        return incrementar(PASSO_PADRAO, f);
+        return incrementar(
+            PASSO_PADRAO,
+            f);
     }
 
     /**
@@ -55,7 +57,9 @@ public class Contador {
      */
     public int decrementar(boolean f) {
 
-        return decrementar(PASSO_PADRAO, f);
+        return decrementar(
+            PASSO_PADRAO,
+            f);
     }
 
     /**
@@ -86,7 +90,9 @@ public class Contador {
      * @param n
      * @return
      */
-    public int incrementar(int n, boolean f) {
+    public int incrementar(
+        int n,
+        boolean f) {
 
         try {
 
@@ -103,7 +109,9 @@ public class Contador {
      * @param n
      * @return
      */
-    public int decrementar(int n, boolean f) {
+    public int decrementar(
+        int n,
+        boolean f) {
 
         try {
 
@@ -150,6 +158,6 @@ public class Contador {
 
         return String.format(
             "%d",
-            this.getI());
+            getI());
     }
 }

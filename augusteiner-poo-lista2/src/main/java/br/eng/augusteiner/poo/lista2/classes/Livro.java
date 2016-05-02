@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.lista2;
+package br.eng.augusteiner.poo.lista2.classes;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -12,7 +12,11 @@ public class Livro {
 
     private String titulo;
 
-    public Livro(Autor autor, int anoPublicacao, int edicao, String titulo) {
+    public Livro(
+        Autor autor,
+        int anoPublicacao,
+        int edicao,
+        String titulo) {
 
         this.autor = autor;
         this.anoPublicacao = anoPublicacao;

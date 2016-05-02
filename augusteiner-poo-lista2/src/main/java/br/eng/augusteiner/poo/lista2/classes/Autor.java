@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.lista2;
+package br.eng.augusteiner.poo.lista2.classes;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -9,7 +9,9 @@ public class Autor {
     private String ultimoNome;
     private String primeiroNome;
 
-    public Autor(String ultimoNome, String primeiroNome) {
+    public Autor(
+        String ultimoNome,
+        String primeiroNome) {
 
         this.ultimoNome = ultimoNome;
         this.primeiroNome = primeiroNome;
