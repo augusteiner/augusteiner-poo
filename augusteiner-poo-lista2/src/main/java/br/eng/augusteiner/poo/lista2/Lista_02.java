@@ -9,9 +9,9 @@ import java.util.Iterator;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class App {
+public class Lista_02 {
 
-    private static final Package PACKAGE = App.class.getPackage();
+    private static final Package PACKAGE = Lista_02.class.getPackage();
 
     /**
      * @param args

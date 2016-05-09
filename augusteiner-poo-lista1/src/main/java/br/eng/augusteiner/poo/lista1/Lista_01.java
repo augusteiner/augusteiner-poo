@@ -9,9 +9,9 @@ import java.util.Iterator;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class App {
+public class Lista_01 {
 
-    private static final Package PACKAGE = App.class.getPackage();
+    private static final Package PACKAGE = Lista_01.class.getPackage();
 
     /**
      * @param args
@@ -22,9 +22,11 @@ public class App {
 
         while (iter.hasNext()) {
 
-            Class<?> c = iter.next();
+            Class<?> questao = iter.next();
 
-            invokeMain(c, args);
+            invokeMain(
+                questao,
+                args);
 
             // println(c.getName());
         }
