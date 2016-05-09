@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.aulas;
+package br.eng.augusteiner.poo;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.pow;

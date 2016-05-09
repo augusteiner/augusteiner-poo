@@ -1,6 +1,10 @@
 
 package br.eng.augusteiner.poo.aulas;
 
+import br.eng.augusteiner.poo.Circulo;
+import br.eng.augusteiner.poo.Ponto;
+import br.eng.augusteiner.poo.Triangulo;
+
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
