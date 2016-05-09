@@ -1,6 +1,8 @@
 
 package br.eng.augusteiner.poo.lista1;
 
+import static br.eng.augusteiner.poo.Util.getScanner;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -23,7 +25,7 @@ public class Q10_Ler_10_Numeros_e_Imprimir_Qte_no_Intervalo {
         int fora = 0;
 
         PrintStream out = System.out;
-        Scanner scn = new Scanner(System.in);
+        Scanner scn = getScanner();
 
         for (int i = 0; i < 10; i++) {
 
@@ -49,6 +51,6 @@ public class Q10_Ler_10_Numeros_e_Imprimir_Qte_no_Intervalo {
             intervaloMin,
             intervaloMax));
 
-        scn.close();
+        // scn.close();
     }
 }

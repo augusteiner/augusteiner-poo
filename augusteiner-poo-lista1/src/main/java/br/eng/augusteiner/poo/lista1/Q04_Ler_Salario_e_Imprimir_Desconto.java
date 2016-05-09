@@ -1,6 +1,8 @@
 
 package br.eng.augusteiner.poo.lista1;
 
+import static br.eng.augusteiner.poo.Util.getScanner;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -18,7 +20,7 @@ public class Q04_Ler_Salario_e_Imprimir_Desconto {
         double desconto;
 
         PrintStream out = System.out;
-        Scanner scn = new Scanner(System.in);
+        Scanner scn = getScanner();
 
         out.print("Informe o salário: ");
         salario = scn.nextDouble();
@@ -30,7 +32,7 @@ public class Q04_Ler_Salario_e_Imprimir_Desconto {
             desconto,
             salario));
 
-        scn.close();
+        // scn.close();
     }
 
     private static double descontoPorSalario(double salario) {

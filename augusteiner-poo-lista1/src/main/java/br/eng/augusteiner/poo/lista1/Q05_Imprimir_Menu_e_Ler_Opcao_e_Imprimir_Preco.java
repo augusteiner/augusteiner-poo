@@ -1,6 +1,8 @@
 
 package br.eng.augusteiner.poo.lista1;
 
+import static br.eng.augusteiner.poo.Util.getScanner;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -24,7 +26,7 @@ public class Q05_Imprimir_Menu_e_Ler_Opcao_e_Imprimir_Preco {
         int pratoSelecionado;
 
         PrintStream out = System.out;
-        Scanner scn = new Scanner(System.in);
+        Scanner scn = getScanner();
 
         for (int i = 0; i < pratos.length; i++) {
 
@@ -45,6 +47,6 @@ public class Q05_Imprimir_Menu_e_Ler_Opcao_e_Imprimir_Preco {
             pratos[pratoSelecionado],
             precos[pratoSelecionado]));
 
-        scn.close();
+        // scn.close();
     }
 }

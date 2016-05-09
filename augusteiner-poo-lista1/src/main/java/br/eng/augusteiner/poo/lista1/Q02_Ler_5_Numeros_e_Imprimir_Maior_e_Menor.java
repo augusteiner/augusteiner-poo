@@ -1,6 +1,8 @@
 
 package br.eng.augusteiner.poo.lista1;
 
+import static br.eng.augusteiner.poo.Util.getScanner;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -20,7 +22,7 @@ public class Q02_Ler_5_Numeros_e_Imprimir_Maior_e_Menor {
         double curr;
 
         PrintStream out = System.out;
-        Scanner scn = new Scanner(System.in);
+        Scanner scn = getScanner();
 
         for (int i = 0; i < 5; i++) {
 
@@ -44,6 +46,6 @@ public class Q02_Ler_5_Numeros_e_Imprimir_Maior_e_Menor {
             "O menor número é: %s",
             menor));
 
-        scn.close();
+        // scn.close();
     }
 }

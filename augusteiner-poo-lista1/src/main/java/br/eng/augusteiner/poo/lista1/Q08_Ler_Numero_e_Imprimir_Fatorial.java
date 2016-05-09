@@ -1,6 +1,8 @@
 
 package br.eng.augusteiner.poo.lista1;
 
+import static br.eng.augusteiner.poo.Util.getScanner;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -18,7 +20,7 @@ public class Q08_Ler_Numero_e_Imprimir_Fatorial {
         int n;
 
         PrintStream out = System.out;
-        Scanner scn = new Scanner(System.in);
+        Scanner scn = getScanner();
 
         out.print("Informe o número para calcular o fatorial: ");
         n = scn.nextInt();
@@ -32,6 +34,6 @@ public class Q08_Ler_Numero_e_Imprimir_Fatorial {
             "%s! = %s",
             n,
             fat));
-        scn.close();
+        // scn.close();
     }
 }

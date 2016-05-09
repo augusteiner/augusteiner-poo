@@ -1,6 +1,8 @@
 
 package br.eng.augusteiner.poo.lista1;
 
+import static br.eng.augusteiner.poo.Util.getScanner;
+
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
@@ -23,7 +25,7 @@ public class Q03_Ler_X_Y_2_Pontos_e_Imprimir_Distancia {
         double distancia;
 
         PrintStream out = System.out;
-        Scanner scn = new Scanner(System.in);
+        Scanner scn = getScanner();
 
         out.print("Informe x1: ");
         x1 = scn.nextDouble();
@@ -47,7 +49,7 @@ public class Q03_Ler_X_Y_2_Pontos_e_Imprimir_Distancia {
             "A distância entre os pontos informados é: %f",
             distancia));
 
-        scn.close();
+        // scn.close();
     }
 
     private static double distanciaEntrePontos(

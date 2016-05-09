@@ -1,6 +1,8 @@
 
 package br.eng.augusteiner.poo.lista1;
 
+import static br.eng.augusteiner.poo.Util.getScanner;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -18,7 +20,7 @@ public class Q01_Ler_2_Numeros_e_Imprimir_Iguais_ou_Diferentes {
         double y;
 
         PrintStream out = System.out;
-        Scanner scn = new Scanner(System.in);
+        Scanner scn = getScanner();
 
         out.print("Informe um número: ");
         x = scn.nextDouble();
@@ -34,6 +36,6 @@ public class Q01_Ler_2_Numeros_e_Imprimir_Iguais_ou_Diferentes {
             out.println("DIFERENTES");
         }
 
-        scn.close();
+        // scn.close();
     }
 }
