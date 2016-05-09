@@ -8,7 +8,7 @@ public class Aula_Objetos_Heap {
 
     public static void main(String[] args) {
 
-        String s = new String("IFRN");
+        // String s = new String("IFRN");
         String nome = new String("João da Silva");
 
         char[] array = nome.toCharArray();
