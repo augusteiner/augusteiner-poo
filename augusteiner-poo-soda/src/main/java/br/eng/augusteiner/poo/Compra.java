@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.soda.classes;
+package br.eng.augusteiner.poo;
 
 import java.util.Date;
 
@@ -9,6 +9,7 @@ import br.eng.augusteiner.poo.soda.Util;
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class Compra {
+
     private Produto produto;
 
     private Moeda[] entrada;
@@ -16,7 +17,11 @@ public class Compra {
 
     private Date data;
 
-    public Compra(Produto produto, Moeda[] entrada, Moeda[] troco, Date data) {
+    public Compra(
+        Produto produto,
+        Moeda[] entrada,
+        Moeda[] troco,
+        Date data) {
 
         this.produto = produto;
 

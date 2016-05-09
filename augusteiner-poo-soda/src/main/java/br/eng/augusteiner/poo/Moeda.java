@@ -1,10 +1,15 @@
 
-package br.eng.augusteiner.poo.soda.classes;
+package br.eng.augusteiner.poo;
+
+import java.util.Locale;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class Moeda {
+
+    public static final Locale LOCALE = new Locale("pt", "BR");
+    public static final String SIMBOLO = "R$";
 
     private double valor;
     private String descricao;
@@ -13,7 +18,9 @@ public class Moeda {
 
     }
 
-    public Moeda(double valor, String descricao) {
+    public Moeda(
+        double valor,
+        String descricao) {
 
         this.valor = valor;
         this.descricao = descricao;
@@ -43,7 +50,9 @@ public class Moeda {
     public String toString() {
 
         return String.format(
-            "R$ %.2f (%s)",
+            LOCALE,
+            "%s %.2f (%s)",
+            SIMBOLO,
             getValor(),
             getDescricao());
     }

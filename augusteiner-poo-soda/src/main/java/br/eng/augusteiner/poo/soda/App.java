@@ -1,8 +1,11 @@
 
 package br.eng.augusteiner.poo.soda;
 
-import br.eng.augusteiner.poo.soda.classes.Moeda;
-import br.eng.augusteiner.poo.soda.classes.Produto;
+import static br.eng.augusteiner.poo.Util.println;
+import static br.eng.augusteiner.poo.soda.Util.moedasToString;
+
+import br.eng.augusteiner.poo.Moeda;
+import br.eng.augusteiner.poo.Produto;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -32,13 +35,13 @@ public class App {
 
         fanta.setPreco(coca.getPreco());
 
-        System.out.println(coca);
-        System.out.println(fanta);
+        println(coca);
+        println(fanta);
 
-        System.out.println(m25);
-        System.out.println(m10);
+        println(m25);
+        println(m10);
 
-        System.out.println(Util.moedasToDouble(
+        println(moedasToString(
             m25,
             m10));
     }

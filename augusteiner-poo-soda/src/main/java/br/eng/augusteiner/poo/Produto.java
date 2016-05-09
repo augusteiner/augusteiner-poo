@@ -1,10 +1,11 @@
 
-package br.eng.augusteiner.poo.soda.classes;
+package br.eng.augusteiner.poo;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class Produto {
+
     private String codigo;
 
     private String nome;
@@ -16,7 +17,11 @@ public class Produto {
 
     }
 
-    public Produto(String codigo, String nome, String descricao, double preco) {
+    public Produto(
+        String codigo,
+        String nome,
+        String descricao,
+        double preco) {
 
         this.codigo = codigo;
 
@@ -70,6 +75,7 @@ public class Produto {
     public String toString() {
 
         return String.format(
+            Moeda.LOCALE,
             "#%s - %s : R$ %.2f",
             getCodigo(),
             getNome(),
