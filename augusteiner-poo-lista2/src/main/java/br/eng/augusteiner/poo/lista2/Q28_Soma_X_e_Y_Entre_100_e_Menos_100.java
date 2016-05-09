@@ -6,7 +6,7 @@ import static br.eng.augusteiner.poo.Util.println;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Q28_X_Y {
+public class Q28_Soma_X_e_Y_Entre_100_e_Menos_100 {
 
     public static void main(String[] args) {
 
