@@ -1,9 +1,9 @@
 
-package br.eng.augusteiner.poo.lista2.questoes;
+package br.eng.augusteiner.poo.lista2;
 
-import static br.eng.augusteiner.poo.lista2.Util.println;
+import static br.eng.augusteiner.poo.Util.println;
 
-import br.eng.augusteiner.poo.lista2.classes.Comparavel;
+import br.eng.augusteiner.poo.Comparavel;
 
 /**
  * @author José Nascimento joseaugustodearaujonascimento@gmail.com
@@ -14,28 +14,30 @@ public class Q22_Comparavel_Multiplos_Valores {
 
     public static void main(String[] args) {
 
-        double v1 = VALOR_TESTE + 1;
-        double v2 = VALOR_TESTE + 2;
-        double v3 = VALOR_TESTE + 3;
-        double v4 = VALOR_TESTE + 4;
-        double v5 = VALOR_TESTE + 5;
-
         Comparavel cp1 = new Comparavel(VALOR_TESTE);
+        Object[] valores = new Object[]{
+            cp1.getValor(), // VALOR_TESTE + 1,
+            VALOR_TESTE + 2,
+            VALOR_TESTE + 3,
+            VALOR_TESTE + 4,
+            VALOR_TESTE + 5 };
+        Object[] arguments = new Object[valores.length + 2];
+
+        for (int i = 0; i < valores.length; i++) {
+
+            arguments[i + 1] = valores[i];
+        }
+        arguments[0] = cp1.getValor();
+        arguments[arguments.length - 1] = cp1.eIgualAQualquerUmDe(
+            valores[0],
+            valores[1],
+            valores[2],
+            valores[3],
+            valores[4]);
+
 
         println(
             "%.2f == (%.2f || %.2f || %.2f || %.2f || %.2f) == (%s)",
-            cp1.getValor(),
-            v1,
-            v2,
-            v3,
-            v4,
-            v5,
-            cp1.eIgualAQualquerUmDe(
-                v1,
-                v2,
-                v3,
-                v4,
-                v5));
+            arguments);
     }
 }
-
