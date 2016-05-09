@@ -28,7 +28,7 @@ public class Util {
 
     public static void println() {
 
-        println("");
+        System.out.println();
     }
 
     public static void println(Object texto) {

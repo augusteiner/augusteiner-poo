@@ -1,6 +1,8 @@
 
 package br.eng.augusteiner.poo.aulas;
 
+import static br.eng.augusteiner.poo.Util.println;
+
 import br.eng.augusteiner.poo.Circulo;
 import br.eng.augusteiner.poo.Ponto;
 import br.eng.augusteiner.poo.Triangulo;
@@ -15,23 +17,23 @@ public class Aula_25_04_16_POO {
         Ponto p1 = new Ponto(0, 3);
         Ponto p2 = new Ponto(4, 0);
 
-        System.out.println(String.format("Distancia do ponto %s a origem: %s", p1, p1.distanciaOrigem()));
-        System.out.println(String.format("Distancia do ponto %s ao ponto %s: %s", p1, p2, p1.distancia(p2)));
+        println("Distancia do ponto %s a origem: %s", p1, p1.distanciaOrigem());
+        println("Distancia do ponto %s ao ponto %s: %s", p1, p2, p1.distancia(p2));
 
         Triangulo t1 = new Triangulo(p1, p2, Ponto.ORIGEM);
 
-        System.out.println("---------------------");
+        println("---------------------");
 
-        System.out.println(String.format("Fatos do triângulo %s", t1));
-        System.out.println(String.format("Perímetro do triângulo é: %s", t1.perimetro()));
-        System.out.println(String.format("Area do triângulo é: %s", t1.area()));
+        println("Fatos do triângulo %s", t1);
+        println("Perímetro do triângulo é: %s", t1.perimetro());
+        println("Area do triângulo é: %s", t1.area());
 
-        System.out.println("---------------------");
+        println("---------------------");
 
         Circulo c1 = new Circulo(Ponto.ORIGEM, p1);
 
-        System.out.println(String.format("Fatos do circunferência %s", c1));
-        System.out.println(String.format("Comprimento da circunferência: %s", c1.permimetro()));
-        System.out.println(String.format("Área da circunferência: %s", c1.area()));
+        println("Fatos do circunferência %s", c1);
+        println("Comprimento da circunferência: %s", c1.permimetro());
+        println("Área da circunferência: %s", c1.area());
     }
 }
