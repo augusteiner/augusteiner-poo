@@ -4,8 +4,8 @@
     xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>br.eng.augusteiner.poo</groupId>
-        <artifactId>augusteiner-poo</artifactId>
+        <groupId>br.eng.augusteiner</groupId>
+        <artifactId>augusteiner</artifactId>
         <version>0.1.0-RELEASE</version>
     </parent>
     <groupId>br.eng.augusteiner.poo.aulas</groupId>
