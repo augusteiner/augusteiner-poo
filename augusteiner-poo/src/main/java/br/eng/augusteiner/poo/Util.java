@@ -1,10 +1,30 @@
 
-package br.eng.augusteiner.poo.lista2;
+package br.eng.augusteiner.poo;
+
+import java.lang.Object;
+import java.util.Scanner;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class Util {
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static Scanner getScanner() {
+
+        return scanner;
+    }
+
+    public static double nextDouble() {
+
+        return getScanner().nextDouble();
+    }
+
+    public static double nextInt() {
+
+        return getScanner().nextInt();
+    }
 
     public static void println() {
 

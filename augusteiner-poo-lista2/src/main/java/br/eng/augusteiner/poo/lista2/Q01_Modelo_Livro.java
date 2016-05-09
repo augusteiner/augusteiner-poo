@@ -1,10 +1,10 @@
 
-package br.eng.augusteiner.poo.lista2.questoes;
+package br.eng.augusteiner.poo.lista2;
 
-import static br.eng.augusteiner.poo.lista2.Util.println;
+import static br.eng.augusteiner.poo.Util.println;
 
-import br.eng.augusteiner.poo.lista2.classes.Autor;
-import br.eng.augusteiner.poo.lista2.classes.Livro;
+import br.eng.augusteiner.poo.Autor;
+import br.eng.augusteiner.poo.Livro;
 
 /**
  * @author José Nascimento joseaugustodearaujonascimento@gmail.com

@@ -1,7 +1,7 @@
 
-package br.eng.augusteiner.poo.lista2.questoes;
+package br.eng.augusteiner.poo.lista2;
 
-import static br.eng.augusteiner.poo.lista2.Util.println;
+import static br.eng.augusteiner.poo.Util.println;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>

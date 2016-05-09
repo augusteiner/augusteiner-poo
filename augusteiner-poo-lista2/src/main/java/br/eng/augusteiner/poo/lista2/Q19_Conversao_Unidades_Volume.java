@@ -1,8 +1,8 @@
 
-package br.eng.augusteiner.poo.lista2.questoes;
+package br.eng.augusteiner.poo.lista2;
 
-import static br.eng.augusteiner.poo.lista2.Util.println;
-import static br.eng.augusteiner.poo.lista2.classes.ConversaoDeUnidadesDeVolume.*;
+import static br.eng.augusteiner.poo.ConversaoDeUnidadesDeVolume.*;
+import static br.eng.augusteiner.poo.Util.println;
 
 public class Q19_Conversao_Unidades_Volume {
 

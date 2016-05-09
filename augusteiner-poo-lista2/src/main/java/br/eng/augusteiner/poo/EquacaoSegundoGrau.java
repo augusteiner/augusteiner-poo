@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.lista2.classes;
+package br.eng.augusteiner.poo;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
