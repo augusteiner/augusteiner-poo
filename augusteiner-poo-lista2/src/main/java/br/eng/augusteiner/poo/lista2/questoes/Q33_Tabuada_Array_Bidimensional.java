@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.lista2.questoes;
 
-import static br.eng.augusteiner.poo.lista2.Util.sysout;
+import static br.eng.augusteiner.poo.lista2.Util.println;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -29,14 +29,14 @@ public class Q33_Tabuada_Array_Bidimensional {
 
             for (int j = 0; j < tabuada[i].length; j++) {
 
-                sysout(
+                println(
                     "%s + %s = %s",
                     i,
                     j,
                     tabuada[i][j]);
             }
 
-            sysout();
+            println();
         }
     }
 }

@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.lista2.questoes;
 
-import static br.eng.augusteiner.poo.lista2.Util.sysout;
+import static br.eng.augusteiner.poo.lista2.Util.println;
 
 import br.eng.augusteiner.poo.lista2.classes.Comparavel;
 
@@ -22,7 +22,7 @@ public class Q22_Comparavel_Multiplos_Valores {
 
         Comparavel cp1 = new Comparavel(VALOR_TESTE);
 
-        sysout(
+        println(
             "%.2f == (%.2f || %.2f || %.2f || %.2f || %.2f) == (%s)",
             cp1.getValor(),
             v1,

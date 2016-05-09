@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.lista2.questoes;
 
-import static br.eng.augusteiner.poo.lista2.Util.sysout;
+import static br.eng.augusteiner.poo.lista2.Util.println;
 import static br.eng.augusteiner.poo.lista2.classes.ConversaoDeUnidadesDeVolume.*;
 
 public class Q19_Conversao_Unidades_Volume {
@@ -10,27 +10,27 @@ public class Q19_Conversao_Unidades_Volume {
 
     public static void main(String[] args) {
 
-        sysout(
+        println(
             "%s L = %s cm³",
             VALOR_TESTE,
             litrosParaCm3(VALOR_TESTE));
 
-        sysout(
+        println(
             "%s m³ = %s L",
             VALOR_TESTE,
             m3ParaLitro(VALOR_TESTE));
 
-        sysout(
+        println(
             "%s m³ = %s pés cúbicos",
             VALOR_TESTE,
             m3ParaPe3(VALOR_TESTE));
 
-        sysout(
+        println(
             "%s galão americano = %s polegadas³",
             VALOR_TESTE,
             galaoParaPol3(VALOR_TESTE));
 
-        sysout(
+        println(
             "%s galão americano = %s L",
             VALOR_TESTE,
             galaoParaLitro(VALOR_TESTE));

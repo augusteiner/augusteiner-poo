@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.lista2.questoes;
 
-import static br.eng.augusteiner.poo.lista2.Util.sysout;
+import static br.eng.augusteiner.poo.lista2.Util.println;
 
 import br.eng.augusteiner.poo.lista2.classes.Lampada;
 
@@ -14,7 +14,7 @@ public class Q10_Modelo_Lampada {
 
         Lampada lampada1 = new Lampada();
 
-        sysout(
+        println(
             "Lâmpada: %s",
             lampada1);
     }

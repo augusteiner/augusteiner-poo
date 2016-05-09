@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.lista2.questoes;
 
-import static br.eng.augusteiner.poo.lista2.Util.sysout;
+import static br.eng.augusteiner.poo.lista2.Util.println;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -17,7 +17,7 @@ public class Q28_X_Y {
                 if (x + y == -100 ||
                     x+ y == 100) {
 
-                    sysout(
+                    println(
                         "x: %s, y: %s ~> x + y = %s",
                         x,
                         y,

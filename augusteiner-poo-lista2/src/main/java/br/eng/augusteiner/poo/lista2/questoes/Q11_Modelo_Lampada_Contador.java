@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.lista2.questoes;
 
-import static br.eng.augusteiner.poo.lista2.Util.sysout;
+import static br.eng.augusteiner.poo.lista2.Util.println;
 
 import br.eng.augusteiner.poo.lista2.classes.Lampada;
 import br.eng.augusteiner.poo.lista2.classes.LampadaContador;
@@ -18,14 +18,14 @@ public class Q11_Modelo_Lampada_Contador {
         lampada2.acender();
         lampada2.acender();
 
-        sysout(
+        println(
             "Lâmpada: %s",
             lampada2);
         lampada2.apagar();
         lampada2.acender();
         lampada2.meiaLuz();
 
-        sysout(
+        println(
             "Lâmpada: %s",
             lampada2);
     }

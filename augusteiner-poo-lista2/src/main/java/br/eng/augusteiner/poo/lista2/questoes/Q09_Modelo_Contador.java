@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.lista2.questoes;
 
-import static br.eng.augusteiner.poo.lista2.Util.sysout;
+import static br.eng.augusteiner.poo.lista2.Util.println;
 
 import br.eng.augusteiner.poo.lista2.classes.Contador;
 
@@ -14,19 +14,19 @@ public class Q09_Modelo_Contador {
 
         Contador contador1 = new Contador(2);
 
-        sysout(
+        println(
             "Contador: %s",
             contador1.decrementar(false));
 
-        sysout(
+        println(
             "Contador: %s",
             contador1.decrementar(false));
 
-        sysout(
+        println(
             "Contador: %s",
             contador1);
 
-        sysout(
+        println(
             "Contador: %s",
             contador1.decrementar());
     }

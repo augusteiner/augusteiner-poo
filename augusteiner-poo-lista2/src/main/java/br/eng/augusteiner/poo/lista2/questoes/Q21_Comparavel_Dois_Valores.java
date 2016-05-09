@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.lista2.questoes;
 
-import static br.eng.augusteiner.poo.lista2.Util.sysout;
+import static br.eng.augusteiner.poo.lista2.Util.println;
 
 import br.eng.augusteiner.poo.lista2.classes.Comparavel;
 
@@ -18,7 +18,7 @@ public class Q21_Comparavel_Dois_Valores {
         Comparavel cp2 = new Comparavel(VALOR_TESTE);
         Comparavel cp3 = new Comparavel(VALOR_TESTE + "!");
 
-        sysout(
+        println(
             "\"%s\" == (\"%s\" || \"%s\") ~> (%s)",
             cp1,
             cp2,
