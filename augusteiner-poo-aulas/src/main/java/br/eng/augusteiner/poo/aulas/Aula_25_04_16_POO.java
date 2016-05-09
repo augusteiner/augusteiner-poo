@@ -8,7 +8,7 @@ import br.eng.augusteiner.poo.Triangulo;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Aula_POO {
+public class Aula_25_04_16_POO {
 
     public static void main(String[] args) {
 

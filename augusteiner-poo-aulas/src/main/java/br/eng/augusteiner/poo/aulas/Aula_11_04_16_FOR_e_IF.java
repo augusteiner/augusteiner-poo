@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Aula_for_e_if {
+public class Aula_11_04_16_FOR_e_IF {
 
     public static void main(String[] args) {
 
