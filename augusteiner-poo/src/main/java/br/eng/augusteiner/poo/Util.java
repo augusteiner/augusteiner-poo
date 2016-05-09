@@ -1,8 +1,6 @@
 
 package br.eng.augusteiner.poo;
 
-import static br.eng.augusteiner.poo.Util.println;
-
 import java.lang.reflect.Method;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -66,14 +64,18 @@ public class Util {
 
                 public boolean test(Class<?> t) {
 
-                    return t.getSimpleName().startsWith("Q");
+                    return t.getSimpleName()
+                        .startsWith("Q");
                 }
             })
             .sorted(new Comparator<Class<?>>(){
 
-                public int compare(Class<?> o1, Class<?> o2) {
+                public int compare(
+                    Class<?> o1,
+                    Class<?> o2) {
 
-                    return o1.getSimpleName().compareTo(o2.getSimpleName());
+                    return o1.getSimpleName()
+                        .compareTo(o2.getSimpleName());
                 }
             })
             .collect(Collectors.toList())
