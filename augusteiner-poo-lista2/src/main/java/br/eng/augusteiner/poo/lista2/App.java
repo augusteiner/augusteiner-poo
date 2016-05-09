@@ -1,8 +1,8 @@
 
-package br.eng.augusteiner.poo.lista1;
+package br.eng.augusteiner.poo.lista2;
 
-import static br.eng.augusteiner.poo.Util.invokeMain;
 import static br.eng.augusteiner.poo.Util.questoes;
+import static br.eng.augusteiner.poo.Util.invokeMain;
 
 import java.util.Iterator;
 
@@ -22,11 +22,9 @@ public class App {
 
         while (iter.hasNext()) {
 
-            Class<?> c = iter.next();
+            Class<?> q = iter.next();
 
-            invokeMain(c, args);
-
-            // println(c.getName());
+            invokeMain(q, args);
         }
     }
 }
