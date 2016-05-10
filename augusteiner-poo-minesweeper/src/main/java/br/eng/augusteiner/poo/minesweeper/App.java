@@ -10,11 +10,14 @@ import java.io.PrintStream;
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class App {
-    // private static PrintStream out = System.out;
+
+    private static final byte BYTE_BOMB = '*';
+    private static final byte BYTE_ZERO = '0';
+    private static final byte BYTE_XDOT = '.';
 
     public static void main(String[] args) {
 
-        char[][] campo = null;
+        byte[][] campo = null;
 
         PrintStream out = System.out;
 
@@ -25,14 +28,14 @@ public class App {
         imprimirCampo(out, campo);
     }
 
-    private static void numerarProximidadeBombas(char[][] field) {
+    private static void numerarProximidadeBombas(byte[][] field) {
 
         for (int i = 0; i < field.length; i++) {
 
             for (int j = 0; j < field[i].length; j++) {
 
                 // XXX se tem uma bomba
-                if (field[i][j] == '*') {
+                if (field[i][j] == BYTE_BOMB) {
 
                     final int iMin = max(i - 1, 0);
                     final int iMax = min(i + 2, field.length);
@@ -45,7 +48,7 @@ public class App {
 
                         for (int w = jMin; w < jMax; w++) {
 
-                            if (field[z][w] == '*') {
+                            if (field[z][w] == BYTE_BOMB) {
 
                             } else {
                                 field[z][w] += 1;
@@ -63,41 +66,45 @@ public class App {
         // out.println();
     }
 
-    private static void adicionarBombasPseudoAleatorias(char[][] campo) {
+    private static void adicionarBombasPseudoAleatorias(byte[][] campo) {
 
-        campo[2][3] = '*';
-        campo[3][4] = '*';
-        campo[4][3] = '*';
-        campo[5][5] = '*';
-        campo[6][2] = '*';
+        campo[2][3] = BYTE_BOMB;
+        campo[3][4] = BYTE_BOMB;
+        campo[4][3] = BYTE_BOMB;
+        campo[5][5] = BYTE_BOMB;
+        campo[6][2] = BYTE_BOMB;
     }
 
-    private static void imprimirCampo(PrintStream out, char[][] campo) {
+    private static void imprimirCampo(PrintStream out, byte[][] campo) {
 
-        char charOut;
+        byte outChar;
+        byte[] outString = new byte[1];
 
         for (int i = 0; i < campo.length; i++) {
 
             for (int j = 0; j < campo[i].length; j++) {
 
-                charOut = campo[i][j] == '0' ? '.' : campo[i][j];
+                outChar = campo[i][j] == BYTE_ZERO ? BYTE_XDOT : campo[i][j];
 
-                out.print(charOut + "  ");
+                outString[0] = outChar;
+                out.print(String.format(
+                    " %s ",
+                    new String(outString)));
             }
 
             out.println();
         }
     }
 
-    private static char[][] iniciarCampo(int linhas, int colunas) {
+    private static byte[][] iniciarCampo(int linhas, int colunas) {
 
-        char campo[][] = new char[linhas][colunas];
+        byte campo[][] = new byte[linhas][colunas];
 
         for (int i = 0; i < linhas; i++) {
 
             for (int j = 0; j < colunas; j++) {
 
-                campo[i][j] = '0';
+                campo[i][j] = BYTE_ZERO;
             }
         }
 
