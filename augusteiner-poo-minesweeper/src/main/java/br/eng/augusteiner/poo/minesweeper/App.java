@@ -11,9 +11,9 @@ import java.io.PrintStream;
  */
 public class App {
 
-    private static final byte BYTE_BOMB = '*';
-    private static final byte BYTE_ZERO = '0';
-    private static final byte BYTE_XDOT = '.';
+    public static final byte BYTE_BOMB = '*';
+    public static final byte BYTE_ZERO = '0';
+    public static final byte BYTE_XDOT = '.';
 
     public static void main(String[] args) {
 
@@ -28,7 +28,7 @@ public class App {
         imprimirCampo(out, campo);
     }
 
-    private static void numerarProximidadeBombas(byte[][] field) {
+    public static void numerarProximidadeBombas(byte[][] field) {
 
         for (int i = 0; i < field.length; i++) {
 
@@ -75,7 +75,7 @@ public class App {
         campo[6][2] = BYTE_BOMB;
     }
 
-    private static void imprimirCampo(PrintStream out, byte[][] campo) {
+    public static void imprimirCampo(PrintStream out, byte[][] campo) {
 
         byte outChar;
         byte[] outString = new byte[1];
@@ -96,7 +96,7 @@ public class App {
         }
     }
 
-    private static byte[][] iniciarCampo(int linhas, int colunas) {
+    public static byte[][] iniciarCampo(int linhas, int colunas) {
 
         byte campo[][] = new byte[linhas][colunas];
 
