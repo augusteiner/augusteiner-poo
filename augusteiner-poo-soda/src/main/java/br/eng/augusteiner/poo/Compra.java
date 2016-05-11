@@ -1,6 +1,9 @@
 
 package br.eng.augusteiner.poo;
 
+import static br.eng.augusteiner.poo.Moeda.LOCALE_PADRAO;
+import static br.eng.augusteiner.poo.Moeda.SIMBOLO;
+
 import java.util.Date;
 
 import br.eng.augusteiner.poo.soda.Util;
@@ -85,11 +88,15 @@ public class Compra {
     public String toString() {
 
         return String.format(
-            "#%s: %s R$ %s - R$ %s = R$ %s",
+            LOCALE_PADRAO,
+            "#%s: %s %s %.2f - %s %.2f = %s %.2f",
             getData(),
             getProduto().getNome(),
+            SIMBOLO,
             getProduto().getPreco(),
+            SIMBOLO,
             getValorEntrada(),
+            SIMBOLO,
             getValorTroco());
     }
 }

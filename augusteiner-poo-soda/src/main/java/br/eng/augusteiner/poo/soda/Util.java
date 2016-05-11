@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.soda;
 
-import static br.eng.augusteiner.poo.Moeda.LOCALE;
+import static br.eng.augusteiner.poo.Moeda.LOCALE_PADRAO;
 import static br.eng.augusteiner.poo.Moeda.SIMBOLO;
 
 import br.eng.augusteiner.poo.Moeda;
@@ -19,7 +19,7 @@ public class Util {
         for (Moeda m : moedas) {
 
             buffer.append(String.format(
-                LOCALE,
+                LOCALE_PADRAO,
                 delim + "%s %.2f",
                 SIMBOLO,
                 m.getValor()));
@@ -29,7 +29,7 @@ public class Util {
 
         return buffer.append(
             String.format(
-                LOCALE,
+                LOCALE_PADRAO,
                 " = %s %.2f",
                 SIMBOLO,
                 moedasToDouble(moedas)))

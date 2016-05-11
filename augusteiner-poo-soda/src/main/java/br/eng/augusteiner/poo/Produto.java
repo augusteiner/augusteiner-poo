@@ -1,6 +1,8 @@
 
 package br.eng.augusteiner.poo;
 
+import static br.eng.augusteiner.poo.Moeda.LOCALE_PADRAO;
+
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
@@ -75,7 +77,7 @@ public class Produto {
     public String toString() {
 
         return String.format(
-            Moeda.LOCALE,
+            LOCALE_PADRAO,
             "#%s - %s : R$ %.2f",
             getCodigo(),
             getNome(),

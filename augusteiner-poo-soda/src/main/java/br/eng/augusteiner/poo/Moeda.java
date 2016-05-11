@@ -8,7 +8,8 @@ import java.util.Locale;
  */
 public class Moeda {
 
-    public static final Locale LOCALE = new Locale("pt", "BR");
+    public static final Locale LOCALE_PT_BR = new Locale("pt", "BR");
+    public static final Locale LOCALE_PADRAO = LOCALE_PT_BR;
     public static final String SIMBOLO = "R$";
 
     private double valor;
@@ -50,7 +51,7 @@ public class Moeda {
     public String toString() {
 
         return String.format(
-            LOCALE,
+            LOCALE_PADRAO,
             "%s %.2f (%s)",
             SIMBOLO,
             getValor(),
