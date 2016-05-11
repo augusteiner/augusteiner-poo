@@ -9,7 +9,7 @@ import java.io.PrintStream;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class App {
+public class CampoMinado {
 
     public static final byte BYTE_BOMB = '*';
     public static final byte BYTE_ZERO = '0';
@@ -21,7 +21,7 @@ public class App {
 
         PrintStream out = System.out;
 
-        campo = iniciarCampo(9, 8);
+        campo = gerarCampo(9, 8);
         adicionarBombasPseudoAleatorias(campo);
         numerarProximidadeBombas(campo);
 
@@ -96,7 +96,7 @@ public class App {
         }
     }
 
-    public static byte[][] iniciarCampo(int linhas, int colunas) {
+    public static byte[][] gerarCampo(int linhas, int colunas) {
 
         byte campo[][] = new byte[linhas][colunas];
 

@@ -1,7 +1,11 @@
 
 package br.eng.augusteiner.poo.minesweeper;
 
-import java.util.Arrays;
+import static br.eng.augusteiner.poo.minesweeper.CampoMinado.BYTE_BOMB;
+import static br.eng.augusteiner.poo.minesweeper.CampoMinado.gerarCampo;
+import static br.eng.augusteiner.poo.minesweeper.CampoMinado.imprimirCampo;
+import static br.eng.augusteiner.poo.minesweeper.CampoMinado.numerarProximidadeBombas;
+
 import java.util.Random;
 
 /**
@@ -14,32 +18,33 @@ public class CampoMinadoAleatorio {
      */
     public static void main(String[] args) {
 
-        byte[][] campo = gerarCampoMinado(
+        byte[][] campo = gerarCampoComBombasAleatorias(
             10,
             10,
             10);
 
-        App.numerarProximidadeBombas(campo);
+        numerarProximidadeBombas(campo);
 
-        App.imprimirCampo(
+        imprimirCampo(
             System.out,
             campo);
     }
 
-    private static byte[][] gerarCampoMinado(
-        int nBombs,
+    private static byte[][] gerarCampoComBombasAleatorias(
         int rows,
-        int cols) {
+        int cols,
+        int numeroBombas) {
 
         int max = rows * cols;
         int c;
         int i;
         int j;
-        byte[][] campo = App.iniciarCampo(
+
+        byte[][] campo = gerarCampo(
             rows,
             cols);
 
-        while (nBombs-- > 0) {
+        while (numeroBombas-- > 0) {
             Random r = new Random();
             c = r.nextInt(max);
 
@@ -52,7 +57,7 @@ public class CampoMinadoAleatorio {
             // System.out.println(String.format("i: %s", i));
             // System.out.println(String.format("j: %s", j));
 
-            campo[i][j] = App.BYTE_BOMB;
+            campo[i][j] = BYTE_BOMB;
         }
 
         return campo;
