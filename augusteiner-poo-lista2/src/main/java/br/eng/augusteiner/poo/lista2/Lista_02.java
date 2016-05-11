@@ -2,7 +2,7 @@
 package br.eng.augusteiner.poo.lista2;
 
 import static br.eng.augusteiner.poo.Util.questoes;
-import static br.eng.augusteiner.poo.Util.invokeMain;
+import static br.eng.augusteiner.poo.Util.questaoExecutarMetodoMain;
 
 import java.util.Iterator;
 
@@ -24,7 +24,7 @@ public class Lista_02 {
 
             Class<?> q = iter.next();
 
-            invokeMain(q, args);
+            questaoExecutarMetodoMain(q, args);
         }
     }
 }

@@ -33,11 +33,15 @@ public class Util {
         return getScanner().nextInt();
     }
 
-    public static void invokeMain(Class<?> questao, String[] args) {
+    public static void questaoExecutarMetodoMain(
+        Class<?> questao,
+        String[] args) {
 
         try {
 
-            Method m = questao.getMethod("main", String[].class);
+            Method m = questao.getMethod(
+                "main",
+                String[].class);
 
             println();
             println("---------------------------");
