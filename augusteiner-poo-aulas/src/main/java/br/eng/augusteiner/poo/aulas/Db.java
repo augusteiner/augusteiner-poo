@@ -1,3 +1,4 @@
+
 package br.eng.augusteiner.poo.aulas;
 
 import java.util.ArrayList;
@@ -26,43 +27,56 @@ public class Db {
         this.turmas = new ArrayList<Turma>();
     }
 
-    public List<Aluno> getAlunos() {
+    public Iterable<Aluno> getAlunos() {
 
         return alunos;
     }
 
-    public List<Disciplina> getDisciplinas() {
+    public Iterable<Disciplina> getDisciplinas() {
 
         return disciplinas;
     }
 
-    public List<Professor> getProfessores() {
+    public Iterable<Professor> getProfessores() {
 
         return professores;
     }
 
-    public List<Turma> getTurmas() {
+    public Iterable<Turma> getTurmas() {
 
         return turmas;
     }
 
     public void addAluno(Aluno aluno) {
 
-        getAlunos().add(aluno);
+        this.alunos.add(aluno);
     }
 
     public void addDisciplina(Disciplina disciplina) {
 
-        getDisciplinas().add(disciplina);
+        this.disciplinas.add(disciplina);
     }
 
     public void addProfessor(Professor professor) {
 
-        getProfessores().add(professor);
+        this.professores.add(professor);
     }
 
     public void addTurma(Turma turma) {
 
-        getTurmas().add(turma);
+        this.turmas.add(turma);
+    }
+
+    public Disciplina disciplina(String codigoDisciplina) {
+
+        for (Disciplina disciplina : this.getDisciplinas()) {
+
+            if (disciplina.getCodigo().equals(codigoDisciplina)) {
+
+                return disciplina;
+            }
+        }
+
+        return null;
     }
 }
