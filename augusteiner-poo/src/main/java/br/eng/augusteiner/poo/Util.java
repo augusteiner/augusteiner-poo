@@ -100,6 +100,11 @@ public class Util {
         System.out.println();
     }
 
+    public static void print(Object texto) {
+
+        System.out.print(texto);
+    }
+
     public static void println(Object texto) {
 
         System.out.println(texto);
