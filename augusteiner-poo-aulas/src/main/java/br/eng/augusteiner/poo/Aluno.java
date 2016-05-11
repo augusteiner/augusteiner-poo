@@ -11,6 +11,14 @@ public class Aluno {
 
     public Aluno() { }
 
+    public Aluno(
+        String matricula,
+        String nome) {
+
+        this.matricula = matricula;
+        this.nome = nome;
+    }
+
     public String getMatricula() {
 
         return matricula;

@@ -1,11 +1,8 @@
-/**
- *
- */
+
 package br.eng.augusteiner.poo;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
- *
  */
 public class Turma {
 
@@ -20,7 +17,9 @@ public class Turma {
 
     public Turma(
         String codigo,
+
         Disciplina disciplina,
+
         Professor[] professores,
         Aluno[] alunos) {
 
@@ -68,5 +67,14 @@ public class Turma {
     public void setProfessores(Professor[] professores) {
 
         this.professores = professores;
+    }
+
+    @Override
+    public String toString() {
+
+        return String.format(
+            "#%s - (%s)",
+            this.getCodigo(),
+            this.getDisciplina());
     }
 }
