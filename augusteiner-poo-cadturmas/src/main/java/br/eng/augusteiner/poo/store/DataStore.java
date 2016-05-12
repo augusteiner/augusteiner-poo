@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.aulas;
+package br.eng.augusteiner.poo.store;
 
 import java.util.ArrayList;
 import java.util.List;

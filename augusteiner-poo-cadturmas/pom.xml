@@ -8,20 +8,15 @@
         <artifactId>augusteiner</artifactId>
         <version>0.1.0-RELEASE</version>
     </parent>
-    <groupId>br.eng.augusteiner.poo.aulas</groupId>
-    <artifactId>augusteiner-poo-aulas</artifactId>
+    <groupId>br.eng.augusteiner.poo.cadturmas</groupId>
+    <artifactId>augusteiner-poo-cadturmas</artifactId>
     <version>0.1.0-RELEASE</version>
-    <name>augusteiner-poo-aulas</name>
+    <name>augusteiner-poo-cadturmas</name>
     <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>br.eng.augusteiner.poo.cadturmas</groupId>
-            <artifactId>augusteiner-poo-cadturmas</artifactId>
-            <version>0.1.0-RELEASE</version>
-        </dependency>
         <dependency>
             <groupId>br.eng.augusteiner.poo</groupId>
             <artifactId>augusteiner-poo</artifactId>
