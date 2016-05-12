@@ -27,24 +27,24 @@ public class DataStore {
         this.turmas = new ArrayList<Turma>();
     }
 
-    public Iterable<Aluno> getAlunos() {
+    public Aluno[] getAlunos() {
 
-        return alunos;
+        return alunos.toArray(new Aluno[alunos.size()]);
     }
 
-    public Iterable<Disciplina> getDisciplinas() {
+    public Disciplina[] getDisciplinas() {
 
-        return disciplinas;
+        return disciplinas.toArray(new Disciplina[disciplinas.size()]);
     }
 
-    public Iterable<Professor> getProfessores() {
+    public Professor[] getProfessores() {
 
-        return professores;
+        return professores.toArray(new Professor[professores.size()]);
     }
 
-    public Iterable<Turma> getTurmas() {
+    public Turma[] getTurmas() {
 
-        return turmas;
+        return turmas.toArray(new Turma[turmas.size()]);
     }
 
     public void addAluno(Aluno aluno) {
@@ -67,13 +67,52 @@ public class DataStore {
         this.turmas.add(turma);
     }
 
-    public Disciplina disciplina(String codigoDisciplina) {
+    public Aluno aluno(String matricula) {
 
-        for (Disciplina disciplina : this.getDisciplinas()) {
+        for (Aluno aluno : this.alunos) {
 
-            if (disciplina.getCodigo().equals(codigoDisciplina)) {
+            if (aluno.getMatricula().equals(matricula)) {
+
+                return aluno;
+            }
+        }
+
+        return null;
+    }
+
+    public Turma turma(String codigo) {
+
+        for (Turma turma : this.turmas) {
+
+            if (turma.getCodigo().equals(codigo)) {
+
+                return turma;
+            }
+        }
+
+        return null;
+    }
+
+    public Disciplina disciplina(String codigo) {
+
+        for (Disciplina disciplina : this.disciplinas) {
+
+            if (disciplina.getCodigo().equals(codigo)) {
 
                 return disciplina;
+            }
+        }
+
+        return null;
+    }
+
+    public Professor professor(String matricula) {
+
+        for (Professor professor : this.professores) {
+
+            if (professor.getMatricula().equals(matricula)) {
+
+                return professor;
             }
         }
 
