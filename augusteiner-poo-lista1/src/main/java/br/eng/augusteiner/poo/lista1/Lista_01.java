@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.lista1;
 
-import static br.eng.augusteiner.poo.Util.questaoExecutarMetodoMain;
+import static br.eng.augusteiner.poo.Util.executarMain;
 import static br.eng.augusteiner.poo.Util.questoes;
 
 import java.util.Iterator;
@@ -24,7 +24,7 @@ public class Lista_01 {
 
             Class<?> questao = iter.next();
 
-            questaoExecutarMetodoMain(
+            executarMain(
                 questao,
                 args);
 

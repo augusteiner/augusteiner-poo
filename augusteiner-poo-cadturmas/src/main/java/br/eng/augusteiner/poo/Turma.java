@@ -41,64 +41,6 @@ public class Turma {
         this.addAlunos(alunos);
     }
 
-    public String getCodigo() {
-
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-
-        this.codigo = codigo;
-    }
-
-    public Disciplina getDisciplina() {
-
-        return disciplina;
-    }
-
-    public void setDisciplina(Disciplina disciplina) {
-
-        this.disciplina = disciplina;
-    }
-
-    public Aluno[] getAlunos() {
-
-        return alunos.toArray(new Aluno[alunos.size()]);
-    }
-
-    public void setAlunos(Aluno[] alunos) {
-
-        this.alunos.clear();
-
-        this.addAlunos(alunos);
-    }
-
-    public Professor[] getProfessores() {
-
-        return professores.toArray(new Professor[professores.size()]);
-    }
-
-    public void setProfessores(Professor[] professores) {
-
-        this.professores.clear();
-
-        this.addProfessores(professores);
-    }
-
-    @Override
-    public String toString() {
-
-        return String.format(
-            "#%s - (%s)",
-            this.getCodigo(),
-            this.getDisciplina());
-    }
-
-    public void addProfessor(Professor professor) {
-
-        this.professores.add(professor);
-    }
-
     public void addAluno(Aluno aluno) {
 
         this.alunos.add(aluno);
@@ -112,11 +54,55 @@ public class Turma {
         }
     }
 
+    public void addProfessor(Professor professor) {
+
+        this.professores.add(professor);
+    }
+
     public void addProfessores(Professor[] professores) {
 
         for (Professor professor : professores) {
 
             this.addProfessor(professor);
         }
+    }
+
+    public Iterable<Aluno> getAlunos() {
+
+        return this.alunos;
+    }
+
+    public String getCodigo() {
+
+        return codigo;
+    }
+
+    public Disciplina getDisciplina() {
+
+        return disciplina;
+    }
+
+    public Iterable<Professor> getProfessores() {
+
+        return this.professores;
+    }
+
+    public void setCodigo(String codigo) {
+
+        this.codigo = codigo;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+
+        this.disciplina = disciplina;
+    }
+
+    @Override
+    public String toString() {
+
+        return String.format(
+            "#%s - (%s)",
+            this.getCodigo(),
+            this.getDisciplina());
     }
 }

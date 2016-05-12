@@ -27,26 +27,6 @@ public class DataStore {
         this.turmas = new ArrayList<Turma>();
     }
 
-    public Aluno[] getAlunos() {
-
-        return alunos.toArray(new Aluno[alunos.size()]);
-    }
-
-    public Disciplina[] getDisciplinas() {
-
-        return disciplinas.toArray(new Disciplina[disciplinas.size()]);
-    }
-
-    public Professor[] getProfessores() {
-
-        return professores.toArray(new Professor[professores.size()]);
-    }
-
-    public Turma[] getTurmas() {
-
-        return turmas.toArray(new Turma[turmas.size()]);
-    }
-
     public void addAluno(Aluno aluno) {
 
         this.alunos.add(aluno);
@@ -80,19 +60,6 @@ public class DataStore {
         return null;
     }
 
-    public Turma turma(String codigo) {
-
-        for (Turma turma : this.turmas) {
-
-            if (turma.getCodigo().equals(codigo)) {
-
-                return turma;
-            }
-        }
-
-        return null;
-    }
-
     public Disciplina disciplina(String codigo) {
 
         for (Disciplina disciplina : this.disciplinas) {
@@ -106,6 +73,26 @@ public class DataStore {
         return null;
     }
 
+    public Iterable<Aluno> getAlunos() {
+
+        return this.alunos;
+    }
+
+    public Iterable<Disciplina> getDisciplinas() {
+
+        return this.disciplinas;
+    }
+
+    public Iterable<Professor> getProfessores() {
+
+        return this.professores;
+    }
+
+    public Iterable<Turma> getTurmas() {
+
+        return this.turmas;
+    }
+
     public Professor professor(String matricula) {
 
         for (Professor professor : this.professores) {
@@ -113,6 +100,19 @@ public class DataStore {
             if (professor.getMatricula().equals(matricula)) {
 
                 return professor;
+            }
+        }
+
+        return null;
+    }
+
+    public Turma turma(String codigo) {
+
+        for (Turma turma : this.turmas) {
+
+            if (turma.getCodigo().equals(codigo)) {
+
+                return turma;
             }
         }
 

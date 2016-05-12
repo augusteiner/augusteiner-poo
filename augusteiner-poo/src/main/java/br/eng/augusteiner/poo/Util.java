@@ -18,22 +18,7 @@ public class Util {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static Scanner getScanner() {
-
-        return scanner;
-    }
-
-    public static double nextDouble() {
-
-        return getScanner().nextDouble();
-    }
-
-    public static double nextInt() {
-
-        return getScanner().nextInt();
-    }
-
-    public static void questaoExecutarMetodoMain(
+    public static void executarMain(
         Class<?> questao,
         String[] args) {
 
@@ -54,6 +39,45 @@ public class Util {
 
             e.printStackTrace();
         }
+    }
+
+    public static Scanner getScanner() {
+
+        return scanner;
+    }
+
+    public static double nextDouble() {
+
+        return getScanner().nextDouble();
+    }
+
+    public static double nextInt() {
+
+        return getScanner().nextInt();
+    }
+
+    public static void print(Object texto) {
+
+        System.out.print(texto);
+    }
+
+    public static void println() {
+
+        System.out.println();
+    }
+
+    public static void println(Object texto) {
+
+        System.out.println(texto);
+    }
+
+    public static void println(
+        String formato,
+        Object... args) {
+
+        System.out.println(String.format(
+            formato,
+            args));
     }
 
     public static Iterator<Class<?>> questoes(Package pkg) {
@@ -97,29 +121,5 @@ public class Util {
                 return (Class<?>) iter.next();
             }
         };
-    }
-
-    public static void println() {
-
-        System.out.println();
-    }
-
-    public static void print(Object texto) {
-
-        System.out.print(texto);
-    }
-
-    public static void println(Object texto) {
-
-        System.out.println(texto);
-    }
-
-    public static void println(
-        String formato,
-        Object... args) {
-
-        System.out.println(String.format(
-            formato,
-            args));
     }
 }
