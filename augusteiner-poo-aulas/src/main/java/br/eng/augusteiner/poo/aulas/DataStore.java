@@ -12,14 +12,14 @@ import br.eng.augusteiner.poo.Turma;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Db {
+public class DataStore {
 
     private List<Aluno> alunos;
     private List<Disciplina> disciplinas;
     private List<Professor> professores;
     private List<Turma> turmas;
 
-    public Db() {
+    public DataStore() {
 
         this.alunos = new ArrayList<Aluno>();
         this.disciplinas = new ArrayList<Disciplina>();

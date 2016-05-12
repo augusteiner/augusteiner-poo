@@ -17,7 +17,8 @@ import br.eng.augusteiner.poo.Turma;
  */
 public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
-    private static final Db db = new Db();
+    private static final DataStore DATASTORE = new DataStore();
+    private static final Scanner SCANNER = getScanner();
 
     private static final byte OPT_MENU = 9;
     private static final byte OPT_EXIT = 0;
@@ -31,8 +32,6 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
     private static final byte OPT_LIST_DISC = 6;
     private static final byte OPT_LIST_TURM = 7;
     private static final byte OPT_LIST_ALUN = 8;
-
-    private static final Scanner scn = getScanner();
 
     /**
      * @param args
@@ -52,8 +51,8 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
         println();
         imprimirMenu();
 
-        while (opt != OPT_EXIT)
-        {
+        while (opt != OPT_EXIT) {
+
             opt = lerOpcao();
 
             tratarOpcao(opt);
@@ -62,8 +61,8 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
     private static void tratarOpcao(byte opt) {
 
-        switch (opt)
-        {
+        switch (opt) {
+
             case OPT_MENU:
                 imprimirMenu();
                 break;
@@ -105,7 +104,7 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
         println();
         print("!! Informe a opção desejada: ");
 
-        return scn.nextByte();
+        return SCANNER.nextByte();
     }
 
     private static void imprimirMenu() {
@@ -134,7 +133,7 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
     private static void opcaoNaoDefinida(byte opt) {
 
-        exibirMensagem(String.format(
+        exibirAlerta(String.format(
             "Opção %s não definida",
             opt));
 
@@ -143,8 +142,9 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
     private static void sairAplicacao() {
 
-        scn.close();
-        println("Saindo da aplicação...");
+        SCANNER.close();
+
+        exibirAlerta("Saindo da aplicação...");
     }
 
     private static void listarTurmas() {
@@ -152,9 +152,9 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
         boolean empty = true;
 
         println();
-        println(":: Lista das turmas cadastrados ::");
+        exibirTitulo("Lista das turmas cadastrados");
 
-        for (Turma turma : db.getTurmas()) {
+        for (Turma turma : DATASTORE.getTurmas()) {
 
             empty = false;
 
@@ -163,7 +163,7 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
         if (empty) {
 
-            exibirMensagem("Nenhuma turma cadastrada");
+            exibirAlerta("Nenhuma turma cadastrada");
         }
     }
 
@@ -172,9 +172,9 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
         boolean empty = true;
 
         println();
-        println(":: Lista das disciplinas cadastrados ::");
+        exibirTitulo("Lista das disciplinas cadastrados");
 
-        for (Disciplina disciplina : db.getDisciplinas()) {
+        for (Disciplina disciplina : DATASTORE.getDisciplinas()) {
 
             empty = false;
 
@@ -183,18 +183,23 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
         if (empty) {
 
-            exibirMensagem("Nenhuma disciplina cadastrada");
+            exibirAlerta("Nenhuma disciplina cadastrada");
         }
     }
 
     private static void listarProfessores() {
 
+        listarProfessores(DATASTORE.getProfessores());
+    }
+
+    private static void listarProfessores(Iterable<Professor> professores) {
+
         boolean empty = true;
 
         println();
-        println(":: Lista dos professores cadastrados ::");
+        exibirTitulo("Lista dos professores cadastrados");
 
-        for (Professor professor : db.getProfessores()) {
+        for (Professor professor : professores) {
 
             empty = false;
 
@@ -203,18 +208,23 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
         if (empty) {
 
-            exibirMensagem("Nenhum professor cadastrado");
+            exibirAlerta("Nenhum professor cadastrado");
         }
     }
 
     private static void listarAlunos() {
 
+        listarAlunos(DATASTORE.getAlunos());
+    }
+
+    private static void listarAlunos(Iterable<Aluno> alunos) {
+
         boolean empty = true;
 
         println();
-        println(":: Lista dos alunos cadastrados ::");
+        exibirTitulo("Lista dos alunos cadastrados");
 
-        for (Aluno aluno : db.getAlunos()) {
+        for (Aluno aluno : alunos) {
 
             empty = false;
 
@@ -223,7 +233,7 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
         if (empty) {
 
-            exibirMensagem("Nenhum aluno cadastrado");
+            exibirAlerta("Nenhum aluno cadastrado");
         }
     }
 
@@ -231,9 +241,9 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
         Turma turma = lerTurma();
 
-        db.addTurma(turma);
+        DATASTORE.addTurma(turma);
 
-        exibirMensagem("Turma cadastrada com sucesso");
+        exibirAlerta("Turma cadastrada com sucesso");
     }
 
     private static Turma lerTurma() {
@@ -243,7 +253,7 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
         String codigoDisciplina;
 
         println();
-        println(":: Cadastro de Turma ::");
+        exibirTitulo("Cadastro de Turma");
         println();
 
         print(" ~> Informe o código: ");
@@ -254,14 +264,14 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
             print(" ~> Informe o código da Disciplina: ");
             codigoDisciplina = lerString();
 
-            disciplina = db.disciplina(codigoDisciplina);
+            disciplina = DATASTORE.disciplina(codigoDisciplina);
 
             if (disciplina != null) {
 
                 turma.setDisciplina(disciplina);
             } else {
 
-                exibirMensagem("Disciplina não encontrada, tente novamente");
+                exibirAlerta("Disciplina não encontrada, tente novamente");
             }
         }
 
@@ -272,9 +282,9 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
         Disciplina disciplina = lerDisciplina();
 
-        db.addDisciplina(disciplina);
+        DATASTORE.addDisciplina(disciplina);
 
-        exibirMensagem("Disciplina cadastrada com sucesso");
+        exibirAlerta("Disciplina cadastrada com sucesso");
     }
 
     private static Disciplina lerDisciplina() {
@@ -282,7 +292,7 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
         Disciplina professor = new Disciplina();
 
         println();
-        println(":: Cadastro de Disciplina ::");
+        exibirTitulo("Cadastro de Disciplina");
         println();
 
         print("  ~> Informe a matrícula: ");
@@ -297,9 +307,9 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
         Professor professor = lerProfessor();
 
-        db.addProfessor(professor);
+        DATASTORE.addProfessor(professor);
 
-        exibirMensagem("Professor cadastrado com sucesso");
+        exibirAlerta("Professor cadastrado com sucesso");
     }
 
     private static Professor lerProfessor() {
@@ -307,7 +317,7 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
         Professor professor = new Professor();
 
         println();
-        println(":: Cadastro de Professor ::");
+        exibirTitulo("Cadastro de Professor");
         println();
 
         print("  ~> Informe a matrícula: ");
@@ -322,12 +332,19 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
         Aluno aluno = lerAluno();
 
-        db.addAluno(aluno);
+        DATASTORE.addAluno(aluno);
 
-        exibirMensagem("Aluno cadastrado com sucesso");
+        exibirAlerta("Aluno cadastrado com sucesso");
     }
 
-    private static void exibirMensagem(String mensagem) {
+    private static void exibirTitulo(String titulo) {
+
+        println(
+            ":: %s ::",
+            titulo);
+    }
+
+    private static void exibirAlerta(String mensagem) {
 
         println();
         println(
@@ -340,7 +357,7 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
         Aluno aluno = new Aluno();
 
         println();
-        println(":: Cadastro de Aluno ::");
+        exibirTitulo("Cadastro de Aluno");
         println();
 
         print("  ~> Informe a matrícula: ");
@@ -357,7 +374,7 @@ public class Aula_11_05_16_Correcao_Prova_e_Exercicio {
 
         while (line.length() == 0) {
 
-            line = scn.nextLine().trim();
+            line = SCANNER.nextLine().trim();
         }
 
         return line;
