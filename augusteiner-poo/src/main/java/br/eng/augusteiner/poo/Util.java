@@ -61,6 +61,15 @@ public class Util {
         System.out.print(texto);
     }
 
+    public static void print(
+        String format,
+        Object... args) {
+
+        print(String.format(
+            format,
+            args));
+    }
+
     public static void println() {
 
         System.out.println();
