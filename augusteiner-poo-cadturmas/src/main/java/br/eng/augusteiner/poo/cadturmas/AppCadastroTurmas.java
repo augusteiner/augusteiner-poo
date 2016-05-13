@@ -20,8 +20,8 @@ public class AppCadastroTurmas {
     private static final DataStore store = new DataStore();
     private static final Scanner scan = new Scanner(System.in);
 
-    private static final char OP_MENU       = 'F';
-    private static final char OP_SAIR       = '0';
+    private static final char OP_MENU       = 'M';
+    private static final char OP_SAIR       = 'Q';
 
     private static final char OP_CRIA_PROF  = '1';
     private static final char OP_CRIA_DISC  = '2';
