@@ -1,3 +1,4 @@
+
 POO TADS 2016.1
 ===============
 
@@ -15,7 +16,9 @@ How To
 
 ```bash
 # build
-mvn clean install
+$ mvn clean install
 # execução
-mvn exec:java -Dexec.mainClass=br.eng.augusteiner.poo.<NomeDaClasseAqui> -pl <NomeDoSubProjetoAqui>
+$ mvn exec:java \
+    -Dexec.mainClass=br.eng.augusteiner.poo.<NomeDaClasseAqui> \
+    -pl <NomeDoSubProjetoAqui>
 ```
