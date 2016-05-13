@@ -35,6 +35,7 @@ public class AppCadastroTurmas {
 
     private static final char OP_ADD_ALUN   = '9';
     private static final char OP_ADD_PROF   = 'A';
+
     private static final char OP_DET_TURM   = 'B';
 
     private static void adicionarAluno() {
@@ -68,7 +69,7 @@ public class AppCadastroTurmas {
 
         while (aluno == null) {
 
-            print("!! Informe a matrícula do Aluno: ");
+            exibirPrompt("Informe a matrícula do Aluno");
             matricula = lerString();
 
             aluno = store.aluno(matricula);
@@ -91,7 +92,7 @@ public class AppCadastroTurmas {
 
         while (professor == null) {
 
-            print("!! Informe a matrícula do Professor: ");
+            exibirPrompt("Informe a matrícula do Professor");
             matricula = lerString();
 
             professor = store.professor(matricula);
@@ -115,7 +116,7 @@ public class AppCadastroTurmas {
         while (turma == null) {
 
             println();
-            print("!! Informe o código da Turma: ");
+            exibirPrompt("Informe o código da Turma");
             codigoTurma = lerString();
 
             turma = store.turma(codigoTurma);
@@ -234,6 +235,11 @@ public class AppCadastroTurmas {
         exibirMenu();
     }
 
+    private static void exibirPrompt(String mensagem) {
+
+        print("  ~> %s: ", mensagem);
+    }
+
     private static void exibirTitulo(String titulo) {
 
         println(
@@ -249,9 +255,9 @@ public class AppCadastroTurmas {
         exibirTitulo("Cadastro de Aluno");
         println();
 
-        print("  ~> Informe a matrícula: ");
+        exibirPrompt("Informe a matrícula");
         aluno.setMatricula(lerString());
-        print("  ~> Informe o nome: ");
+        exibirPrompt("Informe o nome");
         aluno.setNome(lerString());
 
         return aluno;
@@ -265,9 +271,9 @@ public class AppCadastroTurmas {
         exibirTitulo("Cadastro de Disciplina");
         println();
 
-        print("  ~> Informe o código: ");
+        exibirPrompt("Informe o código");
         professor.setCodigo(lerString());
-        print("  ~> Informe o nome: ");
+        exibirPrompt("Informe o nome");
         professor.setNome(lerString());
 
         return professor;
@@ -276,7 +282,7 @@ public class AppCadastroTurmas {
     private static char lerOpcao() {
 
         println();
-        print("!! Informe a opção desejada: ");
+        exibirPrompt("Informe a opção desejada");
 
         return lerString().toUpperCase().charAt(0);
     }
@@ -289,9 +295,9 @@ public class AppCadastroTurmas {
         exibirTitulo("Cadastro de Professor");
         println();
 
-        print("  ~> Informe a matrícula: ");
+        exibirPrompt("Informe a matrícula");
         professor.setMatricula(lerString());
-        print("  ~> Informe o nome: ");
+        exibirPrompt("Informe o nome");
         professor.setNome(lerString());
 
         return professor;
@@ -319,12 +325,12 @@ public class AppCadastroTurmas {
         exibirTitulo("Cadastro de Turma");
         println();
 
-        print(" ~> Informe o código: ");
+        exibirPrompt("Informe o código");
         turma.setCodigo(lerString());
 
         while (disciplina == null) {
 
-            print(" ~> Informe o código da Disciplina: ");
+            exibirPrompt("Informe o código da Disciplina");
             codigo = lerString();
 
             disciplina = store.disciplina(codigo);
