@@ -19,6 +19,7 @@ How To
 $ mvn clean install
 # execução
 $ mvn exec:java \
-    -Dexec.mainClass=br.eng.augusteiner.poo.<NomeDaClasseAqui> \
+    -Dexec.mainClass=<FQNDaClasseAqui> \
     -pl <NomeDoSubProjetoAqui>
 ```
+

@@ -6,3 +6,4 @@ Utilizando arquivo input.txt
 $ cat input.txt | mvn exec:java \
     -Dexec.mainClass=br.eng.augusteiner.poo.cadturmas.AppCadastroTurmas
 ```
+
