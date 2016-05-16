@@ -17,7 +17,9 @@ public class Ponto {
     private double x;
     private double y;
 
-    public Ponto(double x, double y) {
+    public Ponto(
+        double x,
+        double y) {
 
         this.x = x;
         this.y = y;
@@ -46,6 +48,9 @@ public class Ponto {
     @Override
     public String toString() {
 
-        return String.format("(%s, %s)", getX(), getY());
+        return String.format(
+            "(%s, %s)",
+            this.getX(),
+            this.getY());
     }
 }

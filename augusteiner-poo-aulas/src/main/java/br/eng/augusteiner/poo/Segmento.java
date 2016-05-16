@@ -9,7 +9,9 @@ public class Segmento {
     private Ponto p1;
     private Ponto p2;
 
-    public Segmento(Ponto p1, Ponto p2) {
+    public Segmento(
+        Ponto p1,
+        Ponto p2) {
 
         this.p1 = p1;
         this.p2 = p2;
@@ -35,7 +37,9 @@ public class Segmento {
         return tamanho(segmento.getP1(), segmento.getP2());
     }
 
-    public static double tamanho(Ponto p1, Ponto p2) {
+    public static double tamanho(
+        Ponto p1,
+        Ponto p2) {
 
         return p1.distancia(p2);
     }

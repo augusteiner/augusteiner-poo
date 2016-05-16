@@ -45,6 +45,9 @@ public class Circulo {
 
     public String toString() {
 
-        return String.format("%s ~> %s", getCentro(), raio());
+        return String.format(
+            "%s ~> %s",
+            this.getCentro(),
+            this.raio());
     }
 }
