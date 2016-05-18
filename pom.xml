@@ -15,5 +15,6 @@
         <module>augusteiner-poo-lista2</module>
         <module>augusteiner-poo</module>
         <module>augusteiner-poo-cadturmas</module>
+        <module>augusteiner-poo-hello-social</module>
     </modules>
 </project>
