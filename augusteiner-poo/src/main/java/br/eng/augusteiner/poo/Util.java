@@ -95,10 +95,11 @@ public class Util {
             pkg.getName(),
             new SubTypesScanner(false));
 
-        final Iterator<Object> iter = ref.getSubTypesOf(Object.class)
+        final Iterator<?> iter = ref.getSubTypesOf(Object.class)
             .stream()
             .filter(new Predicate<Class<?>>(){
 
+                @Override
                 public boolean test(Class<?> t) {
 
                     return t.getSimpleName()
@@ -107,6 +108,7 @@ public class Util {
             })
             .sorted(new Comparator<Class<?>>(){
 
+                @Override
                 public int compare(
                     Class<?> o1,
                     Class<?> o2) {
@@ -120,11 +122,13 @@ public class Util {
 
         return new Iterator<Class<?>>(){
 
+            @Override
             public boolean hasNext() {
 
                 return iter.hasNext();
             }
 
+            @Override
             public Class<?> next() {
 
                 return (Class<?>) iter.next();
