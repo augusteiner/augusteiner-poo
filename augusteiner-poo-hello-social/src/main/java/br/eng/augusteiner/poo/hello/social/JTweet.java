@@ -1,6 +1,10 @@
 
 package br.eng.augusteiner.poo.hello.social;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -20,6 +24,10 @@ import twitter4j.TwitterFactory;
 public class JTweet {
 
     private static final String PROGRAM_NAME = JTweet.class.getSimpleName();
+    private static final String PROGRAM_VERSION = version();
+
+    private static final String VERSION_OPTION_SHORT = "v";
+    private static final String VERSION_OPTION_LONG = "version";
 
     private static final String HELP_OPTION_LONG = "help";
     private static final String HELP_OPTION_SHORT = "h";
@@ -29,6 +37,34 @@ public class JTweet {
 
     private static Options options = new Options();
 
+    /**
+     * {@link http://stackoverflow.com/questions/8764500/programmatically-getting-the-maven-version-of-your-project}
+     *
+     * @return
+     */
+    private static String version() {
+
+        String path = "/version.prop";
+
+        InputStream stream = JTweet.class.getResourceAsStream(path);
+
+        if (stream == null)
+            return "UNKNOWN";
+
+        Properties props = new Properties();
+
+        try {
+
+            props.load(stream);
+            stream.close();
+
+            return (String) props.get("version");
+        } catch (IOException e) {
+
+            return "UNKNOWN";
+        }
+    }
+
     static {
 
         options.addOption(
@@ -36,6 +72,12 @@ public class JTweet {
             HELP_OPTION_LONG,
             false,
             "Exibir help");
+
+        options.addOption(
+            VERSION_OPTION_SHORT,
+            VERSION_OPTION_LONG,
+            false,
+            "Exibir versão");
 
         options.addOption(
             STATUS_OPTION_SHORT,
@@ -93,6 +135,15 @@ public class JTweet {
             if (cmd.hasOption(HELP_OPTION_LONG)) {
 
                 printUsage();
+
+                return;
+            }
+
+            if (cmd.hasOption(VERSION_OPTION_LONG)) {
+
+                printVersion();
+
+                return;
             }
 
         } catch (ParseException e) {
@@ -119,6 +170,15 @@ public class JTweet {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static void printVersion() {
+
+
+        System.out.println(String.format(
+            "%s %s",
+            PROGRAM_NAME,
+            PROGRAM_VERSION));
     }
 
     private static void printUsage() {
