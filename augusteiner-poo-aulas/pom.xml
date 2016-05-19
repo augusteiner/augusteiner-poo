@@ -15,13 +15,18 @@
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
+            <groupId>br.eng.augusteiner.poo</groupId>
+            <artifactId>augusteiner-poo</artifactId>
+            <version>0.1.0-RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>br.eng.augusteiner.poo.cadturmas</groupId>
             <artifactId>augusteiner-poo-cadturmas</artifactId>
             <version>0.1.0-RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>br.eng.augusteiner.poo</groupId>
-            <artifactId>augusteiner-poo</artifactId>
+            <groupId>br.eng.augusteiner.poo.hello.social</groupId>
+            <artifactId>augusteiner-poo-hello-social</artifactId>
             <version>0.1.0-RELEASE</version>
         </dependency>
     </dependencies>
