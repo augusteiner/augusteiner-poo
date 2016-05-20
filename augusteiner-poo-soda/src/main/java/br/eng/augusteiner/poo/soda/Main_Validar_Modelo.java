@@ -10,7 +10,7 @@ import br.eng.augusteiner.poo.Produto;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class App {
+public class Main_Validar_Modelo {
 
     public static void main(String[] args) {
 

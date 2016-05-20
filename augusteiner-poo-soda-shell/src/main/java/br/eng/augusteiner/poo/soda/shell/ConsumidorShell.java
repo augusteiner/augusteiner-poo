@@ -1,20 +1,18 @@
 
 package br.eng.augusteiner.poo.soda.shell;
 
-import static br.eng.augusteiner.poo.Util.println;
-
-import static org.fusesource.jansi.Ansi.*;
-import static org.fusesource.jansi.Ansi.Color.*;
+import static br.eng.augusteiner.poo.soda.shell.App.*;
+import static br.eng.augusteiner.poo.Util.*;
 
 import java.io.IOException;
-
-import org.fusesource.jansi.Ansi;
 
 import com.budhash.cliche.Command;
 import com.budhash.cliche.Param;
 import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
+import br.eng.augusteiner.poo.Compra;
+import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
 
 /**
@@ -24,13 +22,7 @@ public class ConsumidorShell {
 
     public static final String PROGRAM_NAME = ConsumidorShell.class.getSimpleName();
 
-    private static final boolean CONSOLE_EXISTS = System.console() != null;
-
-    private static final Ansi WARNING = ansi().fg(YELLOW).bold();
-    private static final Ansi ERROR = ansi().fg(RED).bold();
-    private static final Ansi INFO = ansi().fg(GREEN).bold();
-
-    public static void start() throws IOException {
+    public static void iniciar() throws IOException {
 
         Shell shell = ShellFactory.createConsoleShell(
             "$",
@@ -46,79 +38,28 @@ public class ConsumidorShell {
         name = "admin")
     public void admin() throws IOException {
 
-        AdminShell.start();
+        AdminShell.iniciar();
     }
 
     private Produto buscarRefrigerante(String codigo) {
 
-        return null;
-    }
-
-    private void exibir(
-        Ansi ansi,
-        String text) {
-
-        if (CONSOLE_EXISTS) {
-
-            println(ansi.a(text).reset().toString());
-        } else {
-
-            println(text);
-        }
-    }
-
-    private void exibirAlerta(String mensagem) {
-
-        exibir(
-            WARNING,
-            mensagem);
-    }
-
-    private void exibirAlerta(
-        String format,
-        Object... args) {
-
-        exibirAlerta(String.format(
-            format,
-            args));
-    }
-
-    private void exibirErro(String mensagem) {
-
-        exibir(
-            ERROR,
-            mensagem);
-    }
-
-    private void exibirMensagem(String text) {
-
-        exibir(
-            INFO,
-            text);
-    }
-
-    private void exibirMensagem(
-        String format,
-        Object... args) {
-
-        exibirMensagem(String.format(
-            format,
-            args));
+        return MAQUINA.produto(codigo);
     }
 
     public void inserirMoeda(double valor) {
 
+        Moeda moeda = Moeda.doValor(valor);
+
+        if (MAQUINA.getCompraAtual() == null) {
+
+            MAQUINA.novaCompra();
+        }
+
+        MAQUINA.inserirMoeda(moeda);
+
         exibirMensagem(
             "Moeda de R$ %.2f inserida",
-            valor);
-    }
-
-    public void inserirMoeda(double valor, int qte) {
-
-        for (int i = 0; i < qte; i++) {
-
-            inserirMoeda(valor);
-        }
+            moeda.getValor());
     }
 
     @Command(
@@ -158,17 +99,6 @@ public class ConsumidorShell {
     }
 
     @Command(
-        description = "Inserir moeda de R$ 0,05",
-        abbrev = "m5",
-        name = "m5")
-    public void inserirMoeda5(
-        @Param(name = "qte", description = "Qte de moedas de R$ 0.05 a inserir")
-        int count) {
-
-        inserirMoeda(0.05, count);
-    }
-
-    @Command(
         description = "Inserir moeda de R$ 0,50",
         abbrev = "m50",
         name = "m50")
@@ -177,35 +107,69 @@ public class ConsumidorShell {
         inserirMoeda(0.50);
     }
 
-    @Command(
-        description = "Retirada de refrigerante(s)")
-    public void retirada() {
+    @Command(description = "Listar refrigerantes")
+    public void resumoCompra() {
 
-        //
+        Compra compra = MAQUINA.getCompraAtual();
+
+        if (compra != null) {
+
+            println("Resumo da Compra");
+            println(compra.getValorEntrada());
+            println(compra.getProduto());
+        } else {
+
+            println("Compra ainda não iniciada");
+        }
     }
 
-    @Command(
-        description = "Seleção de refrigerante")
+    @Command(description = "Listar refrigerantes")
+    public void listar() {
+
+        for (Produto produto : MAQUINA.getProdutosAVenda()) {
+
+            exibirProduto(produto);
+        }
+    }
+
+    @Command(description = "Retirar produtos")
+    public void retirada() {
+
+        if (MAQUINA.getCompraAtual() == null) {
+
+            exibirAlerta("Compra ainda não iniciada");
+        }
+
+        Compra compra = MAQUINA.encerrarCompra();
+
+        exibirCompra(compra);
+    }
+
+    public void exibirCompra(Compra compra) {
+
+        exibirMensagem("Compra realizada com sucesso!");
+
+        exibirProduto(compra.getProduto());
+
+        println(
+            "Recebido: %s",
+            compra.getValorEntrada());
+
+        println(
+            "Troco: %s",
+            compra.getValorTroco());
+    }
+
+    @Command(description = "Seleção de refrigerante")
     public void selecionar(
         @Param(name = "Código", description = "Código do refrigerante")
         String codigo) {
 
-        selecionar(codigo, 1);
-    }
+        Produto produto = buscarRefrigerante(codigo.toUpperCase());
 
-    @Command(
-        description = "Seleção de refrigerante")
-    public void selecionar(
-        @Param(name = "Código", description = "Código do refrigerante")
-        String codigo,
-        @Param(name = "Qte", description = "Quantidade de refrigerantes")
-        int qte) {
+        if (produto != null) {
 
-        Produto refri = buscarRefrigerante(codigo);
-
-        if (refri != null) {
-
-            //
+             MAQUINA.getCompraAtual().setProduto(produto);
         } else {
 
             exibirAlerta(

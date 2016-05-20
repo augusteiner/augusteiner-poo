@@ -1,10 +1,11 @@
 
 package br.eng.augusteiner.poo;
 
-import static br.eng.augusteiner.poo.Moeda.LOCALE_PADRAO;
-import static br.eng.augusteiner.poo.Moeda.SIMBOLO;
+import static br.eng.augusteiner.poo.Moeda.*;
 
 import java.util.Date;
+import java.util.Hashtable;
+import java.util.Map;
 
 import br.eng.augusteiner.poo.soda.Util;
 
@@ -13,68 +14,89 @@ import br.eng.augusteiner.poo.soda.Util;
  */
 public class Compra {
 
-    public static final byte COMPRA_OK = 0;
-    public static final byte COMPRA_FALTA_MOEDAS = 1;
+    public static final byte STATUS_ENTRADA_INSUFICIENTE = 1;
+    public static final byte STATUS_PRODUTO_NAO_SELECIONADO = 2;
+    public static final byte STATUS_INDEFINIDO = 4;
+    public static final byte STATUS_OK = 32;
+    public static final byte STATUS_OK_FALTA_TROCO = 40;
 
     private Produto produto;
 
-    private Moeda[] entrada;
-    private Moeda[] troco;
+    private Map<Moeda, QuantidadeMoeda> entrada;
+    private Map<Moeda, QuantidadeMoeda> troco;
 
     private Date data;
+    private byte status = STATUS_INDEFINIDO;
 
-    public Compra(
-        Produto produto,
-        Moeda[] entrada,
-        Moeda[] troco,
-        Date data) {
+    public Compra() {
 
-        this.produto = produto;
+        this.entrada = new Hashtable<Moeda, QuantidadeMoeda>();
+        this.troco = new Hashtable<Moeda, QuantidadeMoeda>();
 
-        this.entrada = entrada;
-        this.troco = troco;
+        this.status = STATUS_INDEFINIDO;
 
-        this.data = data;
+        initEntrada();
     }
 
-    public Produto getProduto() {
+    private void initEntrada() {
 
-        return produto;
+        initMap(this.entrada);
     }
 
-    public void setProduto(Produto produto) {
+    public void addMoeda(Moeda moeda, int quantidade) {
 
-        this.produto = produto;
-    }
+        QuantidadeMoeda qte = this.entrada.get(moeda);
 
-    public Moeda[] getEntrada() {
-
-        return entrada;
-    }
-
-    public void setEntrada(Moeda[] entrada) {
-
-        this.entrada = entrada;
-    }
-
-    public Moeda[] getTroco() {
-
-        return troco;
-    }
-
-    public void setTroco(Moeda[] troco) {
-
-        this.troco = troco;
+        qte.addQuantidade(quantidade);
     }
 
     public Date getData() {
 
-        return data;
+        return this.data;
     }
 
-    public void setData(Date data) {
+    public Iterable<QuantidadeMoeda> getEntrada() {
 
-        this.data = data;
+        return this.entrada.values();
+    }
+
+    public Produto getProduto() {
+
+        return this.produto;
+    }
+
+    public byte getStatus() {
+
+        return this.status;
+    }
+
+    public String getStatusAsString() {
+
+        switch (this.getStatus()) {
+
+            case STATUS_ENTRADA_INSUFICIENTE:
+                return "Entrada para compra insuficiente";
+
+            case STATUS_OK:
+                return "Compra ok";
+
+            case STATUS_OK_FALTA_TROCO:
+                return "Compra ok com moedas para troco em falta";
+
+            case STATUS_PRODUTO_NAO_SELECIONADO:
+                return "Produto da compra não selecionado";
+
+            case STATUS_INDEFINIDO:
+                return "Compra não iniciada";
+
+            default:
+                return "Erro desconhecido";
+        }
+    }
+
+    public Iterable<QuantidadeMoeda> getTroco() {
+
+        return this.troco.values();
     }
 
     public double getValorEntrada() {
@@ -85,6 +107,33 @@ public class Compra {
     public double getValorTroco() {
 
         return Util.moedasToDouble(getTroco());
+    }
+
+    public void setData(Date data) {
+
+        this.data = data;
+    }
+
+    public void setProduto(Produto produto) {
+
+        this.produto = produto;
+    }
+
+    public void setStatus(byte status) {
+
+        this.status = status;
+    }
+
+    void setTroco(Iterable<QuantidadeMoeda> troco) {
+
+        this.troco.clear();
+
+        for (QuantidadeMoeda qte : troco) {
+
+            this.troco.put(
+                qte.getMoeda(),
+                qte);
+        }
     }
 
     @Override

@@ -1,10 +1,12 @@
 
 package br.eng.augusteiner.poo.soda;
 
-import static br.eng.augusteiner.poo.Moeda.LOCALE_PADRAO;
-import static br.eng.augusteiner.poo.Moeda.SIMBOLO;
+import static br.eng.augusteiner.poo.Moeda.*;
+
+import java.util.Arrays;
 
 import br.eng.augusteiner.poo.Moeda;
+import br.eng.augusteiner.poo.QuantidadeMoeda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -40,9 +42,26 @@ public class Util {
 
         double valor = 0;
 
-        for (int i = 0; i < moedas.length; i++) {
+        for (Moeda moeda : moedas) {
 
-            valor += moedas[i].getValor();
+            valor += moeda.getValor();
+        }
+
+        return valor;
+    }
+
+    public static double moedasToDouble(QuantidadeMoeda... moedas) {
+
+        return moedasToDouble(Arrays.asList(moedas));
+    }
+
+    public static double moedasToDouble(Iterable<QuantidadeMoeda> moedas) {
+
+        double valor = 0;
+
+        for (QuantidadeMoeda moeda : moedas) {
+
+            valor += moeda.getValor();
         }
 
         return valor;

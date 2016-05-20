@@ -1,7 +1,5 @@
 
-package br.eng.augusteiner.poo.soda;
-
-import br.eng.augusteiner.poo.Produto;
+package br.eng.augusteiner.poo;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -40,5 +38,14 @@ public class QuantidadeProduto {
     public void addQuantidade(int quantidade) {
 
         this.quantidade += quantidade;
+    }
+
+    @Override
+    public String toString() {
+
+        return String.format(
+            "%s (%s)",
+            this.getProduto(),
+            this.getQuantidade());
     }
 }

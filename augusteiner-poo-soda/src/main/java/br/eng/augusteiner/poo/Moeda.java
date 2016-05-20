@@ -4,6 +4,7 @@ package br.eng.augusteiner.poo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -34,7 +35,7 @@ public class Moeda {
 
     public static Moeda doValor(double valor) {
 
-        for (Moeda moeda : moedasConhecidas()) {
+        for (Moeda moeda : getMoedasConhecidas()) {
 
             if (moeda.getValor() == valor) {
 
@@ -45,7 +46,7 @@ public class Moeda {
         return null;
     }
 
-    public static Iterable<Moeda> moedasConhecidas() {
+    public static Iterable<Moeda> getMoedasConhecidas() {
 
         return Nested.MOEDAS_CONHECIDAS;
     }
@@ -90,5 +91,15 @@ public class Moeda {
             SIMBOLO,
             getValor(),
             getDescricao());
+    }
+
+    public static void initMap(Map<Moeda, QuantidadeMoeda> moedas) {
+
+        for (Moeda moeda : getMoedasConhecidas()) {
+
+            moedas.put(
+                moeda,
+                new QuantidadeMoeda(moeda, 0));
+        }
     }
 }
