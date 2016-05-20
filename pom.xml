@@ -20,6 +20,7 @@
         <module>augusteiner-poo</module>
         <module>augusteiner-poo-cadturmas</module>
         <module>augusteiner-poo-hello-social</module>
+        <module>augusteiner-poo-soda-shell</module>
     </modules>
     <build>
         <plugins>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>br.eng.augusteiner</groupId>
+        <artifactId>augusteiner</artifactId>
+        <version>0.1.0-RELEASE</version>
+    </parent>
+    <groupId>br.eng.augusteiner.poo.soda.shell</groupId>
+    <artifactId>augusteiner-poo-soda-shell</artifactId>
+    <version>0.1.0-RELEASE</version>
+    <name>augusteiner-poo-shell</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>br.eng.augusteiner.poo.soda</groupId>
+            <artifactId>augusteiner-poo-soda</artifactId>
+            <version>0.1.0-RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.budhash.cliche</groupId>
+            <artifactId>cliche-shell</artifactId>
+            <version>0.9.3</version>
+        </dependency>
+    </dependencies>
+</project>
