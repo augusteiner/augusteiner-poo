@@ -10,7 +10,6 @@ public class Produto {
 
     private String codigo;
 
-    private String nome;
     private String descricao;
 
     private double preco;
@@ -21,13 +20,11 @@ public class Produto {
 
     public Produto(
         String codigo,
-        String nome,
         String descricao,
         double preco) {
 
         this.codigo = codigo;
 
-        this.nome = nome;
         this.descricao = descricao;
 
         this.preco = preco;
@@ -41,16 +38,6 @@ public class Produto {
     public void setCodigo(String codigo) {
 
         this.codigo = codigo;
-    }
-
-    public String getNome() {
-
-        return nome;
-    }
-
-    public void setNome(String nome) {
-
-        this.nome = nome;
     }
 
     public String getDescricao() {
@@ -80,7 +67,7 @@ public class Produto {
             LOCALE_PADRAO,
             "#%s - %s : R$ %.2f",
             getCodigo(),
-            getNome(),
+            getDescricao(),
             getPreco());
     }
 }

@@ -13,6 +13,9 @@ import br.eng.augusteiner.poo.soda.Util;
  */
 public class Compra {
 
+    public static final byte COMPRA_OK = 0;
+    public static final byte COMPRA_FALTA_MOEDAS = 1;
+
     private Produto produto;
 
     private Moeda[] entrada;
@@ -91,7 +94,7 @@ public class Compra {
             LOCALE_PADRAO,
             "#%s: %s %s %.2f - %s %.2f = %s %.2f",
             getData(),
-            getProduto().getNome(),
+            getProduto().getDescricao(),
             SIMBOLO,
             getProduto().getPreco(),
             SIMBOLO,
