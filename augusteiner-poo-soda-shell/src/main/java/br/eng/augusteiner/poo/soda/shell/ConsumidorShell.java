@@ -1,5 +1,5 @@
 
-package br.eng.augusteiner.poo.shell;
+package br.eng.augusteiner.poo.soda.shell;
 
 import java.io.IOException;
 
