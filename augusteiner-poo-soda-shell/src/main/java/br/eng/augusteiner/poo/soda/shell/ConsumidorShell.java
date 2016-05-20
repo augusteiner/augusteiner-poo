@@ -4,6 +4,7 @@ package br.eng.augusteiner.poo.soda.shell;
 import java.io.IOException;
 
 import com.budhash.cliche.Command;
+import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
 /**
@@ -16,9 +17,16 @@ public class ConsumidorShell {
     @Command(description = "Administrar máquina de refris")
     public void admin() throws IOException {
 
-        ShellFactory.createConsoleShell(
-            "#",
-            AdminShell.PROGRAM_NAME,
-            new AdminShell()).commandLoop();
+        AdminShell.start();
+    }
+
+    public static void start() throws IOException {
+
+        Shell shell = ShellFactory.createConsoleShell(
+            "$",
+            PROGRAM_NAME,
+            new ConsumidorShell());
+
+        shell.commandLoop();
     }
 }
