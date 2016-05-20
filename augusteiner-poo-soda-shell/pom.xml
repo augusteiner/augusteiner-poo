@@ -15,6 +15,11 @@
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
+            <groupId>br.eng.augusteiner.poo</groupId>
+            <artifactId>augusteiner-poo</artifactId>
+            <version>0.1.0-RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>br.eng.augusteiner.poo.soda</groupId>
             <artifactId>augusteiner-poo-soda</artifactId>
             <version>0.1.0-RELEASE</version>
