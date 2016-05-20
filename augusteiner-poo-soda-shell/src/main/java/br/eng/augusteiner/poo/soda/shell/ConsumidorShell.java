@@ -17,6 +17,16 @@ public class ConsumidorShell {
 
     public static final String PROGRAM_NAME = ConsumidorShell.class.getSimpleName();
 
+    public static void start() throws IOException {
+
+        Shell shell = ShellFactory.createConsoleShell(
+            "$",
+            PROGRAM_NAME,
+            new ConsumidorShell());
+
+        shell.commandLoop();
+    }
+
     @Command(
         description = "Administrar máquina de refris",
         abbrev = "admin",
@@ -24,6 +34,21 @@ public class ConsumidorShell {
     public void admin() throws IOException {
 
         AdminShell.start();
+    }
+
+    public void inserirMoeda(double valor) {
+
+        println(
+            "Moeda de R$ %.2f inserida",
+            valor);
+    }
+
+    public void inserirMoeda(double valor, int count) {
+
+        for (int i = 0; i < count; i++) {
+
+            inserirMoeda(valor);
+        }
     }
 
     @Command(
@@ -37,11 +62,29 @@ public class ConsumidorShell {
 
     @Command(
         description = "Inserir moeda",
-        abbrev = "m50",
-        name = "m50")
-    public void inserirMoeda50() {
+        abbrev = "m10",
+        name = "m10")
+    public void inserirMoeda10() {
 
-        inserirMoeda(0.50);
+        inserirMoeda(0.10);
+    }
+
+    @Command(
+        description = "Inserir moeda",
+        abbrev = "m25",
+        name = "m25")
+    public void inserirMoeda25() {
+
+        inserirMoeda(0.25);
+    }
+
+    @Command(
+        description = "Inserir moeda",
+        abbrev = "m5",
+        name = "m5")
+    public void inserirMoeda5() {
+
+        inserirMoeda(0.05);
     }
 
     @Command(
@@ -57,53 +100,10 @@ public class ConsumidorShell {
 
     @Command(
         description = "Inserir moeda",
-        abbrev = "m5",
-        name = "m5")
-    public void inserirMoeda5() {
+        abbrev = "m50",
+        name = "m50")
+    public void inserirMoeda50() {
 
-        inserirMoeda(0.05);
-    }
-
-    @Command(
-        description = "Inserir moeda",
-        abbrev = "m25",
-        name = "m25")
-    public void inserirMoeda25() {
-
-        inserirMoeda(0.25);
-    }
-
-    @Command(
-        description = "Inserir moeda",
-        abbrev = "m10",
-        name = "m10")
-    public void inserirMoeda10() {
-
-        inserirMoeda(0.10);
-    }
-
-    public void inserirMoeda(double valor, int count) {
-
-        for (int i = 0; i < count; i++) {
-
-            inserirMoeda(valor);
-        }
-    }
-
-    public void inserirMoeda(double valor) {
-
-        println(
-            "Moeda de R$ %.2f inserida",
-            valor);
-    }
-
-    public static void start() throws IOException {
-
-        Shell shell = ShellFactory.createConsoleShell(
-            "$",
-            PROGRAM_NAME,
-            new ConsumidorShell());
-
-        shell.commandLoop();
+        inserirMoeda(0.50);
     }
 }
