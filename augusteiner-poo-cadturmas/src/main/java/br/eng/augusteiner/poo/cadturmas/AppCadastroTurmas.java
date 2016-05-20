@@ -1,8 +1,7 @@
 
 package br.eng.augusteiner.poo.cadturmas;
 
-import static br.eng.augusteiner.poo.Util.print;
-import static br.eng.augusteiner.poo.Util.println;
+import static br.eng.augusteiner.poo.Util.*;
 
 import java.util.Scanner;
 
@@ -10,6 +9,7 @@ import br.eng.augusteiner.poo.Aluno;
 import br.eng.augusteiner.poo.Disciplina;
 import br.eng.augusteiner.poo.Professor;
 import br.eng.augusteiner.poo.Turma;
+import br.eng.augusteiner.poo.Util;
 import br.eng.augusteiner.poo.store.DataStore;
 
 /**
@@ -305,14 +305,7 @@ public class AppCadastroTurmas {
 
     private static String lerString() {
 
-        String line = "";
-
-        while (line.length() == 0) {
-
-            line = scan.nextLine().trim();
-        }
-
-        return line;
+        return Util.lerString(scan);
     }
 
     private static Turma lerTurma() {

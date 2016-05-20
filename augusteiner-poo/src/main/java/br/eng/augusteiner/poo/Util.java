@@ -16,7 +16,7 @@ import org.reflections.scanners.SubTypesScanner;
  */
 public class Util {
 
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void executarMain(
         Class<?> questao,
@@ -43,17 +43,7 @@ public class Util {
 
     public static Scanner getScanner() {
 
-        return scanner;
-    }
-
-    public static double nextDouble() {
-
-        return getScanner().nextDouble();
-    }
-
-    public static double nextInt() {
-
-        return getScanner().nextInt();
+        return SCANNER;
     }
 
     public static void print(Object texto) {
@@ -134,5 +124,27 @@ public class Util {
                 return (Class<?>) iter.next();
             }
         };
+    }
+
+    public static double lerDouble() {
+
+        return getScanner().nextDouble();
+    }
+
+    public static String lerString() {
+
+        return lerString(SCANNER);
+    }
+
+    public static String lerString(Scanner scanner) {
+
+        String line = "";
+
+        while (line.length() == 0) {
+
+            line = scanner.nextLine().trim();
+        }
+
+        return line;
     }
 }
