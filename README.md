@@ -15,11 +15,14 @@ How To
 ------
 
 ```bash
+
 # build
-$ mvn clean install
+mvn clean install
+
 # execução
-$ mvn exec:java \
+mvn exec:java \
     -Dexec.mainClass=<FQNDaClasseAqui> \
     -pl <NomeDoSubProjetoAqui>
+
 ```
 

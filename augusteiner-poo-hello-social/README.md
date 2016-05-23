@@ -13,7 +13,7 @@ Executando
 
 ```bash
 
-mvn package install
+mvn clean install
 
 mvn exec:java \
     -Dexec.mainClass=br.eng.augusteiner.poo.hello.social.JTweet \
