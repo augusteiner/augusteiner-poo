@@ -1,8 +1,8 @@
 
 package br.eng.augusteiner.poo.soda.shell;
 
-import static br.eng.augusteiner.poo.soda.shell.App.*;
 import static br.eng.augusteiner.poo.Util.*;
+import static br.eng.augusteiner.poo.soda.shell.App.*;
 
 import java.io.IOException;
 
@@ -14,6 +14,7 @@ import com.budhash.cliche.ShellFactory;
 import br.eng.augusteiner.poo.Compra;
 import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
+import br.eng.augusteiner.poo.QuantidadeMoeda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -60,6 +61,16 @@ public class ConsumidorShell {
         println(
             "Troco: %s",
             compra.getValorTroco());
+
+        for (QuantidadeMoeda qte : compra.getTroco()) {
+
+            for (int i = 0; i < qte.getQuantidade(); i++) {
+
+                exibirMensagem(
+                    "Dispensando moeda: %s",
+                    qte.getMoeda());
+            }
+        }
     }
 
     public void inserirMoeda(double valor) {
@@ -74,7 +85,7 @@ public class ConsumidorShell {
         MAQUINA.inserirMoeda(moeda);
 
         exibirMensagem(
-            "Moeda de R$ %.2f inserida",
+            "Moeda 'R$ %.2f' inserida",
             moeda.getValor());
     }
 
