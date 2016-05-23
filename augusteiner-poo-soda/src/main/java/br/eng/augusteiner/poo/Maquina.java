@@ -225,7 +225,7 @@ public final class Maquina {
         return this.estoque.keySet();
     }
 
-    public Iterable<Produto> getProdutosAVenda() {
+    public Iterable<Produto> getProdutosDisponiveis() {
 
         return this.estoque.keySet()
             .stream()
@@ -245,6 +245,13 @@ public final class Maquina {
     public int getQuantidadeMoedas(Moeda moeda) {
 
         QuantidadeMoeda qte = this.moedas.get(moeda);
+
+        return qte != null ? qte.getQuantidade() : 0;
+    }
+
+    public int getQuantidadeProduto(Produto produto) {
+
+        QuantidadeProduto qte = this.estoque.get(produto);
 
         return qte != null ? qte.getQuantidade() : 0;
     }
@@ -282,6 +289,21 @@ public final class Maquina {
         }
 
         return null;
+    }
+
+    public Produto produtoDisponivel(String codigo) {
+
+        Produto produto = produto(codigo);
+
+        if (this.getQuantidadeProduto(produto) > 0) {
+
+            return produto;
+
+        } else {
+
+            return null;
+
+        }
     }
 
     private void removeMoeda(

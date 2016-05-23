@@ -51,7 +51,7 @@ public class ConsumidorShell {
 
     private Produto buscarRefrigerante(String codigo) {
 
-        return getMaquina().produto(codigo);
+        return getMaquina().produtoDisponivel(codigo.toUpperCase());
     }
 
     public void exibirCompra(Compra compra) {
@@ -148,7 +148,7 @@ public class ConsumidorShell {
     @Command(description = "Listar refrigerantes")
     public void listar() {
 
-        for (Produto produto : getMaquina().getProdutosAVenda()) {
+        for (Produto produto : getMaquina().getProdutosDisponiveis()) {
 
             exibirProduto(produto);
         }
