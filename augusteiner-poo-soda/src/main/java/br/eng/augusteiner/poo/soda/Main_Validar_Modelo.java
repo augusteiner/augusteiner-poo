@@ -24,12 +24,8 @@ public class Main_Validar_Modelo {
             "Fanta 200ml",
             2.10);
 
-        Moeda m25 = new Moeda(
-            0.25,
-            "vinte e cinco centavos");
-        Moeda m10 = new Moeda(
-            0.10,
-            "dez centavos");
+        Moeda m25 = Moeda.doValor(0.25);
+        Moeda m10 = Moeda.doValor(0.10);
 
         fanta.setPreco(coca.getPreco());
 

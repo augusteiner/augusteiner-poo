@@ -53,15 +53,21 @@ public class Moeda {
         return Nested.MOEDAS_CONHECIDAS;
     }
 
+    public static void initMap(Map<Moeda, QuantidadeMoeda> moedas) {
+
+        for (Moeda moeda : getMoedasConhecidas()) {
+
+            moedas.put(
+                moeda,
+                new QuantidadeMoeda(moeda, 0));
+        }
+    }
+
     private double valor;
 
     private String descricao;
 
-    public Moeda() {
-
-    }
-
-    public Moeda(
+    Moeda(
         double valor,
         String descricao) {
 
@@ -79,9 +85,14 @@ public class Moeda {
         return valor;
     }
 
-    public void setDescricao(String descricao) {
+    void setDescricao(String descricao) {
 
         this.descricao = descricao;
+    }
+
+    void setValor(double valor) {
+
+        this.valor = valor;
     }
 
     @Override
@@ -93,15 +104,5 @@ public class Moeda {
             SIMBOLO,
             getValor(),
             getDescricao());
-    }
-
-    public static void initMap(Map<Moeda, QuantidadeMoeda> moedas) {
-
-        for (Moeda moeda : getMoedasConhecidas()) {
-
-            moedas.put(
-                moeda,
-                new QuantidadeMoeda(moeda, 0));
-        }
     }
 }
