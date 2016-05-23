@@ -12,6 +12,7 @@ import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
 import br.eng.augusteiner.poo.Compra;
+import br.eng.augusteiner.poo.Maquina;
 import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
 import br.eng.augusteiner.poo.QuantidadeMoeda;
@@ -45,7 +46,7 @@ public class ConsumidorShell {
 
     private Produto buscarRefrigerante(String codigo) {
 
-        return MAQUINA.produto(codigo);
+        return getMaquina().produto(codigo);
     }
 
     public void exibirCompra(Compra compra) {
@@ -73,16 +74,21 @@ public class ConsumidorShell {
         }
     }
 
+    private Maquina getMaquina() {
+
+        return Maquina.getSingleton();
+    }
+
     public void inserirMoeda(double valor) {
 
         Moeda moeda = Moeda.doValor(valor);
 
-        if (MAQUINA.getCompraAtual() == null) {
+        if (getMaquina().getCompraAtual() == null) {
 
-            MAQUINA.novaCompra();
+            getMaquina().novaCompra();
         }
 
-        MAQUINA.inserirMoeda(moeda);
+        getMaquina().inserirMoeda(moeda);
 
         exibirMensagem(
             "Moeda 'R$ %.2f' inserida",
@@ -137,7 +143,7 @@ public class ConsumidorShell {
     @Command(description = "Listar refrigerantes")
     public void listar() {
 
-        for (Produto produto : MAQUINA.getProdutosAVenda()) {
+        for (Produto produto : getMaquina().getProdutosAVenda()) {
 
             exibirProduto(produto);
         }
@@ -146,7 +152,7 @@ public class ConsumidorShell {
     @Command(description = "Listar refrigerantes")
     public void resumoCompra() {
 
-        Compra compra = MAQUINA.getCompraAtual();
+        Compra compra = getMaquina().getCompraAtual();
 
         if (compra != null) {
 
@@ -162,12 +168,12 @@ public class ConsumidorShell {
     @Command(description = "Retirar produtos")
     public void retirarProduto() {
 
-        if (MAQUINA.getCompraAtual() == null) {
+        if (getMaquina().getCompraAtual() == null) {
 
             exibirAlerta("Compra ainda não iniciada");
         }
 
-        Compra compra = MAQUINA.encerrarCompra();
+        Compra compra = getMaquina().encerrarCompra();
 
         exibirCompra(compra);
     }
@@ -181,7 +187,7 @@ public class ConsumidorShell {
 
         if (produto != null) {
 
-             MAQUINA.getCompraAtual().setProduto(produto);
+             getMaquina().getCompraAtual().setProduto(produto);
         } else {
 
             exibirAlerta(

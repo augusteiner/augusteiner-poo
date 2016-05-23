@@ -11,6 +11,7 @@ import com.budhash.cliche.Param;
 import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
+import br.eng.augusteiner.poo.Maquina;
 import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
 import br.eng.augusteiner.poo.QuantidadeMoeda;
@@ -25,6 +26,11 @@ public class AdminShell {
 
     private static Shell SHELL = null;
     private static int tentativas = 0;
+
+    private static Maquina getMaquina() {
+
+        return Maquina.getSingleton();
+    }
 
     public static void iniciar() throws IOException {
 
@@ -121,7 +127,7 @@ public class AdminShell {
             descricao.replace("_", " "),
             preco);
 
-        MAQUINA.addProduto(
+        getMaquina().addProduto(
             produto,
             qte);
 
@@ -130,11 +136,23 @@ public class AdminShell {
 
     public void inserirMoeda(Moeda moeda) {
 
-        MAQUINA.addMoeda(moeda);
+        inserirMoeda(
+            moeda,
+            1);
+    }
 
-        exibirMensagem(
-            "Moeda '%s' inserida",
-            moeda);
+    public void inserirMoeda(
+        Moeda moeda,
+        int quantidade) {
+
+        for (int i = 0; i < quantidade; i++) {
+
+            getMaquina().addMoeda(moeda);
+
+            exibirMensagem(
+                "Moeda '%s' inserida",
+                moeda);
+        }
     }
 
     @Command(
@@ -191,7 +209,7 @@ public class AdminShell {
 
         codigo = codigo.toUpperCase();
 
-        Produto produto = MAQUINA.produto(codigo);
+        Produto produto = getMaquina().produto(codigo);
 
         if (produto == null) {
 
@@ -202,7 +220,7 @@ public class AdminShell {
             return;
         }
 
-        MAQUINA.addProduto(
+        getMaquina().addProduto(
             produto,
             qte);
 
@@ -215,7 +233,7 @@ public class AdminShell {
     @Command
     public void verEstoque() {
 
-        for (QuantidadeProduto qte : MAQUINA.getEstoque()) {
+        for (QuantidadeProduto qte : getMaquina().getEstoque()) {
 
             exibirProduto(qte);
         }
@@ -224,7 +242,7 @@ public class AdminShell {
     @Command
     public void verMoedas() {
 
-        for (QuantidadeMoeda qte : MAQUINA.getMoedas()) {
+        for (QuantidadeMoeda qte : getMaquina().getMoedas()) {
 
             exibirMoeda(qte);
         }
