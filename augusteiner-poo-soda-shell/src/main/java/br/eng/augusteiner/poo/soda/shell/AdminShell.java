@@ -167,7 +167,18 @@ public class AdminShell {
         name = "m1")
     public void inserirMoeda1() {
 
-        inserirMoeda(Moeda.doValor(1));
+        inserirMoeda1(1);
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m1",
+        name = "m1")
+    public void inserirMoeda1(int qte) {
+
+        inserirMoeda(
+            Moeda.doValor(1),
+            qte);
     }
 
     @Command(
@@ -176,7 +187,18 @@ public class AdminShell {
         name = "m10")
     public void inserirMoeda10() {
 
-        inserirMoeda(Moeda.doValor(0.10));
+        inserirMoeda10(1);
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m10",
+        name = "m10")
+    public void inserirMoeda10(int qte) {
+
+        inserirMoeda(
+            Moeda.doValor(0.10),
+            qte);
     }
 
     @Command(
@@ -185,7 +207,18 @@ public class AdminShell {
         name = "m25")
     public void inserirMoeda25() {
 
-        inserirMoeda(Moeda.doValor(0.25));
+        inserirMoeda25(1);
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m25",
+        name = "m25")
+    public void inserirMoeda25(int qte) {
+
+        inserirMoeda(
+            Moeda.doValor(0.25),
+            qte);
     }
 
     @Command(
@@ -194,7 +227,18 @@ public class AdminShell {
         name = "m5")
     public void inserirMoeda5() {
 
-        inserirMoeda(Moeda.doValor(0.05));
+        inserirMoeda5(1);
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m5",
+        name = "m5")
+    public void inserirMoeda5(int qte) {
+
+        inserirMoeda(
+            Moeda.doValor(0.05),
+            qte);
     }
 
     @Command(
@@ -203,7 +247,18 @@ public class AdminShell {
         name = "m50")
     public void inserirMoeda50() {
 
-        inserirMoeda(Moeda.doValor(0.50));
+        inserirMoeda50(1);
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m50",
+        name = "m50")
+    public void inserirMoeda50(int qte) {
+
+        inserirMoeda(
+            Moeda.doValor(0.50),
+            qte);
     }
 
     @Command(description = "Repõe produto já cadastrado no estoque")
