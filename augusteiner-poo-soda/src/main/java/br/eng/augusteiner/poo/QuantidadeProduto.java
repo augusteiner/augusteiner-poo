@@ -48,4 +48,9 @@ public class QuantidadeProduto {
             this.getProduto(),
             this.getQuantidade());
     }
+
+    public void removeQuantidade(int quantidade) {
+
+        this.addQuantidade(-quantidade);
+    }
 }

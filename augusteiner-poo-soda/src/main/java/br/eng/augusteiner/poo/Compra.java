@@ -17,6 +17,7 @@ public class Compra {
     public static final byte STATUS_ENTRADA_INSUFICIENTE = 1;
     public static final byte STATUS_PRODUTO_NAO_SELECIONADO = 2;
     public static final byte STATUS_INDEFINIDO = 4;
+    public static final byte STATUS_PRODUTO_INSUFICIENTE = 8;
     public static final byte STATUS_OK = 32;
     public static final byte STATUS_OK_FALTA_TROCO = 40;
 

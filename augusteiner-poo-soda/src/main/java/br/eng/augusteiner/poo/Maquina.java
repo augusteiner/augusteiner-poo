@@ -3,6 +3,8 @@ package br.eng.augusteiner.poo;
 
 import static java.lang.Math.*;
 
+import java.math.BigDecimal;
+
 import static br.eng.augusteiner.poo.Compra.*;
 import static br.eng.augusteiner.poo.Moeda.*;
 
@@ -46,6 +48,11 @@ public final class Maquina {
         Moeda moeda,
         int quantidade) {
 
+        System.out.println(String.format(
+            "Removendo moeda %s (%d)",
+            moeda,
+            quantidade));
+
         addMoeda(
             moeda,
             - quantidade);
@@ -78,7 +85,9 @@ public final class Maquina {
 
     public void addProduto(Produto produto) {
 
-        this.addProduto(produto, 1);
+        this.addProduto(
+            produto,
+            0);
     }
 
     public void addProduto(
@@ -172,24 +181,37 @@ public final class Maquina {
     public Compra encerrarCompra() {
 
         Compra compra = this.getCompraAtual();
+        Produto produto;
+        QuantidadeProduto qte;
 
         if (compra == null) {
 
             return compra;
         }
 
-        if (compra.getProduto() == null) {
+        produto = compra.getProduto();
+
+        if (produto == null) {
 
             compra.setStatus(STATUS_PRODUTO_NAO_SELECIONADO);
 
-        } else if (compra.getValorEntrada() < compra.getProduto().getPreco()) {
+        } else if (compra.getValorEntrada() < produto.getPreco()) {
 
             compra.setStatus(STATUS_ENTRADA_INSUFICIENTE);
 
         } else {
+            qte = this.estoque.get(produto);
 
-            compra.setStatus(STATUS_OK);
+            if (qte == null ||
+                qte.getQuantidade() == 0) {
 
+                compra.setStatus(STATUS_PRODUTO_INSUFICIENTE);
+
+            } else {
+
+                compra.setStatus(STATUS_OK);
+
+            }
         }
 
         if (compra.getStatus() == STATUS_OK) {
@@ -198,14 +220,16 @@ public final class Maquina {
 
             this.calcularTroco(compra);
 
-            for (QuantidadeMoeda qte : compra.getTroco()) {
+            for (QuantidadeMoeda qteTroco : compra.getTroco()) {
 
                 removeMoeda(
-                    qte.getMoeda(),
-                    qte.getQuantidade());
+                    qteTroco.getMoeda(),
+                    qteTroco.getQuantidade());
             }
 
-            if (compra.getProduto().getPreco() != compra.getValorTroco()) {
+            this.removerProduto(produto);
+
+            if (produto.getPreco() != compra.getValorTroco()) {
 
                 compra.setStatus(STATUS_OK_FALTA_TROCO);
             }
@@ -214,30 +238,59 @@ public final class Maquina {
         return compra;
     }
 
-    public void calcularTroco(Compra compra) {
+    private void removerProduto(Produto produto) {
+
+        this.estoque.get(produto).removeQuantidade(1);
+    }
+
+    private void calcularTroco(Compra compra) {
 
         calcularTroco(
             this,
             compra);
     }
 
-    public static void calcularTroco(Maquina maquina, Compra compra) {
+    private static void calcularTroco(
+        Maquina maquina,
+        Compra compra) {
 
         Produto produto = compra.getProduto();
         List<QuantidadeMoeda> troco = new ArrayList<QuantidadeMoeda>();
 
-        double valorTroco = compra.getValorEntrada() - produto.getPreco();
-        int qte = 0;
+        BigDecimal valorTroco = BigDecimal.valueOf(compra.getValorEntrada())
+            .subtract(BigDecimal.valueOf(produto.getPreco()));
+
+        System.out.println(String.format(
+            "Troco a dar: %s",
+            valorTroco));
 
         for (Moeda moeda : Moeda.getMoedasConhecidas()) {
 
-            qte = (int) ceil(valorTroco / moeda.getValor());
+            int qte = valorTroco.multiply(BigDecimal.valueOf(100))
+                .divide(BigDecimal.valueOf(moeda.getValor())
+                    .multiply(BigDecimal.valueOf(100)))
+                .intValue();
+
+            System.out.println(String.format(
+                "%s * 100 / %s * 100 = %s",
+                valorTroco,
+                moeda.getValor(),
+                qte));
 
             troco.add(new QuantidadeMoeda(
                 moeda,
                 min(qte, maquina.getQuantidadeMoedas(moeda))));
 
-            valorTroco -= moeda.getValor() * qte;
+            valorTroco = valorTroco.subtract(BigDecimal.valueOf(moeda.getValor() * qte));
+        }
+
+        System.out.println("Troco calculado:");
+
+        for (QuantidadeMoeda qte : troco) {
+
+            System.out.println(String.format(
+                "%s",
+                qte));
         }
 
         compra.setTroco(troco);
