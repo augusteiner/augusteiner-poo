@@ -4,7 +4,6 @@ package br.eng.augusteiner.poo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -15,19 +14,19 @@ public class Moeda {
 
     private static class Nested {
 
-        private static final Collection<Moeda> MOEDAS_CONHECIDAS;
+        private static final Iterable<Moeda> MOEDAS_CONHECIDAS;
 
         static {
 
-            List<Moeda> list = new ArrayList<Moeda>();
+            Collection<Moeda> moedas = new ArrayList<Moeda>();
 
-            list.add(new Moeda(1.00, "um real"));
-            list.add(new Moeda(0.50, "cinquenta centavos"));
-            list.add(new Moeda(0.25, "vinte e cinco centavos"));
-            list.add(new Moeda(0.10, "dez centavos"));
-            list.add(new Moeda(0.05, "cinco centavos"));
+            moedas.add(new Moeda(1.00, "Um Real"));
+            moedas.add(new Moeda(0.50, "Cinquenta Centavos"));
+            moedas.add(new Moeda(0.25, "Vinte e Cinco Centavos"));
+            moedas.add(new Moeda(0.10, "Dez Centavos"));
+            moedas.add(new Moeda(0.05, "Cinco Centavos"));
 
-            MOEDAS_CONHECIDAS = Collections.unmodifiableList(list);
+            MOEDAS_CONHECIDAS = Collections.unmodifiableCollection(moedas);
         }
     }
     public static final Locale LOCALE_PT_BR = new Locale("pt", "BR");

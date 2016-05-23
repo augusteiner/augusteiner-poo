@@ -271,6 +271,10 @@ public final class Maquina {
                     .multiply(BigDecimal.valueOf(100)))
                 .intValue();
 
+            qte = min(
+                qte,
+                maquina.getQuantidadeMoedas(moeda));
+
             //System.out.println(String.format(
             //    "%s * 100 / %s * 100 = %s",
             //    valorTroco,
@@ -279,9 +283,10 @@ public final class Maquina {
 
             troco.add(new QuantidadeMoeda(
                 moeda,
-                min(qte, maquina.getQuantidadeMoedas(moeda))));
+                qte));
 
-            valorTroco = valorTroco.subtract(BigDecimal.valueOf(moeda.getValor() * qte));
+            valorTroco = valorTroco.subtract(
+                BigDecimal.valueOf(moeda.getValor()).multiply(BigDecimal.valueOf(qte)));
         }
 
         //System.out.println("Troco calculado:");
