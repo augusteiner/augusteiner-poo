@@ -1,6 +1,7 @@
 
 package br.eng.augusteiner.poo;
 
+import static br.eng.augusteiner.poo.soda.Util.*;
 import static br.eng.augusteiner.poo.Moeda.*;
 
 import java.util.Date;

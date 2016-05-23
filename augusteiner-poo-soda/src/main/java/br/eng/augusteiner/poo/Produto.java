@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo;
 
-import static br.eng.augusteiner.poo.Moeda.LOCALE_PADRAO;
+import static br.eng.augusteiner.poo.soda.Util.*;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>

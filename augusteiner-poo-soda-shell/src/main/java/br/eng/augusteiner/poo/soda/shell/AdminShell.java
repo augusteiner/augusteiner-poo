@@ -2,6 +2,7 @@
 package br.eng.augusteiner.poo.soda.shell;
 
 import static br.eng.augusteiner.poo.Util.*;
+import static br.eng.augusteiner.poo.soda.Util.*;
 import static br.eng.augusteiner.poo.soda.shell.App.*;
 
 import java.io.IOException;

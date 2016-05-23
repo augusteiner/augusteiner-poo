@@ -1,10 +1,11 @@
 
 package br.eng.augusteiner.poo;
 
+import static br.eng.augusteiner.poo.soda.Util.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -29,8 +30,6 @@ public class Moeda {
             MOEDAS_CONHECIDAS = Collections.unmodifiableCollection(moedas);
         }
     }
-    public static final Locale LOCALE_PT_BR = new Locale("pt", "BR");
-    public static final Locale LOCALE_PADRAO = LOCALE_PT_BR;
 
     public static final String SIMBOLO = "R$";
 

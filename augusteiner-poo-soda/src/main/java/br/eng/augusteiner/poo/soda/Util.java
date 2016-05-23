@@ -3,7 +3,9 @@ package br.eng.augusteiner.poo.soda;
 
 import static br.eng.augusteiner.poo.Moeda.*;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Locale;
 
 import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.QuantidadeMoeda;
@@ -12,6 +14,9 @@ import br.eng.augusteiner.poo.QuantidadeMoeda;
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class Util {
+
+    public static final Locale LOCALE_PT_BR = new Locale("pt", "BR");
+    public static final Locale LOCALE_PADRAO = LOCALE_PT_BR;
 
     public static String moedasToString(Moeda... moedas) {
 
