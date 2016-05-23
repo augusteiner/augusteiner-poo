@@ -1,8 +1,7 @@
 
 package br.eng.augusteiner.poo.soda;
 
-import static br.eng.augusteiner.poo.Util.println;
-import static br.eng.augusteiner.poo.soda.Util.moedasToString;
+import static br.eng.augusteiner.poo.soda.Util.*;
 
 import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
@@ -38,5 +37,10 @@ public class Main_Validar_Modelo {
         println(moedasToString(
             m25,
             m10));
+    }
+
+    private static void println(Object text) {
+
+        System.out.println(text);
     }
 }
