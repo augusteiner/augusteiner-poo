@@ -11,7 +11,7 @@
     <groupId>br.eng.augusteiner.poo.soda.shell</groupId>
     <artifactId>augusteiner-poo-soda-shell</artifactId>
     <version>0.1.0-RELEASE</version>
-    <name>augusteiner-poo-shell</name>
+    <name>augusteiner-poo-soda-shell</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>

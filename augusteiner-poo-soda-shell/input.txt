@@ -1,0 +1,13 @@
+admin
+admin
+cp coca200 Coca-Cola_200ml 2.5
+re coca200 10
+ve
+exit
+m1
+m1
+m50
+sp coca200
+rp
+exit
+

@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import com.budhash.cliche.Command;
 import com.budhash.cliche.Param;
+import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
 import br.eng.augusteiner.poo.Produto;
@@ -19,8 +20,9 @@ import br.eng.augusteiner.poo.QuantidadeProduto;
  */
 public class AdminShell {
 
-    public static final String PROGRAM_NAME = AdminShell.class.getSimpleName();
+    private static final String PROGRAM_NAME = AdminShell.class.getSimpleName();
 
+    private static Shell SHELL = null;
     private static int tentativas = 0;
 
     public static void iniciar() throws IOException {
@@ -34,10 +36,11 @@ public class AdminShell {
 
         tentativas = 0;
 
-        ShellFactory.createConsoleShell(
+        SHELL = ShellFactory.createConsoleShell(
             "#",
             PROGRAM_NAME,
-            new AdminShell()).commandLoop();
+            new AdminShell());
+        SHELL.commandLoop();
     }
 
     private static boolean isAdminAutenticado() {
@@ -51,7 +54,7 @@ public class AdminShell {
     public void cadastrarProduto() {
 
         print("Informe o código do produto: ");
-        String codigo = lerString().toUpperCase();
+        String codigo = lerString();
 
         cadastrarProduto(codigo);
     }
@@ -62,7 +65,7 @@ public class AdminShell {
         String codigo) {
 
         cadastrarProduto(
-            codigo.toUpperCase(),
+            codigo,
             0);
     }
 
@@ -70,14 +73,14 @@ public class AdminShell {
     public void cadastrarProduto(
         @Param(name = "Código", description = "Código do Refrigerante")
         String codigo,
-        @Param(name = "Código", description = "Código do Refrigerante")
+        @Param(name = "Qte", description = "Quantas unidades do Refrigerante")
         int qte) {
 
         print("Informe a descrição do produto: ");
         String descricao = lerString();
 
         cadastrarProduto(
-            codigo.toUpperCase(),
+            codigo,
             descricao,
             qte);
     }
@@ -91,15 +94,35 @@ public class AdminShell {
         @Param(name = "Qte", description = "Quantas unidades do Refrigerante")
         int qte) {
 
-        print("Informe o preço do produto: ");
+        print("Informe o preço: ");
         double preco = lerDouble();
+
+        cadastrarProduto(
+            codigo,
+            descricao,
+            qte,
+            preco);
+    }
+
+    @Command
+    public void cadastrarProduto(
+        @Param(name = "Código", description = "Código do Refrigerante")
+        String codigo,
+        @Param(name = "Descrição", description = "Descrição do Refrigerante")
+        String descricao,
+        @Param(name = "Qte", description = "Quantas unidades do Refrigerante")
+        int qte,
+        @Param(name = "Preço", description = "Preço do Refrigerante")
+        double preco) {
 
         Produto produto = new Produto(
             codigo.toUpperCase(),
-            descricao,
+            descricao.replace("_", " "),
             preco);
 
-        MAQUINA.addProduto(produto, qte);
+        MAQUINA.addProduto(
+            produto,
+            qte);
 
         exibirProduto(produto);
     }
@@ -109,7 +132,7 @@ public class AdminShell {
         @Param(name = "Código", description = "Código do Refrigerante")
         String codigo,
         @Param(name = "Qte", description = "Quantas unidades do Refrigerante")
-        int quantidade) {
+        int qte) {
 
         codigo = codigo.toUpperCase();
 
@@ -126,21 +149,12 @@ public class AdminShell {
 
         MAQUINA.addProduto(
             produto,
-            quantidade);
+            qte);
 
         System.out.println(String.format(
             "Adicionadas %s %s ao estoque",
-            quantidade,
+            qte,
             produto));
-    }
-
-    @Command
-    public void verMoedas() {
-
-        for (QuantidadeMoeda qte : MAQUINA.getMoedas()) {
-
-            exibirMoedas(qte);
-        }
     }
 
     @Command
@@ -149,6 +163,15 @@ public class AdminShell {
         for (QuantidadeProduto qte : MAQUINA.getEstoque()) {
 
             exibirProduto(qte);
+        }
+    }
+
+    @Command
+    public void verMoedas() {
+
+        for (QuantidadeMoeda qte : MAQUINA.getMoedas()) {
+
+            exibirMoedas(qte);
         }
     }
 }

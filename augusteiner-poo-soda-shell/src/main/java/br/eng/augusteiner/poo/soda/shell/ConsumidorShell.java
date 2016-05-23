@@ -21,15 +21,16 @@ import br.eng.augusteiner.poo.Produto;
 public class ConsumidorShell {
 
     public static final String PROGRAM_NAME = ConsumidorShell.class.getSimpleName();
+    static Shell SHELL = null;
 
     public static void iniciar() throws IOException {
 
-        Shell shell = ShellFactory.createConsoleShell(
+        SHELL = ShellFactory.createConsoleShell(
             "$",
             PROGRAM_NAME,
             new ConsumidorShell());
 
-        shell.commandLoop();
+        SHELL.commandLoop();
     }
 
     @Command(
@@ -44,6 +45,21 @@ public class ConsumidorShell {
     private Produto buscarRefrigerante(String codigo) {
 
         return MAQUINA.produto(codigo);
+    }
+
+    public void exibirCompra(Compra compra) {
+
+        exibirMensagem("Compra realizada com sucesso!");
+
+        exibirProduto(compra.getProduto());
+
+        println(
+            "Recebido: %s",
+            compra.getValorEntrada());
+
+        println(
+            "Troco: %s",
+            compra.getValorTroco());
     }
 
     public void inserirMoeda(double valor) {
@@ -108,6 +124,15 @@ public class ConsumidorShell {
     }
 
     @Command(description = "Listar refrigerantes")
+    public void listar() {
+
+        for (Produto produto : MAQUINA.getProdutosAVenda()) {
+
+            exibirProduto(produto);
+        }
+    }
+
+    @Command(description = "Listar refrigerantes")
     public void resumoCompra() {
 
         Compra compra = MAQUINA.getCompraAtual();
@@ -123,17 +148,8 @@ public class ConsumidorShell {
         }
     }
 
-    @Command(description = "Listar refrigerantes")
-    public void listar() {
-
-        for (Produto produto : MAQUINA.getProdutosAVenda()) {
-
-            exibirProduto(produto);
-        }
-    }
-
     @Command(description = "Retirar produtos")
-    public void retirada() {
+    public void retirarProduto() {
 
         if (MAQUINA.getCompraAtual() == null) {
 
@@ -145,23 +161,8 @@ public class ConsumidorShell {
         exibirCompra(compra);
     }
 
-    public void exibirCompra(Compra compra) {
-
-        exibirMensagem("Compra realizada com sucesso!");
-
-        exibirProduto(compra.getProduto());
-
-        println(
-            "Recebido: %s",
-            compra.getValorEntrada());
-
-        println(
-            "Troco: %s",
-            compra.getValorTroco());
-    }
-
     @Command(description = "Seleção de refrigerante")
-    public void selecionar(
+    public void selecionarProduto(
         @Param(name = "Código", description = "Código do refrigerante")
         String codigo) {
 

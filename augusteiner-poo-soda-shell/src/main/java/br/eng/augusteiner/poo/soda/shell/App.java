@@ -1,12 +1,9 @@
 
 package br.eng.augusteiner.poo.soda.shell;
 
-import static br.eng.augusteiner.poo.Util.println;
-import static org.fusesource.jansi.Ansi.ansi;
-import static org.fusesource.jansi.Ansi.Color.CYAN;
-import static org.fusesource.jansi.Ansi.Color.GREEN;
-import static org.fusesource.jansi.Ansi.Color.RED;
-import static org.fusesource.jansi.Ansi.Color.YELLOW;
+import static br.eng.augusteiner.poo.Util.*;
+import static org.fusesource.jansi.Ansi.*;
+import static org.fusesource.jansi.Ansi.Color.*;
 
 import java.io.IOException;
 
