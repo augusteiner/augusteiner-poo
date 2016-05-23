@@ -11,6 +11,7 @@ import com.budhash.cliche.Param;
 import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
+import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
 import br.eng.augusteiner.poo.QuantidadeMoeda;
 import br.eng.augusteiner.poo.QuantidadeProduto;
@@ -127,6 +128,60 @@ public class AdminShell {
         exibirProduto(produto);
     }
 
+    public void inserirMoeda(Moeda moeda) {
+
+        MAQUINA.addMoeda(moeda);
+
+        exibirMensagem(
+            "Moeda '%s' inserida",
+            moeda);
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m1",
+        name = "m1")
+    public void inserirMoeda1() {
+
+        inserirMoeda(Moeda.doValor(1));
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m10",
+        name = "m10")
+    public void inserirMoeda10() {
+
+        inserirMoeda(Moeda.doValor(0.10));
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m25",
+        name = "m25")
+    public void inserirMoeda25() {
+
+        inserirMoeda(Moeda.doValor(0.25));
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m5",
+        name = "m5")
+    public void inserirMoeda5() {
+
+        inserirMoeda(Moeda.doValor(0.05));
+    }
+
+    @Command(
+        description = "Inserir moeda de R$ 1,00",
+        abbrev = "m50",
+        name = "m50")
+    public void inserirMoeda50() {
+
+        inserirMoeda(Moeda.doValor(0.50));
+    }
+
     @Command(description = "Repõe produto já cadastrado no estoque")
     public void reporEstoque(
         @Param(name = "Código", description = "Código do Refrigerante")
@@ -171,7 +226,7 @@ public class AdminShell {
 
         for (QuantidadeMoeda qte : MAQUINA.getMoedas()) {
 
-            exibirMoedas(qte);
+            exibirMoeda(qte);
         }
     }
 }
