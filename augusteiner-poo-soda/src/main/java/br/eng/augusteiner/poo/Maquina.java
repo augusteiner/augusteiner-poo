@@ -48,10 +48,10 @@ public final class Maquina {
         Moeda moeda,
         int quantidade) {
 
-        System.out.println(String.format(
-            "Removendo moeda %s (%d)",
-            moeda,
-            quantidade));
+        //System.out.println(String.format(
+        //    "Removendo moeda %s (%d)",
+        //    moeda,
+        //    quantidade));
 
         addMoeda(
             moeda,
@@ -260,9 +260,9 @@ public final class Maquina {
         BigDecimal valorTroco = BigDecimal.valueOf(compra.getValorEntrada())
             .subtract(BigDecimal.valueOf(produto.getPreco()));
 
-        System.out.println(String.format(
-            "Troco a dar: %s",
-            valorTroco));
+        //System.out.println(String.format(
+        //    "Troco a dar: %s",
+        //    valorTroco));
 
         for (Moeda moeda : Moeda.getMoedasConhecidas()) {
 
@@ -271,11 +271,11 @@ public final class Maquina {
                     .multiply(BigDecimal.valueOf(100)))
                 .intValue();
 
-            System.out.println(String.format(
-                "%s * 100 / %s * 100 = %s",
-                valorTroco,
-                moeda.getValor(),
-                qte));
+            //System.out.println(String.format(
+            //    "%s * 100 / %s * 100 = %s",
+            //    valorTroco,
+            //    moeda.getValor(),
+            //    qte));
 
             troco.add(new QuantidadeMoeda(
                 moeda,
@@ -284,14 +284,14 @@ public final class Maquina {
             valorTroco = valorTroco.subtract(BigDecimal.valueOf(moeda.getValor() * qte));
         }
 
-        System.out.println("Troco calculado:");
-
-        for (QuantidadeMoeda qte : troco) {
-
-            System.out.println(String.format(
-                "%s",
-                qte));
-        }
+        //System.out.println("Troco calculado:");
+        //
+        //for (QuantidadeMoeda qte : troco) {
+        //
+        //    System.out.println(String.format(
+        //        "%s",
+        //        qte));
+        //}
 
         compra.setTroco(troco);
     }
