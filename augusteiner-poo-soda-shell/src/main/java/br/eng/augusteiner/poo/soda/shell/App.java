@@ -9,16 +9,15 @@ import java.io.IOException;
 
 import org.fusesource.jansi.Ansi;
 
-import br.eng.augusteiner.poo.Maquina;
-
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 public class App {
 
-    public static final Maquina MAQUINA = Maquina.getSingleton();
+    static {
 
-    private static final boolean CONSOLE_EXISTS = System.console() != null;
+        Ansi.setEnabled(System.console() != null);
+    }
 
     private static Ansi error() {
 
@@ -29,13 +28,7 @@ public class App {
         Ansi ansi,
         String text) {
 
-        if (CONSOLE_EXISTS) {
-
-            println(ansi.a(text).reset().toString());
-        } else {
-
-            println(text);
-        }
+        println(ansi.a(text).reset().toString());
     }
 
     public static void exibirAlerta(String mensagem) {
@@ -93,11 +86,6 @@ public class App {
             "$$ " + moeda.toString());
     }
 
-    private static Ansi moeda() {
-
-        return ansi().fg(BLUE).bold();
-    }
-
     public static void exibirProduto(Object produto) {
 
         exibir(
@@ -113,6 +101,11 @@ public class App {
     public static void main(String[] args) throws IOException {
 
         ConsumidorShell.iniciar();
+    }
+
+    private static Ansi moeda() {
+
+        return ansi().fg(BLUE).bold();
     }
 
     private static Ansi produto() {
