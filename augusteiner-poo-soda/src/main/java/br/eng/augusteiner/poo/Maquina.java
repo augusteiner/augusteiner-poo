@@ -25,6 +25,57 @@ public final class Maquina {
         private static final Maquina MAQUINA = new Maquina();
     }
 
+    private static void calcularTroco(
+        Maquina maquina,
+        Compra compra) {
+
+        Produto produto = compra.getProduto();
+        List<QuantidadeMoeda> troco = new ArrayList<QuantidadeMoeda>();
+
+        BigDecimal valorTroco = BigDecimal.valueOf(compra.getValorEntrada())
+            .subtract(BigDecimal.valueOf(produto.getPreco()));
+
+        //System.out.println(String.format(
+        //    "Troco a dar: %s",
+        //    valorTroco));
+
+        for (Moeda moeda : Moeda.getMoedasConhecidas()) {
+
+            int qte = valorTroco.multiply(BigDecimal.valueOf(100))
+                .divide(BigDecimal.valueOf(moeda.getValor())
+                    .multiply(BigDecimal.valueOf(100)))
+                .intValue();
+
+            qte = min(
+                qte,
+                maquina.getQuantidadeMoedas(moeda));
+
+            //System.out.println(String.format(
+            //    "%s * 100 / %s * 100 = %s",
+            //    valorTroco,
+            //    moeda.getValor(),
+            //    qte));
+
+            troco.add(new QuantidadeMoeda(
+                moeda,
+                qte));
+
+            valorTroco = valorTroco.subtract(
+                BigDecimal.valueOf(moeda.getValor()).multiply(BigDecimal.valueOf(qte)));
+        }
+
+        //System.out.println("Troco calculado:");
+        //
+        //for (QuantidadeMoeda qte : troco) {
+        //
+        //    System.out.println(String.format(
+        //        "%s",
+        //        qte));
+        //}
+
+        compra.setTroco(troco);
+    }
+
     public static Maquina getSingleton() {
 
         return Nested.MAQUINA;
@@ -44,20 +95,6 @@ public final class Maquina {
         initMoedas();
     }
 
-    private void removeMoeda(
-        Moeda moeda,
-        int quantidade) {
-
-        //System.out.println(String.format(
-        //    "Removendo moeda %s (%d)",
-        //    moeda,
-        //    quantidade));
-
-        addMoeda(
-            moeda,
-            - quantidade);
-    }
-
     public void addMoeda(Moeda moeda) {
 
         this.addMoeda(
@@ -72,15 +109,6 @@ public final class Maquina {
         QuantidadeMoeda qte = this.moedas.get(moeda);
 
         qte.addQuantidade(quantidade);
-    }
-
-    public void inserirMoeda(Moeda moeda) {
-
-        this.addMoeda(moeda);
-
-        this.getCompraAtual().addMoeda(
-            moeda,
-            1);
     }
 
     public void addProduto(Produto produto) {
@@ -110,72 +138,11 @@ public final class Maquina {
         qte.addQuantidade(quantidade);
     }
 
-    public Iterable<QuantidadeProduto> getEstoque() {
+    private void calcularTroco(Compra compra) {
 
-        return this.estoque.values();
-    }
-
-    public Iterable<QuantidadeMoeda> getMoedas() {
-
-        return this.moedas.values();
-    }
-
-    public Iterable<Produto> getProdutosAVenda() {
-
-        return this.estoque.keySet()
-            .stream()
-            .filter(new Predicate<Produto>() {
-
-                @Override
-                public boolean test(Produto t) {
-
-                    QuantidadeProduto qte = Maquina.this.estoque.get(t);
-
-                    return qte != null &&
-                        qte.getQuantidade() > 0;
-                }})
-            .collect(Collectors.toList());
-    }
-
-    public Iterable<Produto> getProdutos() {
-
-        return this.estoque.keySet();
-    }
-
-    private void initMoedas() {
-
-        initMap(this.moedas);
-    }
-
-    public Produto produto(String codigo) {
-
-        for (Produto produto : this.getProdutos()) {
-
-            if (produto.getCodigo().equals(codigo)) {
-
-                return produto;
-            }
-        }
-
-        return null;
-    }
-
-    public void novaCompra() {
-
-        if (this.compraAtual == null) {
-
-            this.compraAtual = new Compra();
-        }
-    }
-
-    public Compra getCompraAtual() {
-
-        return this.compraAtual;
-    }
-
-    private void setCompraAtual(Compra compraAtual) {
-
-        this.compraAtual = compraAtual;
+        calcularTroco(
+            this,
+            compra);
     }
 
     public Compra encerrarCompra() {
@@ -238,67 +205,41 @@ public final class Maquina {
         return compra;
     }
 
-    private void removerProduto(Produto produto) {
+    public Compra getCompraAtual() {
 
-        this.estoque.get(produto).removeQuantidade(1);
+        return this.compraAtual;
     }
 
-    private void calcularTroco(Compra compra) {
+    public Iterable<QuantidadeProduto> getEstoque() {
 
-        calcularTroco(
-            this,
-            compra);
+        return this.estoque.values();
     }
 
-    private static void calcularTroco(
-        Maquina maquina,
-        Compra compra) {
+    public Iterable<QuantidadeMoeda> getMoedas() {
 
-        Produto produto = compra.getProduto();
-        List<QuantidadeMoeda> troco = new ArrayList<QuantidadeMoeda>();
+        return this.moedas.values();
+    }
 
-        BigDecimal valorTroco = BigDecimal.valueOf(compra.getValorEntrada())
-            .subtract(BigDecimal.valueOf(produto.getPreco()));
+    public Iterable<Produto> getProdutos() {
 
-        //System.out.println(String.format(
-        //    "Troco a dar: %s",
-        //    valorTroco));
+        return this.estoque.keySet();
+    }
 
-        for (Moeda moeda : Moeda.getMoedasConhecidas()) {
+    public Iterable<Produto> getProdutosAVenda() {
 
-            int qte = valorTroco.multiply(BigDecimal.valueOf(100))
-                .divide(BigDecimal.valueOf(moeda.getValor())
-                    .multiply(BigDecimal.valueOf(100)))
-                .intValue();
+        return this.estoque.keySet()
+            .stream()
+            .filter(new Predicate<Produto>() {
 
-            qte = min(
-                qte,
-                maquina.getQuantidadeMoedas(moeda));
+                @Override
+                public boolean test(Produto t) {
 
-            //System.out.println(String.format(
-            //    "%s * 100 / %s * 100 = %s",
-            //    valorTroco,
-            //    moeda.getValor(),
-            //    qte));
+                    QuantidadeProduto qte = Maquina.this.estoque.get(t);
 
-            troco.add(new QuantidadeMoeda(
-                moeda,
-                qte));
-
-            valorTroco = valorTroco.subtract(
-                BigDecimal.valueOf(moeda.getValor()).multiply(BigDecimal.valueOf(qte)));
-        }
-
-        //System.out.println("Troco calculado:");
-        //
-        //for (QuantidadeMoeda qte : troco) {
-        //
-        //    System.out.println(String.format(
-        //        "%s",
-        //        qte));
-        //}
-
-        compra.setTroco(troco);
+                    return qte != null &&
+                        qte.getQuantidade() > 0;
+                }})
+            .collect(Collectors.toList());
     }
 
     public int getQuantidadeMoedas(Moeda moeda) {
@@ -306,5 +247,64 @@ public final class Maquina {
         QuantidadeMoeda qte = this.moedas.get(moeda);
 
         return qte != null ? qte.getQuantidade() : 0;
+    }
+
+    private void initMoedas() {
+
+        initMap(this.moedas);
+    }
+
+    public void inserirMoeda(Moeda moeda) {
+
+        this.addMoeda(moeda);
+
+        this.getCompraAtual().addMoeda(
+            moeda,
+            1);
+    }
+
+    public void novaCompra() {
+
+        if (this.compraAtual == null) {
+
+            this.compraAtual = new Compra();
+        }
+    }
+
+    public Produto produto(String codigo) {
+
+        for (Produto produto : this.getProdutos()) {
+
+            if (produto.getCodigo().equals(codigo)) {
+
+                return produto;
+            }
+        }
+
+        return null;
+    }
+
+    private void removeMoeda(
+        Moeda moeda,
+        int quantidade) {
+
+        //System.out.println(String.format(
+        //    "Removendo moeda %s (%d)",
+        //    moeda,
+        //    quantidade));
+
+        addMoeda(
+            moeda,
+            - quantidade);
+    }
+
+    private void removerProduto(Produto produto) {
+
+        this.estoque.get(produto).removeQuantidade(1);
+    }
+
+    private void setCompraAtual(Compra compraAtual) {
+
+        this.compraAtual = compraAtual;
     }
 }
