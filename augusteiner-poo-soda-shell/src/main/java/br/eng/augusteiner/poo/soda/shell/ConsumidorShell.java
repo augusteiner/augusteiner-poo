@@ -2,6 +2,7 @@
 package br.eng.augusteiner.poo.soda.shell;
 
 import static br.eng.augusteiner.poo.Util.*;
+import static br.eng.augusteiner.poo.Compra.*;
 import static br.eng.augusteiner.poo.soda.shell.App.*;
 
 import java.io.IOException;
@@ -23,14 +24,17 @@ import br.eng.augusteiner.poo.QuantidadeMoeda;
 public class ConsumidorShell {
 
     public static final String PROGRAM_NAME = ConsumidorShell.class.getSimpleName();
-    static Shell SHELL = null;
+    static final Shell SHELL;
 
-    public static void iniciar() throws IOException {
+    static {
 
         SHELL = ShellFactory.createConsoleShell(
             "$",
             PROGRAM_NAME,
             new ConsumidorShell());
+    }
+
+    public static void iniciar() throws IOException {
 
         SHELL.commandLoop();
     }

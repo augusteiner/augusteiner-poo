@@ -22,10 +22,20 @@ import br.eng.augusteiner.poo.QuantidadeProduto;
  */
 public class AdminShell {
 
+    static final Shell SHELL;
+
     private static final String PROGRAM_NAME = AdminShell.class.getSimpleName();
 
-    private static Shell SHELL = null;
     private static int tentativas = 0;
+
+    static {
+
+        SHELL = ShellFactory.createSubshell(
+            "#",
+            ConsumidorShell.SHELL,
+            PROGRAM_NAME,
+            new AdminShell());
+    }
 
     private static Maquina getMaquina() {
 
@@ -43,10 +53,6 @@ public class AdminShell {
 
         tentativas = 0;
 
-        SHELL = ShellFactory.createConsoleShell(
-            "#",
-            PROGRAM_NAME,
-            new AdminShell());
         SHELL.commandLoop();
     }
 
