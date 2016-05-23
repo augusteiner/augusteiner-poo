@@ -12,6 +12,9 @@ Executando
 ----------
 
 ```bash
+
+mvn package install
+
 mvn exec:java \
     -Dexec.mainClass=br.eng.augusteiner.poo.hello.social.JTweet \
     -Dexec.args="--status <StatusAqui>"
