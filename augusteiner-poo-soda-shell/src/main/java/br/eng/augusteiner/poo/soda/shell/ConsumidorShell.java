@@ -179,7 +179,17 @@ public class ConsumidorShell {
 
         Compra compra = getMaquina().encerrarCompra();
 
-        exibirCompra(compra);
+        if ((compra.getStatus() & STATUS_OK) == STATUS_OK) {
+
+            exibirCompra(compra);
+
+        } else {
+
+            exibirMensagem(
+                "Compra não realizada: %s",
+                compra.getStatusAsString());
+
+        }
     }
 
     @Command(description = "Seleção de refrigerante")
