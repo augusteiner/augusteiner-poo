@@ -52,6 +52,8 @@ public class AdminShell {
             return;
         }
 
+        exibirMensagem("Bem vindo ao console do administrador!");
+
         tentativas = 0;
 
         SHELL.commandLoop();
@@ -138,7 +140,31 @@ public class AdminShell {
             produto,
             qte);
 
-        exibirProduto(produto);
+        if (qte > 0) {
+
+            exibirMensagemReposicao(
+                produto,
+                qte);
+
+        } else {
+
+            exibirMensagem(
+                "Produto '%s' cadastrado com sucesso",
+                produto);
+
+        }
+
+    }
+
+    private void exibirMensagemReposicao(
+        Produto produto,
+        int qte) {
+
+        exibirMensagem(String.format(
+            "Adicionado(s) %s '%s' ao estoque",
+            qte,
+            produto));
+
     }
 
     public void inserirMoeda(Moeda moeda) {
@@ -286,10 +312,9 @@ public class AdminShell {
             produto,
             qte);
 
-        System.out.println(String.format(
-            "Adicionadas %s %s ao estoque",
-            qte,
-            produto));
+        exibirMensagemReposicao(
+            produto,
+            qte);
     }
 
     @Command
@@ -307,6 +332,11 @@ public class AdminShell {
         for (QuantidadeMoeda qte : getMaquina().getMoedas()) {
 
             exibirMoeda(qte);
+
         }
+
+        exibirMoeda(String.format(
+            "Total: R$ %.2f",
+            moedasToDouble(getMaquina().getMoedas())));
     }
 }

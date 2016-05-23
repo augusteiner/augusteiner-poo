@@ -60,13 +60,15 @@ public class ConsumidorShell {
 
         exibirProduto(compra.getProduto());
 
-        println(
-            "Recebido: %s",
-            compra.getValorEntrada());
+        exibirMensagem(String.format(
+            LOCALE_PADRAO,
+            "Recebido: %.2f",
+            compra.getValorEntrada()));
 
-        println(
-            "Troco: %s",
-            compra.getValorTroco());
+        exibirMensagem(String.format(
+            LOCALE_PADRAO,
+            "Troco: %.2f",
+            compra.getValorTroco()));
 
         for (QuantidadeMoeda qte : compra.getTroco()) {
 
@@ -88,10 +90,7 @@ public class ConsumidorShell {
 
         Moeda moeda = Moeda.doValor(valor);
 
-        if (getMaquina().getCompraAtual() == null) {
-
-            getMaquina().novaCompra();
-        }
+        getMaquina().novaCompra();
 
         getMaquina().inserirMoeda(moeda);
 
@@ -154,16 +153,24 @@ public class ConsumidorShell {
         }
     }
 
-    @Command(description = "Listar refrigerantes")
+    @Command(description = "Ver resumo da compra")
     public void resumoCompra() {
 
         Compra compra = getMaquina().getCompraAtual();
 
         if (compra != null) {
 
-            println("Resumo da Compra");
-            println(compra.getValorEntrada());
-            println(compra.getProduto());
+            exibirProduto("Resumo da Compra");
+
+            exibirProduto(String.format(
+                LOCALE_PADRAO,
+                "Total inserido: %.2f",
+                compra.getValorEntrada()));
+
+            exibirProduto(String.format(
+                "Produto: %s",
+                compra.getProduto()));
+
         } else {
 
             println("Compra ainda não iniciada");
@@ -198,15 +205,18 @@ public class ConsumidorShell {
         @Param(name = "Código", description = "Código do refrigerante")
         String codigo) {
 
-        Produto produto = buscarRefrigerante(codigo.toUpperCase());
+        Produto produto = buscarRefrigerante(codigo);
 
         if (produto != null) {
 
-             getMaquina().getCompraAtual().setProduto(produto);
+            getMaquina().novaCompra();
+
+            getMaquina().getCompraAtual().setProduto(produto);
+
         } else {
 
             exibirAlerta(
-                "Refrigerante #%s não encontrado!",
+                "Refrigerante #%s não disponível!",
                 codigo);
         }
     }
