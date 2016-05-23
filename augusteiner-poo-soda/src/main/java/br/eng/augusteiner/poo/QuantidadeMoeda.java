@@ -11,7 +11,9 @@ public class QuantidadeMoeda {
     private int quantidade;
     private Moeda moeda;
 
-    public QuantidadeMoeda(Moeda moeda, int quantidade) {
+    public QuantidadeMoeda(
+        Moeda moeda,
+        int quantidade) {
 
         this.moeda = moeda;
         this.quantidade = quantidade;
@@ -34,7 +36,7 @@ public class QuantidadeMoeda {
 
     public double getValor() {
 
-        return this.getMoeda().getValor() * this.getQuantidade();
+        return moedasToDouble(this);
     }
 
     public void setMoeda(Moeda moeda) {

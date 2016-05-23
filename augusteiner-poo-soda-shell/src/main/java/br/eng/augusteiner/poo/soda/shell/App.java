@@ -67,7 +67,7 @@ public class App {
 
         exibir(
             info(),
-            text);
+            "~> " + text);
     }
 
     public static void exibirMensagem(
@@ -75,7 +75,7 @@ public class App {
         Object... args) {
 
         exibirMensagem(String.format(
-            "~> " + format,
+            format,
             args));
     }
 
@@ -90,7 +90,7 @@ public class App {
 
         exibir(
             produto(),
-            produto.toString());
+            "## " + produto.toString());
     }
 
     private static Ansi info() {

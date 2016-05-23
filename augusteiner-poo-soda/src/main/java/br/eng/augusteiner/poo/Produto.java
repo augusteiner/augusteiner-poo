@@ -65,7 +65,7 @@ public class Produto {
 
         return String.format(
             LOCALE_PADRAO,
-            "#%s - %s : R$ %.2f",
+            "%s: %s -> R$ %.2f",
             getCodigo(),
             getDescricao(),
             getPreco());

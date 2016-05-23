@@ -45,14 +45,17 @@ public class Util {
 
     public static double moedasToDouble(Moeda... moedas) {
 
-        double valor = 0;
+        BigDecimal valor = BigDecimal.ZERO;
+        BigDecimal valorMoeda;
 
         for (Moeda moeda : moedas) {
 
-            valor += moeda.getValor();
+            valorMoeda = BigDecimal.valueOf(moeda.getValor());
+
+            valor = valor.add(valorMoeda);
         }
 
-        return valor;
+        return valor.doubleValue();
     }
 
     public static double moedasToDouble(QuantidadeMoeda... moedas) {
@@ -62,13 +65,18 @@ public class Util {
 
     public static double moedasToDouble(Iterable<QuantidadeMoeda> moedas) {
 
-        double valor = 0;
+        BigDecimal valor = BigDecimal.ZERO;
+        BigDecimal valorMoeda;
 
-        for (QuantidadeMoeda moeda : moedas) {
+        for (QuantidadeMoeda qte : moedas) {
 
-            valor += moeda.getValor();
+            valorMoeda = BigDecimal.valueOf(qte.getMoeda().getValor());
+
+            valor = valor.add(
+                valorMoeda.multiply(
+                    BigDecimal.valueOf(qte.getQuantidade())));
         }
 
-        return valor;
+        return valor.doubleValue();
     }
 }
