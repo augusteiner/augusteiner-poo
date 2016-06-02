@@ -22,12 +22,42 @@ public class Compra {
     public static final byte STATUS_OK = 32;
     public static final byte STATUS_OK_FALTA_TROCO = 40;
 
+    private static String statusAsString(byte status) {
+
+        switch (status) {
+
+            case STATUS_ENTRADA_INSUFICIENTE:
+                return "Entrada para compra insuficiente";
+
+            case STATUS_OK:
+                return "Compra ok";
+
+            case STATUS_OK_FALTA_TROCO:
+                return "Compra ok com moedas para troco em falta";
+
+            case STATUS_PRODUTO_NAO_SELECIONADO:
+                return "Produto da compra não selecionado";
+
+            case STATUS_INDEFINIDO:
+                return "Compra não iniciada";
+
+            default:
+                return "Status desconhecido";
+        }
+    }
+
+    public static String statusAsString(Compra compra) {
+
+        return statusAsString(compra.getStatus());
+    }
+
     private Produto produto;
 
     private Map<Moeda, QuantidadeMoeda> entrada;
     private Map<Moeda, QuantidadeMoeda> troco;
 
     private Date data;
+
     private byte status = STATUS_INDEFINIDO;
 
     public Compra() {
@@ -38,11 +68,6 @@ public class Compra {
         this.status = STATUS_INDEFINIDO;
 
         initEntrada();
-    }
-
-    private void initEntrada() {
-
-        initMap(this.entrada);
     }
 
     public void addMoeda(Moeda moeda, int quantidade) {
@@ -74,26 +99,7 @@ public class Compra {
 
     public String getStatusAsString() {
 
-        switch (this.getStatus()) {
-
-            case STATUS_ENTRADA_INSUFICIENTE:
-                return "Entrada para compra insuficiente";
-
-            case STATUS_OK:
-                return "Compra ok";
-
-            case STATUS_OK_FALTA_TROCO:
-                return "Compra ok com moedas para troco em falta";
-
-            case STATUS_PRODUTO_NAO_SELECIONADO:
-                return "Produto da compra não selecionado";
-
-            case STATUS_INDEFINIDO:
-                return "Compra não iniciada";
-
-            default:
-                return "Erro desconhecido";
-        }
+        return statusAsString(this.getStatus());
     }
 
     public Iterable<QuantidadeMoeda> getTroco() {
@@ -109,6 +115,11 @@ public class Compra {
     public double getValorTroco() {
 
         return Util.moedasToDouble(getTroco());
+    }
+
+    private void initEntrada() {
+
+        initMap(this.entrada);
     }
 
     public void setData(Date data) {

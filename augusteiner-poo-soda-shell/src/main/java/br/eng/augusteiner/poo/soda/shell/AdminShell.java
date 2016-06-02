@@ -4,6 +4,7 @@ package br.eng.augusteiner.poo.soda.shell;
 import static br.eng.augusteiner.poo.Util.*;
 import static br.eng.augusteiner.poo.soda.Util.*;
 import static br.eng.augusteiner.poo.soda.shell.App.*;
+import static br.eng.augusteiner.poo.soda.shell.ConsumidorShell.*;
 
 import java.io.IOException;
 
@@ -12,6 +13,7 @@ import com.budhash.cliche.Param;
 import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
+import br.eng.augusteiner.poo.Compra;
 import br.eng.augusteiner.poo.Maquina;
 import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
@@ -315,6 +317,15 @@ public class AdminShell {
         exibirMensagemReposicao(
             produto,
             qte);
+    }
+
+    @Command
+    public void verCompras() {
+
+        for (Compra compra : getMaquina().getCompras()) {
+
+            exibirCompra(compra);
+        }
     }
 
     @Command

@@ -87,12 +87,20 @@ public final class Maquina {
 
     private Map<Produto, QuantidadeProduto> estoque;
 
+    private List<Compra> compras;
+
     private Maquina() {
 
         moedas = new Hashtable<Moeda, QuantidadeMoeda>();
         estoque = new Hashtable<Produto, QuantidadeProduto>();
+        compras = new ArrayList<Compra>();
 
         initMoedas();
+    }
+
+    private void addCompra(Compra compra) {
+
+        this.compras.add(compra);
     }
 
     public void addMoeda(Moeda moeda) {
@@ -200,6 +208,8 @@ public final class Maquina {
 
                 compra.setStatus(STATUS_OK_FALTA_TROCO);
             }
+
+            this.addCompra(compra);
         }
 
         return compra;
@@ -208,6 +218,11 @@ public final class Maquina {
     public Compra getCompraAtual() {
 
         return this.compraAtual;
+    }
+
+    public Iterable<Compra> getCompras() {
+
+        return this.compras;
     }
 
     public Iterable<QuantidadeProduto> getEstoque() {

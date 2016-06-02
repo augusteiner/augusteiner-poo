@@ -25,6 +25,8 @@ import br.eng.augusteiner.poo.QuantidadeMoeda;
 public class ConsumidorShell {
 
     public static final String PROGRAM_NAME = ConsumidorShell.class.getSimpleName();
+
+
     static final Shell SHELL;
 
     static {
@@ -35,28 +37,7 @@ public class ConsumidorShell {
             new ConsumidorShell());
     }
 
-    public static void iniciar() throws IOException {
-
-        SHELL.commandLoop();
-    }
-
-    @Command(
-        description = "Iniciar console de adm. da máquina de refris",
-        abbrev = "admin",
-        name = "admin")
-    public void admin() throws IOException {
-
-        AdminShell.iniciar();
-    }
-
-    private Produto buscarRefrigerante(String codigo) {
-
-        return getMaquina().produtoDisponivel(codigo.toUpperCase());
-    }
-
-    public void exibirCompra(Compra compra) {
-
-        exibirMensagem("Compra realizada com sucesso!");
+    public static void exibirCompra(Compra compra) {
 
         exibirProduto(compra.getProduto());
 
@@ -79,6 +60,25 @@ public class ConsumidorShell {
                     qte.getMoeda());
             }
         }
+    }
+
+    public static void iniciar() throws IOException {
+
+        SHELL.commandLoop();
+    }
+
+    @Command(
+        description = "Iniciar console de adm. da máquina de refris",
+        abbrev = "admin",
+        name = "admin")
+    public void admin() throws IOException {
+
+        AdminShell.iniciar();
+    }
+
+    private Produto buscarRefrigerante(String codigo) {
+
+        return getMaquina().produtoDisponivel(codigo.toUpperCase());
     }
 
     private Maquina getMaquina() {
@@ -188,6 +188,8 @@ public class ConsumidorShell {
         Compra compra = getMaquina().encerrarCompra();
 
         if ((compra.getStatus() & STATUS_OK) == STATUS_OK) {
+
+            exibirMensagem("Compra realizada com sucesso!");
 
             exibirCompra(compra);
 
