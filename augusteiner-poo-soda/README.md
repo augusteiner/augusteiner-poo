@@ -22,10 +22,10 @@ troco);
 
 A sequência de do processo de compra é a seguinte:
 
-1. O usuário insere as moedas;
-2. O usuário escolhe o produto;
-3. O usuário retira o produto;
-4. O usuário retira o troco (caso haja);
+0. O usuário insere as moedas;
+0. O usuário escolhe o produto;
+0. O usuário retira o produto;
+0. O usuário retira o troco (caso haja);
 
 ## Interface do usuário responsável/dono
 
@@ -39,3 +39,4 @@ A interface do dono terá as seguintes funções:
 
 O sistema deverá ser implementado obedecendo os conceitos de OOP aprendidos em sala
 de aula.
+
