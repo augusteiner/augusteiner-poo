@@ -4,11 +4,14 @@ package br.eng.augusteiner.poo;
 import static java.lang.Math.*;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 
 import static br.eng.augusteiner.poo.Compra.*;
 import static br.eng.augusteiner.poo.Moeda.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +90,7 @@ public final class Maquina {
 
     private Map<Produto, QuantidadeProduto> estoque;
 
-    private List<Compra> compras;
+    private Collection<Compra> compras;
 
     private Maquina() {
 
@@ -209,6 +212,8 @@ public final class Maquina {
                 compra.setStatus(STATUS_OK_FALTA_TROCO);
             }
 
+            compra.setData(Date.from(Instant.now()));
+
             this.addCompra(compra);
         }
 
@@ -257,16 +262,14 @@ public final class Maquina {
             .collect(Collectors.toList());
     }
 
+    public int getQuantidadeCompras() {
+
+        return this.compras.size();
+    }
+
     public int getQuantidadeMoedas(Moeda moeda) {
 
         QuantidadeMoeda qte = this.moedas.get(moeda);
-
-        return qte != null ? qte.getQuantidade() : 0;
-    }
-
-    public int getQuantidadeProduto(Produto produto) {
-
-        QuantidadeProduto qte = this.estoque.get(produto);
 
         return qte != null ? qte.getQuantidade() : 0;
     }
@@ -308,17 +311,25 @@ public final class Maquina {
 
     public Produto produtoDisponivel(String codigo) {
 
-        Produto produto = produto(codigo);
+        Produto produto = this.produto(codigo);
 
-        if (this.getQuantidadeProduto(produto) > 0) {
-
-            return produto;
-
-        } else {
+        if (produto == null ||
+            this.quantidadeEstoque(produto) == 0) {
 
             return null;
 
+        } else {
+
+            return produto;
+
         }
+    }
+
+    public int quantidadeEstoque(Produto produto) {
+
+        QuantidadeProduto qte = this.estoque.get(produto);
+
+        return qte != null ? qte.getQuantidade() : 0;
     }
 
     private void removeMoeda(

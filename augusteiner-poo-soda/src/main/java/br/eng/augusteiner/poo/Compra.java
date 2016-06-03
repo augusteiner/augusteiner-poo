@@ -4,6 +4,7 @@ package br.eng.augusteiner.poo;
 import static br.eng.augusteiner.poo.soda.Util.*;
 import static br.eng.augusteiner.poo.Moeda.*;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
@@ -21,6 +22,11 @@ public class Compra {
     public static final byte STATUS_PRODUTO_INSUFICIENTE = 8;
     public static final byte STATUS_OK = 32;
     public static final byte STATUS_OK_FALTA_TROCO = 40;
+
+    public static final DateFormat FORMATO_DATA_PADRAO = DateFormat.getDateTimeInstance(
+        DateFormat.SHORT,
+        DateFormat.SHORT,
+        LOCALE_PADRAO);
 
     private static String statusAsString(byte status) {
 
@@ -70,7 +76,9 @@ public class Compra {
         initEntrada();
     }
 
-    public void addMoeda(Moeda moeda, int quantidade) {
+    public void addMoeda(
+        Moeda moeda,
+        int quantidade) {
 
         QuantidadeMoeda qte = this.entrada.get(moeda);
 
@@ -82,9 +90,19 @@ public class Compra {
         return this.data;
     }
 
+    public String getDataAsString() {
+
+        return this.getFormatoData().format(this.getData());
+    }
+
     public Iterable<QuantidadeMoeda> getEntrada() {
 
         return this.entrada.values();
+    }
+
+    protected DateFormat getFormatoData() {
+
+        return FORMATO_DATA_PADRAO;
     }
 
     public Produto getProduto() {
@@ -155,13 +173,18 @@ public class Compra {
         return String.format(
             LOCALE_PADRAO,
             "#%s: %s %s %.2f - %s %.2f = %s %.2f",
-            getData(),
-            getProduto().getDescricao(),
+
+            this.getDataAsString(),
+
+            this.getProduto().getDescricao(),
+
             SIMBOLO,
-            getProduto().getPreco(),
+            this.getProduto().getPreco(),
+
             SIMBOLO,
-            getValorEntrada(),
+            this.getValorEntrada(),
+
             SIMBOLO,
-            getValorTroco());
+            this.getValorTroco());
     }
 }

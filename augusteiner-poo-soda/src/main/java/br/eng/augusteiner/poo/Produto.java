@@ -23,7 +23,7 @@ public class Produto {
         String descricao,
         double preco) {
 
-        this.codigo = codigo;
+        this.codigo = codigo.toUpperCase();
 
         this.descricao = descricao;
 
