@@ -4,7 +4,6 @@ package br.eng.augusteiner.poo.soda.shell;
 import static br.eng.augusteiner.poo.Util.*;
 import static br.eng.augusteiner.poo.soda.Util.*;
 import static br.eng.augusteiner.poo.soda.shell.App.*;
-import static br.eng.augusteiner.poo.soda.shell.ConsumidorShell.*;
 
 import java.io.IOException;
 
@@ -25,20 +24,9 @@ import br.eng.augusteiner.poo.QuantidadeProduto;
  */
 public class AdminShell {
 
-    static final Shell SHELL;
-
     private static final String PROGRAM_NAME = AdminShell.class.getSimpleName();
 
     private static int tentativas = 0;
-
-    static {
-
-        SHELL = ShellFactory.createSubshell(
-            "#",
-            ConsumidorShell.SHELL,
-            PROGRAM_NAME,
-            new AdminShell());
-    }
 
     private static Maquina getMaquina() {
 
@@ -58,7 +46,7 @@ public class AdminShell {
 
         tentativas = 0;
 
-        SHELL.commandLoop();
+        novoShell().commandLoop();
     }
 
     private static boolean isAdminAutenticado() {
@@ -68,7 +56,16 @@ public class AdminShell {
         return tentativas > 1;
     }
 
-    @Command
+    private static Shell novoShell() {
+
+        return ShellFactory.createSubshell(
+            "#",
+            ConsumidorShell.getShellAtual(),
+            PROGRAM_NAME,
+            new AdminShell());
+    }
+
+    @Command(description = "Realizar cadastro de produto")
     public void cadastrarProduto() {
 
         print("Informe o código do produto: ");
@@ -77,7 +74,7 @@ public class AdminShell {
         cadastrarProduto(codigo);
     }
 
-    @Command
+    @Command(description = "Realizar cadastro de produto")
     public void cadastrarProduto(
         @Param(name = "Código", description = "Código do Refrigerante")
         String codigo) {
@@ -87,7 +84,7 @@ public class AdminShell {
             0);
     }
 
-    @Command
+    @Command(description = "Realizar cadastro de produto")
     public void cadastrarProduto(
         @Param(name = "Código", description = "Código do Refrigerante")
         String codigo,
@@ -103,7 +100,7 @@ public class AdminShell {
             qte);
     }
 
-    @Command
+    @Command(description = "Realizar cadastro de produto")
     public void cadastrarProduto(
         @Param(name = "Código", description = "Código do Refrigerante")
         String codigo,
@@ -122,7 +119,7 @@ public class AdminShell {
             preco);
     }
 
-    @Command
+    @Command(description = "Realizar cadastro de produto")
     public void cadastrarProduto(
         @Param(name = "Código", description = "Código do Refrigerante")
         String codigo,
@@ -134,7 +131,7 @@ public class AdminShell {
         double preco) {
 
         Produto produto = new Produto(
-            codigo.toUpperCase(),
+            codigo,
             descricao.replace("_", " "),
             preco);
 
@@ -319,16 +316,25 @@ public class AdminShell {
             qte);
     }
 
-    @Command
+    @Command(description = "Visualizar compras realizadas")
     public void verCompras() {
 
-        for (Compra compra : getMaquina().getCompras()) {
+        if (getMaquina().getQuantidadeCompras() == 0) {
 
-            exibirCompra(compra);
+            exibirMensagem("Ainda não foram realizadas compras");
+
+        } else {
+
+            exibirMensagem("Lista das Compras realizadas");
+
+            for (Compra compra : getMaquina().getCompras()) {
+
+                exibirCompra(compra);
+            }
         }
     }
 
-    @Command
+    @Command(description = "Visualizar estoque de produtos")
     public void verEstoque() {
 
         for (QuantidadeProduto qte : getMaquina().getEstoque()) {
@@ -337,7 +343,7 @@ public class AdminShell {
         }
     }
 
-    @Command
+    @Command(description = "Visualizar moedas disponíveis")
     public void verMoedas() {
 
         for (QuantidadeMoeda qte : getMaquina().getMoedas()) {

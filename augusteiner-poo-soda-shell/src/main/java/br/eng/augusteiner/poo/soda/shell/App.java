@@ -79,6 +79,18 @@ public class App {
             args));
     }
 
+    public static void exibirCompra(Object compra) {
+
+        exibir(
+            compra(),
+            "$$ " + compra.toString());
+    }
+
+    private static Ansi compra() {
+
+        return ansi().fg(MAGENTA).bold();
+    }
+
     public static void exibirMoeda(Object moeda) {
 
         exibir(

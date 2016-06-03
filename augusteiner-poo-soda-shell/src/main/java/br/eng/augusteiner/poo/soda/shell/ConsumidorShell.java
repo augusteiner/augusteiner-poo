@@ -24,18 +24,20 @@ import br.eng.augusteiner.poo.QuantidadeMoeda;
  */
 public class ConsumidorShell {
 
-    public static final String PROGRAM_NAME = ConsumidorShell.class.getSimpleName();
+    private static final class Holder {
 
-
-    static final Shell SHELL;
-
-    static {
-
-        SHELL = ShellFactory.createConsoleShell(
+        private static final Shell INSTANCIA = ShellFactory.createConsoleShell(
             "$",
             PROGRAM_NAME,
             new ConsumidorShell());
+
+        private static final Shell getSingleton() {
+
+            return INSTANCIA;
+        }
     }
+
+    public static final String PROGRAM_NAME = ConsumidorShell.class.getSimpleName();
 
     public static void exibirCompra(Compra compra) {
 
@@ -62,9 +64,14 @@ public class ConsumidorShell {
         }
     }
 
+    public static Shell getShellAtual() {
+
+        return Holder.getSingleton();
+    }
+
     public static void iniciar() throws IOException {
 
-        SHELL.commandLoop();
+        getShellAtual().commandLoop();
     }
 
     @Command(
@@ -78,7 +85,7 @@ public class ConsumidorShell {
 
     private Produto buscarRefrigerante(String codigo) {
 
-        return getMaquina().produtoDisponivel(codigo.toUpperCase());
+        return getMaquina().produtoDisponivel(codigo);
     }
 
     private Maquina getMaquina() {
@@ -207,7 +214,9 @@ public class ConsumidorShell {
         @Param(name = "Código", description = "Código do refrigerante")
         String codigo) {
 
-        Produto produto = buscarRefrigerante(codigo);
+        codigo = codigo.toUpperCase();
+
+        Produto produto = this.buscarRefrigerante(codigo);
 
         if (produto != null) {
 
