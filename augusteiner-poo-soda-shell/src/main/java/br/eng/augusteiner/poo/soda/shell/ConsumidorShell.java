@@ -58,7 +58,7 @@ public class ConsumidorShell {
             for (int i = 0; i < qte.getQuantidade(); i++) {
 
                 exibirMensagem(
-                    "Dispensando moeda: %s",
+                    "Dispensada moeda: %s",
                     qte.getMoeda());
             }
         }

@@ -65,7 +65,7 @@ public class Moeda {
 
     private String descricao;
 
-    Moeda(
+    private Moeda(
         double valor,
         String descricao) {
 
@@ -75,22 +75,12 @@ public class Moeda {
 
     public String getDescricao() {
 
-        return descricao;
+        return this.descricao;
     }
 
     public double getValor() {
 
-        return valor;
-    }
-
-    void setDescricao(String descricao) {
-
-        this.descricao = descricao;
-    }
-
-    void setValor(double valor) {
-
-        this.valor = valor;
+        return this.valor;
     }
 
     @Override
@@ -100,7 +90,7 @@ public class Moeda {
             LOCALE_PADRAO,
             "%s %.2f (%s)",
             SIMBOLO,
-            getValor(),
-            getDescricao());
+            this.getValor(),
+            this.getDescricao());
     }
 }

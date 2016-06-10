@@ -200,7 +200,9 @@ public class AdminShell {
         description = "Inserir moeda de R$ 1,00",
         abbrev = "m1",
         name = "m1")
-    public void inserirMoeda1(int qte) {
+    public void inserirMoeda1(
+        @Param(name = "Qte", description = "Quantidade de moedas")
+        int qte) {
 
         inserirMoeda(
             Moeda.doValor(1),
@@ -220,7 +222,9 @@ public class AdminShell {
         description = "Inserir moeda de R$ 1,00",
         abbrev = "m10",
         name = "m10")
-    public void inserirMoeda10(int qte) {
+    public void inserirMoeda10(
+        @Param(name = "Qte", description = "Quantidade de moedas")
+        int qte) {
 
         inserirMoeda(
             Moeda.doValor(0.10),
@@ -240,7 +244,9 @@ public class AdminShell {
         description = "Inserir moeda de R$ 1,00",
         abbrev = "m25",
         name = "m25")
-    public void inserirMoeda25(int qte) {
+    public void inserirMoeda25(
+        @Param(name = "Qte", description = "Quantidade de moedas")
+        int qte) {
 
         inserirMoeda(
             Moeda.doValor(0.25),
@@ -260,7 +266,9 @@ public class AdminShell {
         description = "Inserir moeda de R$ 1,00",
         abbrev = "m5",
         name = "m5")
-    public void inserirMoeda5(int qte) {
+    public void inserirMoeda5(
+        @Param(name = "Qte", description = "Quantidade de moedas")
+        int qte) {
 
         inserirMoeda(
             Moeda.doValor(0.05),
@@ -280,7 +288,9 @@ public class AdminShell {
         description = "Inserir moeda de R$ 1,00",
         abbrev = "m50",
         name = "m50")
-    public void inserirMoeda50(int qte) {
+    public void inserirMoeda50(
+        @Param(name = "Qte", description = "Quantidade de moedas")
+        int qte) {
 
         inserirMoeda(
             Moeda.doValor(0.50),
