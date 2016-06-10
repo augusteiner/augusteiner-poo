@@ -6,5 +6,15 @@ package br.eng.augusteiner.poo;
  */
 interface IMoedeiro {
 
+    void addMoeda(Moeda moeda);
+
+    void addMoeda(Moeda moeda, int quantidade);
+
+    Iterable<? extends IQuantidadeMoeda> getMoedas();
+
     int getQuantidadeMoedas(Moeda moeda);
+
+    void removeMoeda(Moeda moeda);
+
+    void removeMoeda(Moeda moeda, int quantidade);
 }

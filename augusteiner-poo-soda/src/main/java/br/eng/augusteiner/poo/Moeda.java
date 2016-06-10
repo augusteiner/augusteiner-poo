@@ -6,6 +6,7 @@ import static br.eng.augusteiner.poo.soda.Util.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -58,12 +59,34 @@ public class Moeda {
 
     public static void initMap(Map<Moeda, QuantidadeMoeda> moedas) {
 
-        for (Moeda moeda : getMoedasSuportadas()) {
+        initMap(moedas, getMoedasSuportadas());
+    }
+
+    public static void initMap(
+        Map<Moeda, QuantidadeMoeda> moedas,
+        Iterable<Moeda> moedasPermitidas) {
+
+        for (Moeda moeda : moedasPermitidas) {
 
             moedas.put(
                 moeda,
                 new QuantidadeMoeda(moeda, 0));
         }
+    }
+
+    public static Iterable<Moeda> moedasMenoresQue(Moeda moedaMaior) {
+
+        List<Moeda> moedas = new ArrayList<Moeda>();
+
+        for (Moeda moeda : getMoedasSuportadas()) {
+
+            if (moeda.getValor() < moedaMaior.getValor()) {
+
+                moedas.add(moeda);
+            }
+        }
+
+        return moedas;
     }
 
     private double valor;

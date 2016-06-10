@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 import java.time.Instant;
 
 import static br.eng.augusteiner.poo.Compra.*;
-import static br.eng.augusteiner.poo.Moeda.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +18,7 @@ import java.util.Map;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public final class Maquina implements IMoedeiro {
+public final class Maquina extends Moedeiro implements IMoedeiro {
 
     private static class Nested {
 
@@ -47,8 +46,8 @@ public final class Maquina implements IMoedeiro {
 
     private static Iterable<QuantidadeMoeda> calcularTroco(
         BigDecimal valorTroco,
-        Iterable<Moeda> moedasParaTroco,
-        IMoedeiro cofrinho) {
+        // Iterable<Moeda> moedasParaTroco,
+        IMoedeiro moedeiro) {
 
         List<QuantidadeMoeda> troco = new ArrayList<QuantidadeMoeda>();
 
@@ -56,13 +55,15 @@ public final class Maquina implements IMoedeiro {
         //    "Troco a dar: %s",
         //    valorTroco));
 
-        for (Moeda moeda : moedasParaTroco) {
+        for (IQuantidadeMoeda qteMoeda : moedeiro.getMoedas()) {
 
-            BigDecimal valorMoeda = BigDecimal.valueOf(moeda.getValor());
+            Moeda moeda = qteMoeda.getMoeda();
+
+            BigDecimal valorMoeda = valorMoeda(moeda);
 
             int qte = valorTroco.divide(valorMoeda).intValue();
 
-            qte = min(qte, cofrinho.getQuantidadeMoedas(moeda));
+            qte = min(qte, moedeiro.getQuantidadeMoedas(moeda));
 
             //System.out.println(String.format(
             //    "%s * 100 / %s * 100 = %s",
@@ -94,6 +95,17 @@ public final class Maquina implements IMoedeiro {
         return Nested.getSingleton();
     }
 
+    private static BigDecimal valorMoeda(Moeda moeda) {
+
+        return valorMoeda(moeda, 1);
+    }
+
+    private static BigDecimal valorMoeda(Moeda moeda, int quantidade) {
+
+        return BigDecimal.valueOf(moeda.getValor())
+            .multiply(BigDecimal.valueOf(quantidade));
+    }
+
     private static BigDecimal valorTroco(Compra compra) {
 
         Produto produto = compra.getProduto();
@@ -106,40 +118,25 @@ public final class Maquina implements IMoedeiro {
 
     private Compra compraAtual;
 
-    private Map<Moeda, QuantidadeMoeda> moedas;
-
     private Map<Produto, QuantidadeProduto> estoque;
 
     private Collection<Compra> compras;
 
     private Maquina() {
 
-        moedas = new Hashtable<Moeda, QuantidadeMoeda>();
+        super();
+
         estoque = new Hashtable<Produto, QuantidadeProduto>();
         compras = new ArrayList<Compra>();
 
-        initMoedas();
+        Moedeiro.initMoedeiro(
+            this,
+            Moeda.getMoedasSuportadas());
     }
 
     private void addCompra(Compra compra) {
 
         this.compras.add(compra);
-    }
-
-    public void addMoeda(Moeda moeda) {
-
-        this.addMoeda(
-            moeda,
-            1);
-    }
-
-    private void addMoeda(
-        Moeda moeda,
-        int quantidade) {
-
-        QuantidadeMoeda qte = this.moedas.get(moeda);
-
-        qte.addQuantidade(quantidade);
     }
 
     public void addProduto(Produto produto) {
@@ -173,6 +170,20 @@ public final class Maquina implements IMoedeiro {
 
         Iterable<QuantidadeMoeda> troco = calcularTrocoMinimoMoedas(compra);
 
+        for (QuantidadeMoeda qte : troco) {
+
+            Iterable<Moeda> moedasParaTroco = Moeda.moedasMenoresQue(qte.getMoeda());
+
+            Moedeiro moedeiro = Moedeiro.moedeiroComMoedasDe(moedasParaTroco);
+
+            // moedeiro.
+
+            calcularTroco(
+                valorMoeda(qte.getMoeda(), qte.getQuantidade()),
+                // moedasParaTroco,
+                moedeiro);
+        }
+
         // TODO Manipular troco mínimo para calcular troco com máximo de moedas
 
         return troco;
@@ -182,7 +193,7 @@ public final class Maquina implements IMoedeiro {
 
         return calcularTroco(
             valorTroco(compra),
-            Moeda.getMoedasSuportadas(),
+            // Moeda.getMoedasSuportadas(),
             this);
     }
 
@@ -281,11 +292,6 @@ public final class Maquina implements IMoedeiro {
         return this.estoque.values();
     }
 
-    public Iterable<? extends IQuantidadeMoeda> getMoedas() {
-
-        return this.moedas.values();
-    }
-
     public Iterable<Produto> getProdutos() {
 
         return this.estoque.keySet();
@@ -294,19 +300,6 @@ public final class Maquina implements IMoedeiro {
     public int getQuantidadeCompras() {
 
         return this.compras.size();
-    }
-
-    @Override
-    public int getQuantidadeMoedas(Moeda moeda) {
-
-        QuantidadeMoeda qte = this.moedas.get(moeda);
-
-        return qte != null ? qte.getQuantidade() : 0;
-    }
-
-    private void initMoedas() {
-
-        initMap(this.moedas);
     }
 
     public void inserirMoeda(Moeda moeda) {
@@ -375,20 +368,6 @@ public final class Maquina implements IMoedeiro {
         QuantidadeProduto qte = this.estoque.get(produto);
 
         return qte != null ? qte.getQuantidade() : 0;
-    }
-
-    private void removeMoeda(
-        Moeda moeda,
-        int quantidade) {
-
-        //System.out.println(String.format(
-        //    "Removendo moeda %s (%d)",
-        //    moeda,
-        //    quantidade));
-
-        addMoeda(
-            moeda,
-            - quantidade);
     }
 
     private void removerProduto(Produto produto) {
