@@ -15,8 +15,6 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -287,23 +285,6 @@ public final class Maquina {
         return this.estoque.keySet();
     }
 
-    public Iterable<Produto> getProdutosDisponiveis() {
-
-        return this.estoque.keySet()
-            .stream()
-            .filter(new Predicate<Produto>() {
-
-                @Override
-                public boolean test(Produto t) {
-
-                    QuantidadeProduto qte = Maquina.this.estoque.get(t);
-
-                    return qte != null &&
-                        qte.getQuantidade() > 0;
-                }})
-            .collect(Collectors.toList());
-    }
-
     public int getQuantidadeCompras() {
 
         return this.compras.size();
@@ -365,6 +346,21 @@ public final class Maquina {
             return produto;
 
         }
+    }
+
+    public Iterable<Produto> produtosDisponiveis() {
+
+        List<Produto> produtos = new ArrayList<Produto>();
+
+        for (QuantidadeProduto qte : this.estoque.values()) {
+
+            if (qte.getQuantidade() > 0) {
+
+                produtos.add(qte.getProduto());
+            }
+        }
+
+        return produtos;
     }
 
     public int quantidadeEstoque(Produto produto) {
