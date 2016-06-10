@@ -23,11 +23,23 @@ import java.util.stream.Collectors;
  */
 public final class Maquina {
 
+    /**
+     * Dispensar o máximo de moedas possível ao dar troco
+     */
+    public static final byte TROCO_MAXIMO_MOEDAS = 1;
+    /**
+     * Dispensar o mínimo de moedas possível ao dar troco
+     */
+    public static final byte TROCO_MINIMO_MOEDAS = 2;
+    /**
+     * Dispensa padrão de troco
+     */
+    public static final byte TROCO_PADRAO = TROCO_MINIMO_MOEDAS;
+
     private static class Nested
     {
         private static final Maquina MAQUINA = new Maquina();
     }
-
 
     private static Iterable<QuantidadeMoeda> calcularTroco(
         Maquina maquina,
@@ -150,7 +162,16 @@ public final class Maquina {
         qte.addQuantidade(quantidade);
     }
 
-    private Iterable<QuantidadeMoeda> calcularTroco(Compra compra) {
+    private Iterable<QuantidadeMoeda> calcularTrocoMaximoMoedas(Compra compra) {
+
+        Iterable<QuantidadeMoeda> troco = calcularTrocoMinimoMoedas(compra);
+
+        // TODO Manipular troco mínimo para calcular troco com máximo de moedas
+
+        return troco;
+    }
+
+    private Iterable<QuantidadeMoeda> calcularTrocoMinimoMoedas(Compra compra) {
 
         return calcularTroco(
             this,
@@ -158,6 +179,11 @@ public final class Maquina {
     }
 
     public Compra encerrarCompra() {
+
+        return this.encerrarCompra(TROCO_PADRAO);
+    }
+
+    public Compra encerrarCompra(byte estrategiaTroco) {
 
         Compra compra = this.getCompraAtual();
         Produto produto;
@@ -195,7 +221,17 @@ public final class Maquina {
 
         if (compra.getStatus() == STATUS_OK) {
 
-            Iterable<QuantidadeMoeda> troco = this.calcularTroco(compra);
+            Iterable<QuantidadeMoeda> troco = null;
+
+            switch (estrategiaTroco)
+            {
+                case TROCO_MINIMO_MOEDAS:
+                    troco = this.calcularTrocoMinimoMoedas(compra);
+                    break;
+                case TROCO_MAXIMO_MOEDAS:
+                default:
+                    troco = this.calcularTrocoMaximoMoedas(compra);
+            }
 
             this.removerProduto(produto);
 
