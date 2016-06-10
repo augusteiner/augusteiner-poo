@@ -93,8 +93,12 @@ public final class Maquina {
 
     private static BigDecimal valorTroco(Compra compra) {
 
-        return BigDecimal.valueOf(compra.getValorEntrada())
-            .subtract(BigDecimal.valueOf(compra.getProduto().getPreco()));
+        Produto produto = compra.getProduto();
+
+        BigDecimal valorProduto = BigDecimal.valueOf(produto.getPreco());
+        BigDecimal valorEntrada = BigDecimal.valueOf(compra.getValorEntrada());
+
+        return valorEntrada.subtract(valorProduto);
     }
 
     private Compra compraAtual;
