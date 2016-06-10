@@ -46,24 +46,23 @@ public final class Maquina implements ICofrinho {
     public static final byte TROCO_PADRAO = TROCO_MINIMO_MOEDAS;
 
     private static Iterable<QuantidadeMoeda> calcularTroco(
-        Maquina maquina,
-        Compra compra) {
+        BigDecimal valorTroco,
+        Iterable<Moeda> moedasParaTroco,
+        ICofrinho cofrinho) {
 
         List<QuantidadeMoeda> troco = new ArrayList<QuantidadeMoeda>();
-
-        BigDecimal valorTroco = valorTroco(compra);
 
         //System.out.println(String.format(
         //    "Troco a dar: %s",
         //    valorTroco));
 
-        for (Moeda moeda : Moeda.getMoedasSuportadas()) {
+        for (Moeda moeda : moedasParaTroco) {
 
             BigDecimal valorMoeda = BigDecimal.valueOf(moeda.getValor());
 
             int qte = valorTroco.divide(valorMoeda).intValue();
 
-            qte = min(qte, maquina.getQuantidadeMoedas(moeda));
+            qte = min(qte, cofrinho.getQuantidadeMoedas(moeda));
 
             //System.out.println(String.format(
             //    "%s * 100 / %s * 100 = %s",
@@ -182,8 +181,9 @@ public final class Maquina implements ICofrinho {
     private Iterable<QuantidadeMoeda> calcularTrocoMinimoMoedas(Compra compra) {
 
         return calcularTroco(
-            this,
-            compra);
+            valorTroco(compra),
+            Moeda.getMoedasSuportadas(),
+            this);
     }
 
     public Compra encerrarCompra() {
