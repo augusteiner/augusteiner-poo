@@ -6,7 +6,7 @@ import static br.eng.augusteiner.poo.soda.Util.*;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class QuantidadeMoeda implements IQuantidadeMoeda {
+class QuantidadeMoeda implements IQuantidadeMoeda {
 
     private int quantidade;
     private Moeda moeda;

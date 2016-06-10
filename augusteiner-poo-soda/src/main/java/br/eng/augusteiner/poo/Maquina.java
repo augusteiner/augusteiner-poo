@@ -276,7 +276,7 @@ public final class Maquina implements ICofrinho {
         return this.compras;
     }
 
-    public Iterable<QuantidadeProduto> getEstoque() {
+    public Iterable<? extends IQuantidadeProduto> getEstoque() {
 
         return this.estoque.values();
     }

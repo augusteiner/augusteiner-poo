@@ -14,10 +14,10 @@ import com.budhash.cliche.ShellFactory;
 
 import br.eng.augusteiner.poo.Compra;
 import br.eng.augusteiner.poo.IQuantidadeMoeda;
+import br.eng.augusteiner.poo.IQuantidadeProduto;
 import br.eng.augusteiner.poo.Maquina;
 import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
-import br.eng.augusteiner.poo.QuantidadeProduto;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -347,7 +347,7 @@ public class AdminShell {
     @Command(description = "Visualizar estoque de produtos")
     public void verEstoque() {
 
-        for (QuantidadeProduto qte : getMaquina().getEstoque()) {
+        for (IQuantidadeProduto qte : getMaquina().getEstoque()) {
 
             exibirProduto(qte);
         }

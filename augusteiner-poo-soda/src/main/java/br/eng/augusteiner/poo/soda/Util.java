@@ -8,7 +8,6 @@ import java.util.Locale;
 
 import br.eng.augusteiner.poo.IQuantidadeMoeda;
 import br.eng.augusteiner.poo.Moeda;
-import br.eng.augusteiner.poo.QuantidadeMoeda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>

@@ -4,7 +4,7 @@ package br.eng.augusteiner.poo;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class QuantidadeProduto {
+class QuantidadeProduto implements IQuantidadeProduto {
 
     private Produto produto;
     private int quantidade;
@@ -15,29 +15,26 @@ public class QuantidadeProduto {
         this.quantidade = quantidade;
     }
 
+    public void addQuantidade(int quantidade) {
+
+        this.quantidade += quantidade;
+    }
+
+    @Override
     public Produto getProduto() {
 
         return this.produto;
     }
 
-    public void setProduto(Produto produto) {
-
-        this.produto = produto;
-    }
-
+    @Override
     public int getQuantidade() {
 
         return this.quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void removeQuantidade(int quantidade) {
 
-        this.quantidade = quantidade;
-    }
-
-    public void addQuantidade(int quantidade) {
-
-        this.quantidade += quantidade;
+        this.addQuantidade(-quantidade);
     }
 
     @Override
@@ -47,10 +44,5 @@ public class QuantidadeProduto {
             "%s (%s)",
             this.getProduto(),
             this.getQuantidade());
-    }
-
-    public void removeQuantidade(int quantidade) {
-
-        this.addQuantidade(-quantidade);
     }
 }
