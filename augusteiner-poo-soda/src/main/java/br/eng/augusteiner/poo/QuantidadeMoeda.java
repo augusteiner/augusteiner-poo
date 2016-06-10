@@ -39,16 +39,6 @@ public class QuantidadeMoeda {
         return moedasToDouble(this);
     }
 
-    public void setMoeda(Moeda moeda) {
-
-        this.moeda = moeda;
-    }
-
-    public void setQuantidade(int quantidade) {
-
-        this.quantidade = quantidade;
-    }
-
     @Override
     public String toString() {
 

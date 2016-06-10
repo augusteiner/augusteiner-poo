@@ -15,7 +15,7 @@ public class Moeda {
 
     private static class Nested {
 
-        private static final Iterable<Moeda> MOEDAS_CONHECIDAS;
+        private static final Iterable<Moeda> MOEDAS_SUPORTADAS;
 
         static {
 
@@ -27,7 +27,12 @@ public class Moeda {
             moedas.add(new Moeda(0.10, "Dez Centavos"));
             moedas.add(new Moeda(0.05, "Cinco Centavos"));
 
-            MOEDAS_CONHECIDAS = Collections.unmodifiableCollection(moedas);
+            MOEDAS_SUPORTADAS = Collections.unmodifiableCollection(moedas);
+        }
+
+        public static Iterable<Moeda> getMoedasSuportadas() {
+
+            return MOEDAS_SUPORTADAS;
         }
     }
 
@@ -35,7 +40,7 @@ public class Moeda {
 
     public static Moeda doValor(double valor) {
 
-        for (Moeda moeda : getMoedasConhecidas()) {
+        for (Moeda moeda : getMoedasSuportadas()) {
 
             if (moeda.getValor() == valor) {
 
@@ -46,14 +51,14 @@ public class Moeda {
         return null;
     }
 
-    public static Iterable<Moeda> getMoedasConhecidas() {
+    public static Iterable<Moeda> getMoedasSuportadas() {
 
-        return Nested.MOEDAS_CONHECIDAS;
+        return Nested.getMoedasSuportadas();
     }
 
     public static void initMap(Map<Moeda, QuantidadeMoeda> moedas) {
 
-        for (Moeda moeda : getMoedasConhecidas()) {
+        for (Moeda moeda : getMoedasSuportadas()) {
 
             moedas.put(
                 moeda,

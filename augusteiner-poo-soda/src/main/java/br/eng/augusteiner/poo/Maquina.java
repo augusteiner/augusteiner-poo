@@ -21,6 +21,16 @@ import java.util.Map;
  */
 public final class Maquina {
 
+    private static class Nested {
+
+        private static final Maquina MAQUINA = new Maquina();
+
+        public static Maquina getSingleton() {
+
+            return Nested.MAQUINA;
+        }
+    }
+
     /**
      * Dispensar o máximo de moedas possível ao dar troco
      */
@@ -29,15 +39,11 @@ public final class Maquina {
      * Dispensar o mínimo de moedas possível ao dar troco
      */
     public static final byte TROCO_MINIMO_MOEDAS = 2;
+
     /**
      * Dispensa padrão de troco
      */
     public static final byte TROCO_PADRAO = TROCO_MINIMO_MOEDAS;
-
-    private static class Nested
-    {
-        private static final Maquina MAQUINA = new Maquina();
-    }
 
     private static Iterable<QuantidadeMoeda> calcularTroco(
         Maquina maquina,
@@ -51,7 +57,7 @@ public final class Maquina {
         //    "Troco a dar: %s",
         //    valorTroco));
 
-        for (Moeda moeda : Moeda.getMoedasConhecidas()) {
+        for (Moeda moeda : Moeda.getMoedasSuportadas()) {
 
             BigDecimal valorMoeda = BigDecimal.valueOf(moeda.getValor());
 
@@ -86,7 +92,7 @@ public final class Maquina {
 
     public static Maquina getSingleton() {
 
-        return Nested.MAQUINA;
+        return Nested.getSingleton();
     }
 
     private static BigDecimal valorTroco(Compra compra) {

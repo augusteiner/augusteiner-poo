@@ -154,7 +154,7 @@ public class ConsumidorShell {
     @Command(description = "Listar refrigerantes")
     public void listar() {
 
-        for (Produto produto : getMaquina().getProdutosDisponiveis()) {
+        for (Produto produto : getMaquina().produtosDisponiveis()) {
 
             exibirProduto(produto);
         }

@@ -127,12 +127,12 @@ public class Compra {
 
     public double getValorEntrada() {
 
-        return Util.moedasToDouble(getEntrada());
+        return Util.moedasToDouble(this.getEntrada());
     }
 
     public double getValorTroco() {
 
-        return Util.moedasToDouble(getTroco());
+        return Util.moedasToDouble(this.getTroco());
     }
 
     private void initEntrada() {

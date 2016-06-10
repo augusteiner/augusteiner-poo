@@ -331,7 +331,7 @@ public class AdminShell {
 
         if (getMaquina().getQuantidadeCompras() == 0) {
 
-            exibirMensagem("Ainda não foram realizadas compras");
+            exibirAlerta("Ainda não foram realizadas compras");
 
         } else {
 
