@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public final class Maquina implements ICofrinho {
+public final class Maquina implements IMoedeiro {
 
     private static class Nested {
 
@@ -48,7 +48,7 @@ public final class Maquina implements ICofrinho {
     private static Iterable<QuantidadeMoeda> calcularTroco(
         BigDecimal valorTroco,
         Iterable<Moeda> moedasParaTroco,
-        ICofrinho cofrinho) {
+        IMoedeiro cofrinho) {
 
         List<QuantidadeMoeda> troco = new ArrayList<QuantidadeMoeda>();
 

@@ -22,7 +22,7 @@ public class Util {
         BigDecimal valor = BigDecimal.ZERO;
         BigDecimal valorMoeda;
 
-        for (IQuantidadeMoeda qte : moedas) {
+        for (T qte : moedas) {
 
             valorMoeda = BigDecimal.valueOf(qte.getMoeda().getValor());
 

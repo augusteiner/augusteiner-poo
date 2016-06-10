@@ -14,9 +14,7 @@ public class Produto {
 
     private double preco;
 
-    public Produto() {
-
-    }
+    public Produto() { }
 
     public Produto(
         String codigo,

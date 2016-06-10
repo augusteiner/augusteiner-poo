@@ -4,7 +4,7 @@ package br.eng.augusteiner.poo;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public interface ICofrinho {
+interface IMoedeiro {
 
     int getQuantidadeMoedas(Moeda moeda);
 }
