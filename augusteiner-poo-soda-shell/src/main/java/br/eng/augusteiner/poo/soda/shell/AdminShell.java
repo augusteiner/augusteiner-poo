@@ -13,10 +13,10 @@ import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
 import br.eng.augusteiner.poo.Compra;
+import br.eng.augusteiner.poo.IQuantidadeMoeda;
 import br.eng.augusteiner.poo.Maquina;
 import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
-import br.eng.augusteiner.poo.QuantidadeMoeda;
 import br.eng.augusteiner.poo.QuantidadeProduto;
 
 /**
@@ -356,7 +356,7 @@ public class AdminShell {
     @Command(description = "Visualizar moedas disponíveis")
     public void verMoedas() {
 
-        for (QuantidadeMoeda qte : getMaquina().getMoedas()) {
+        for (IQuantidadeMoeda qte : getMaquina().getMoedas()) {
 
             exibirMoeda(qte);
 

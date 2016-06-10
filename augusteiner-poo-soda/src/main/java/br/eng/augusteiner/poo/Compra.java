@@ -95,7 +95,7 @@ public class Compra {
         return this.getFormatoData().format(this.getData());
     }
 
-    public Iterable<QuantidadeMoeda> getEntrada() {
+    public Iterable<? extends IQuantidadeMoeda> getEntrada() {
 
         return this.entrada.values();
     }
@@ -120,7 +120,7 @@ public class Compra {
         return statusAsString(this.getStatus());
     }
 
-    public Iterable<QuantidadeMoeda> getTroco() {
+    public Iterable<? extends IQuantidadeMoeda> getTroco() {
 
         return this.troco.values();
     }

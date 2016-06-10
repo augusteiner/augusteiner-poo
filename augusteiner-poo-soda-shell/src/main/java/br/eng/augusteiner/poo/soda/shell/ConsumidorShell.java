@@ -14,10 +14,10 @@ import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
 import br.eng.augusteiner.poo.Compra;
+import br.eng.augusteiner.poo.IQuantidadeMoeda;
 import br.eng.augusteiner.poo.Maquina;
 import br.eng.augusteiner.poo.Moeda;
 import br.eng.augusteiner.poo.Produto;
-import br.eng.augusteiner.poo.QuantidadeMoeda;
 
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
@@ -53,7 +53,7 @@ public class ConsumidorShell {
             "Troco: %.2f",
             compra.getValorTroco()));
 
-        for (QuantidadeMoeda qte : compra.getTroco()) {
+        for (IQuantidadeMoeda qte : compra.getTroco()) {
 
             for (int i = 0; i < qte.getQuantidade(); i++) {
 

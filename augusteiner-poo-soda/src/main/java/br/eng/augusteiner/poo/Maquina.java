@@ -281,7 +281,7 @@ public final class Maquina implements ICofrinho {
         return this.estoque.values();
     }
 
-    public Iterable<QuantidadeMoeda> getMoedas() {
+    public Iterable<? extends IQuantidadeMoeda> getMoedas() {
 
         return this.moedas.values();
     }
