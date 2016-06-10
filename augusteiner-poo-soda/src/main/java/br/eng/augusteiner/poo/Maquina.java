@@ -32,11 +32,9 @@ public final class Maquina {
         Maquina maquina,
         Compra compra) {
 
-        Produto produto = compra.getProduto();
         List<QuantidadeMoeda> troco = new ArrayList<QuantidadeMoeda>();
 
-        BigDecimal valorTroco = BigDecimal.valueOf(compra.getValorEntrada())
-            .subtract(BigDecimal.valueOf(produto.getPreco()));
+        BigDecimal valorTroco = valorTroco(compra);
 
         //System.out.println(String.format(
         //    "Troco a dar: %s",
@@ -44,14 +42,11 @@ public final class Maquina {
 
         for (Moeda moeda : Moeda.getMoedasConhecidas()) {
 
-            int qte = valorTroco.multiply(BigDecimal.valueOf(100))
-                .divide(BigDecimal.valueOf(moeda.getValor())
-                    .multiply(BigDecimal.valueOf(100)))
-                .intValue();
+            BigDecimal valorMoeda = BigDecimal.valueOf(moeda.getValor());
 
-            qte = min(
-                qte,
-                maquina.getQuantidadeMoedas(moeda));
+            int qte = valorTroco.divide(valorMoeda).intValue();
+
+            qte = min(qte, maquina.getQuantidadeMoedas(moeda));
 
             //System.out.println(String.format(
             //    "%s * 100 / %s * 100 = %s",
@@ -59,12 +54,10 @@ public final class Maquina {
             //    moeda.getValor(),
             //    qte));
 
-            troco.add(new QuantidadeMoeda(
-                moeda,
-                qte));
+            troco.add(new QuantidadeMoeda(moeda, qte));
 
             valorTroco = valorTroco.subtract(
-                BigDecimal.valueOf(moeda.getValor()).multiply(BigDecimal.valueOf(qte)));
+                valorMoeda.multiply(BigDecimal.valueOf(qte)));
         }
 
         //System.out.println("Troco calculado:");
@@ -82,6 +75,12 @@ public final class Maquina {
     public static Maquina getSingleton() {
 
         return Nested.MAQUINA;
+    }
+
+    private static BigDecimal valorTroco(Compra compra) {
+
+        return BigDecimal.valueOf(compra.getValorEntrada())
+            .subtract(BigDecimal.valueOf(compra.getProduto().getPreco()));
     }
 
     private Compra compraAtual;
