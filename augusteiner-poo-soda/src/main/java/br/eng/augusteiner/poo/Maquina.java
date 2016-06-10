@@ -28,7 +28,8 @@ public final class Maquina {
         private static final Maquina MAQUINA = new Maquina();
     }
 
-    private static void calcularTroco(
+
+    private static Iterable<QuantidadeMoeda> calcularTroco(
         Maquina maquina,
         Compra compra) {
 
@@ -69,7 +70,8 @@ public final class Maquina {
         //        qte));
         //}
 
-        compra.setTroco(troco);
+        // compra.setTroco(troco);
+        return troco;
     }
 
     public static Maquina getSingleton() {
@@ -148,9 +150,9 @@ public final class Maquina {
         qte.addQuantidade(quantidade);
     }
 
-    private void calcularTroco(Compra compra) {
+    private Iterable<QuantidadeMoeda> calcularTroco(Compra compra) {
 
-        calcularTroco(
+        return calcularTroco(
             this,
             compra);
     }
@@ -193,27 +195,28 @@ public final class Maquina {
 
         if (compra.getStatus() == STATUS_OK) {
 
-            this.setCompraAtual(null);
-
-            this.calcularTroco(compra);
-
-            for (QuantidadeMoeda qteTroco : compra.getTroco()) {
-
-                removeMoeda(
-                    qteTroco.getMoeda(),
-                    qteTroco.getQuantidade());
-            }
+            Iterable<QuantidadeMoeda> troco = this.calcularTroco(compra);
 
             this.removerProduto(produto);
+
+            compra.setTroco(troco);
+            compra.setData(Date.from(Instant.now()));
+
+            this.addCompra(compra);
 
             if (produto.getPreco() != compra.getValorTroco()) {
 
                 compra.setStatus(STATUS_OK_FALTA_TROCO);
             }
 
-            compra.setData(Date.from(Instant.now()));
+            this.setCompraAtual(null);
 
-            this.addCompra(compra);
+            for (QuantidadeMoeda qteTroco : troco) {
+
+                removeMoeda(
+                    qteTroco.getMoeda(),
+                    qteTroco.getQuantidade());
+            }
         }
 
         return compra;
