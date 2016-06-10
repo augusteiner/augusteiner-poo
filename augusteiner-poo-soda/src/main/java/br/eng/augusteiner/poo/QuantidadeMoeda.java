@@ -6,7 +6,7 @@ import static br.eng.augusteiner.poo.soda.Util.*;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class QuantidadeMoeda {
+public class QuantidadeMoeda implements IQuantidadeMoeda {
 
     private int quantidade;
     private Moeda moeda;
@@ -24,11 +24,13 @@ public class QuantidadeMoeda {
         this.quantidade += quantidade;
     }
 
+    @Override
     public Moeda getMoeda() {
 
         return moeda;
     }
 
+    @Override
     public int getQuantidade() {
 
         return this.quantidade;

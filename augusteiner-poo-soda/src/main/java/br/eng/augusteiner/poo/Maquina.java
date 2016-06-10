@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public final class Maquina {
+public final class Maquina implements ICofrinho {
 
     private static class Nested {
 
@@ -296,6 +296,7 @@ public final class Maquina {
         return this.compras.size();
     }
 
+    @Override
     public int getQuantidadeMoedas(Moeda moeda) {
 
         QuantidadeMoeda qte = this.moedas.get(moeda);
