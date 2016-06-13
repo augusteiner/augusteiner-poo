@@ -55,9 +55,10 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
         //    "Troco a dar: %s",
         //    valorTroco));
 
-        for (IQuantidadeMoeda qteMoeda : moedeiro.getMoedas()) {
+        // XXX Ordem das moedas altera o cálculo do troco
+        for (Moeda moeda : Moeda.getMoedasSuportadas()) {
 
-            Moeda moeda = qteMoeda.getMoeda();
+            //System.out.println("~~ Moeda: " + moeda);
 
             BigDecimal valorMoeda = valorMoeda(moeda);
 
