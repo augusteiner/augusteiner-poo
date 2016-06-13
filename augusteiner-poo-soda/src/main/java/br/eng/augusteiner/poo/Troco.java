@@ -17,15 +17,6 @@ public class Troco {
         moedas = new Hashtable<Moeda, QuantidadeMoeda>();
     }
 
-    public void removeMoeda(
-        Moeda moeda,
-        int quantidade) {
-
-        this.addMoeda(
-            moeda,
-            -quantidade);
-    }
-
     public void addMoeda(
         Moeda moeda,
         int quantidade) {
@@ -47,13 +38,6 @@ public class Troco {
         return this.moedas.values();
     }
 
-    public int quantidadeMoedas(Moeda moeda) {
-
-        QuantidadeMoeda qte = this.moedas.get(moeda);
-
-        return qte != null ? qte.getQuantidade() : 0;
-    }
-
     public double getValor() {
 
         BigDecimal valor = BigDecimal.ZERO;
@@ -64,5 +48,21 @@ public class Troco {
         }
 
         return valor.doubleValue();
+    }
+
+    public int quantidadeMoedas(Moeda moeda) {
+
+        QuantidadeMoeda qte = this.moedas.get(moeda);
+
+        return qte != null ? qte.getQuantidade() : 0;
+    }
+
+    public void removeMoeda(
+        Moeda moeda,
+        int quantidade) {
+
+        this.addMoeda(
+            moeda,
+            -quantidade);
     }
 }
