@@ -2,6 +2,7 @@
 **.classpath
 
 **/.settings/
+**/.externalToolBuilders/
 **/target/
 
 **.class
