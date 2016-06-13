@@ -1,6 +1,7 @@
 
 package br.eng.augusteiner.poo.soda.shell;
 
+import static br.eng.augusteiner.poo.Moeda.*;
 import static br.eng.augusteiner.poo.Util.*;
 import static br.eng.augusteiner.poo.soda.Util.*;
 import static br.eng.augusteiner.poo.soda.shell.App.*;
@@ -13,7 +14,6 @@ import com.budhash.cliche.Shell;
 import com.budhash.cliche.ShellFactory;
 
 import br.eng.augusteiner.poo.Compra;
-import br.eng.augusteiner.poo.IQuantidadeMoeda;
 import br.eng.augusteiner.poo.IQuantidadeProduto;
 import br.eng.augusteiner.poo.Maquina;
 import br.eng.augusteiner.poo.Moeda;
@@ -356,13 +356,17 @@ public class AdminShell {
     @Command(description = "Visualizar moedas disponíveis")
     public void verMoedas() {
 
-        for (IQuantidadeMoeda qte : getMaquina().getMoedas()) {
+        for (Moeda moeda : getMoedasSuportadas()) {
 
-            exibirMoeda(qte);
-
+            exibirMoeda(String.format(
+                LOCALE_PADRAO,
+                "R$ %.2f (%s)",
+                moeda.getValor(),
+                getMaquina().getQuantidadeMoedas(moeda)));
         }
 
         exibirMoeda(String.format(
+            LOCALE_PADRAO,
             "Total: R$ %.2f",
             moedasToDouble(getMaquina().getMoedas())));
     }
