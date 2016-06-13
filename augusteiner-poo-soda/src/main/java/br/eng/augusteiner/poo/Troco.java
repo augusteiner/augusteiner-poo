@@ -21,16 +21,10 @@ public class Troco {
         Moeda moeda,
         int quantidade) {
 
-        QuantidadeMoeda qte = this.moedas.get(moeda);
-
-        if (qte == null) {
-
-            qte = new QuantidadeMoeda(moeda, 0);
-
-            this.moedas.put(moeda, qte);
-        }
-
-        qte.addQuantidade(quantidade);
+        QuantidadeMoeda.incrementarNoMap(
+            this.moedas,
+            moeda,
+            quantidade);
     }
 
     public Iterable<QuantidadeMoeda> getMoedas() {
