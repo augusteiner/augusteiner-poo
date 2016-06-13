@@ -63,7 +63,7 @@ class Moedeiro implements IMoedeiro {
     }
 
     @Override
-    public int getQuantidadeMoedas(Moeda moeda) {
+    public int quantidadeMoedas(Moeda moeda) {
 
         QuantidadeMoeda qte = this.moedas.get(moeda);
 

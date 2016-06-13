@@ -12,7 +12,7 @@ interface IMoedeiro {
 
     Iterable<? extends IQuantidadeMoeda> getMoedas();
 
-    int getQuantidadeMoedas(Moeda moeda);
+    int quantidadeMoedas(Moeda moeda);
 
     void removeMoeda(Moeda moeda);
 

@@ -362,7 +362,7 @@ public class AdminShell {
                 LOCALE_PADRAO,
                 "R$ %.2f (%s)",
                 moeda.getValor(),
-                getMaquina().getQuantidadeMoedas(moeda)));
+                getMaquina().quantidadeMoedas(moeda)));
         }
 
         exibirMoeda(String.format(

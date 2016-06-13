@@ -64,7 +64,7 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
 
             int qte = valorTroco.divide(valorMoeda).intValue();
 
-            qte = min(qte, moedeiro.getQuantidadeMoedas(moeda));
+            qte = min(qte, moedeiro.quantidadeMoedas(moeda));
 
             //System.out.println(String.format(
             //    "%s * 100 / %s * 100 = %s",
