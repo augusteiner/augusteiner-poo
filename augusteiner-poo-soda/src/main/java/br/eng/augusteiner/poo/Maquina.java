@@ -173,13 +173,14 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
 
         Troco troco = calcularTrocoMinimoMoedas(compra);
 
-        Moeda moedaAtual = null;
+        //Moeda moedaAtual = null;
         Iterable<Moeda> moedasParaTroco = null;
         Moedeiro moedeiro = null;
 
-        for (QuantidadeMoeda qteTroco : troco.getMoedas()) {
+        for (Moeda moedaAtual : Moeda.getMoedasSuportadas()) {
 
-            moedaAtual = qteTroco.getMoeda();
+            int quantidade = troco.quantidadeMoedas(moedaAtual);
+
             moedasParaTroco = Moeda.moedasMenoresQue(moedaAtual);
 
             // XXX Ajustando novo moedeiro
@@ -192,19 +193,24 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
                     quantidadeMoedas(moeda) - troco.quantidadeMoedas(moeda));
             }
 
-            Troco novoTroco = calcularTroco(
-                qteTroco.getValor(),
-                // moedasParaTroco,
-                moedeiro);
+            for (int i = 0; i < quantidade; i++) {
 
-            if (novoTroco.getValor() == qteTroco.getValor()) {
+                Troco novoTroco = calcularTroco(
+                    moedaAtual.getValor(),
+                    // moedasParaTroco,
+                    moedeiro);
 
-                // XXX Ajustando troco
-                for (QuantidadeMoeda qte : novoTroco.getMoedas()) {
+                if (novoTroco.getValor() == moedaAtual.getValor()) {
 
-                    troco.addMoeda(
-                        qte.getMoeda(),
-                        qte.getQuantidade());
+                    troco.removeMoeda(moedaAtual, 1);
+
+                    // XXX Ajustando troco
+                    for (QuantidadeMoeda qte : novoTroco.getMoedas()) {
+
+                        troco.addMoeda(
+                            qte.getMoeda(),
+                            qte.getQuantidade());
+                    }
                 }
             }
         }
@@ -271,8 +277,10 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
                     troco = this.calcularTrocoMinimoMoedas(compra);
                     break;
                 case TROCO_MAXIMO_MOEDAS:
-                default:
                     troco = this.calcularTrocoMaximoMoedas(compra);
+                    break;
+                default:
+                    troco = this.calcularTrocoMinimoMoedas(compra);
             }
 
             this.removerProduto(produto);
