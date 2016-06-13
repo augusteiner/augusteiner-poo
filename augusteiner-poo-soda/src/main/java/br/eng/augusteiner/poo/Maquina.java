@@ -129,10 +129,6 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
 
         estoque = new Hashtable<Produto, QuantidadeProduto>();
         compras = new ArrayList<Compra>();
-
-        Moedeiro.initMoedeiro(
-            this,
-            Moeda.getMoedasSuportadas());
     }
 
     private void addCompra(Compra compra) {
@@ -184,8 +180,6 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
                 // moedasParaTroco,
                 moedeiro);
         }
-
-        // TODO Manipular troco mínimo para calcular troco com máximo de moedas
 
         return troco;
     }

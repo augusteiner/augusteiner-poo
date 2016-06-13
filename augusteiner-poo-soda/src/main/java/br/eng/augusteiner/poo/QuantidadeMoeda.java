@@ -3,12 +3,32 @@ package br.eng.augusteiner.poo;
 
 import static br.eng.augusteiner.poo.soda.Util.*;
 
+import java.math.BigDecimal;
+import java.util.Map;
+
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 class QuantidadeMoeda implements IQuantidadeMoeda {
 
+    public static void incrementarNoMap(
+        Map<Moeda, QuantidadeMoeda> map,
+        Moeda moeda,
+        int quantidade) {
+
+        QuantidadeMoeda qte = map.get(moeda);
+
+        if (qte == null) {
+
+            qte = new QuantidadeMoeda(moeda, 0);
+            map.put(moeda, qte);
+        }
+
+        qte.addQuantidade(quantidade);
+    }
+
     private int quantidade;
+
     private Moeda moeda;
 
     public QuantidadeMoeda(

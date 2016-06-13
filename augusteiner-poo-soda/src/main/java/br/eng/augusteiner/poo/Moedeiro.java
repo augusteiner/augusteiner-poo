@@ -1,8 +1,6 @@
 
 package br.eng.augusteiner.poo;
 
-import static br.eng.augusteiner.poo.Moeda.*;
-
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -10,26 +8,6 @@ import java.util.Map;
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
 class Moedeiro implements IMoedeiro {
-
-    public static final void initMoedeiro(
-        Moedeiro moedeiro,
-        Iterable<Moeda> moedasPermitidas) {
-
-        initMap(
-            moedeiro.moedas,
-            moedasPermitidas);
-    }
-
-    public static final Moedeiro moedeiroComMoedasDe(Iterable<Moeda> moedasPermitidas) {
-
-        Moedeiro moedeiro = new Moedeiro();
-
-        initMoedeiro(
-            moedeiro,
-            moedasPermitidas);
-
-        return moedeiro;
-    }
 
     private Map<Moeda, QuantidadeMoeda> moedas;
 
@@ -51,9 +29,10 @@ class Moedeiro implements IMoedeiro {
         Moeda moeda,
         int quantidade) {
 
-        QuantidadeMoeda qte = this.moedas.get(moeda);
-
-        qte.addQuantidade(quantidade);
+        QuantidadeMoeda.incrementarNoMap(
+            this.moedas,
+            moeda,
+            quantidade);
     }
 
     @Override

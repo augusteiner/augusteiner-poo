@@ -72,17 +72,16 @@ public class Compra {
         this.troco = new Hashtable<Moeda, QuantidadeMoeda>();
 
         this.status = STATUS_INDEFINIDO;
-
-        initEntrada();
     }
 
     public void addMoeda(
         Moeda moeda,
         int quantidade) {
 
-        QuantidadeMoeda qte = this.entrada.get(moeda);
-
-        qte.addQuantidade(quantidade);
+        QuantidadeMoeda.incrementarNoMap(
+            this.entrada,
+            moeda,
+            quantidade);
     }
 
     public Date getData() {
@@ -133,11 +132,6 @@ public class Compra {
     public double getValorTroco() {
 
         return Util.moedasToDouble(this.getTroco());
-    }
-
-    private void initEntrada() {
-
-        initMap(this.entrada);
     }
 
     public void setData(Date data) {
