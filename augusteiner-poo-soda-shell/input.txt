@@ -1,18 +1,19 @@
 admin
 admin
-cp coca200 Coca-Cola_200ml 5 2.5
+cp coca200 Coca-Cola_200ml 5 2.55
 re coca200 5
-m5 2
-m10 2
-m50 2
-m1 2
+m5 10
+m10 10
+m25 10
+m50 10
+m1 10
 ve
 vm
 exit
 m1
 m1
 m50
-m25
+m50
 sp coca200
 rp
 admin

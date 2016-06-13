@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cat *-shell/input.txt | java -jar *-shell/target/*-jar-with-*.jar
