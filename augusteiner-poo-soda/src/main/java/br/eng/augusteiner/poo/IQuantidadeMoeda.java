@@ -9,4 +9,6 @@ public interface IQuantidadeMoeda {
     Moeda getMoeda();
 
     int getQuantidade();
+
+    double getValor();
 }

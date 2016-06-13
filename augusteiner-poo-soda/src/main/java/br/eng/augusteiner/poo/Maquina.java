@@ -44,12 +44,13 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
      */
     public static final byte TROCO_PADRAO = TROCO_MINIMO_MOEDAS;
 
-    private static Iterable<QuantidadeMoeda> calcularTroco(
-        BigDecimal valorTroco,
+    private static Troco calcularTroco(
+        double trocoDouble,
         // Iterable<Moeda> moedasParaTroco,
         IMoedeiro moedeiro) {
 
-        List<QuantidadeMoeda> troco = new ArrayList<QuantidadeMoeda>();
+        BigDecimal valorTroco = BigDecimal.valueOf(trocoDouble);
+        Troco troco = new Troco();
 
         //System.out.println(String.format(
         //    "Troco a dar: %s",
@@ -72,7 +73,10 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
             //    moeda.getValor(),
             //    qte));
 
-            troco.add(new QuantidadeMoeda(moeda, qte));
+            troco.addMoeda(
+                moeda,
+                qte);
+            // troco.add(new QuantidadeMoeda(moeda, qte));
 
             valorTroco = valorTroco.subtract(
                 valorMoeda.multiply(BigDecimal.valueOf(qte)));
@@ -107,14 +111,16 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
             .multiply(BigDecimal.valueOf(quantidade));
     }
 
-    private static BigDecimal valorTroco(Compra compra) {
+    private static double valorTroco(Compra compra) {
 
         Produto produto = compra.getProduto();
 
         BigDecimal valorProduto = BigDecimal.valueOf(produto.getPreco());
         BigDecimal valorEntrada = BigDecimal.valueOf(compra.getValorEntrada());
 
-        return valorEntrada.subtract(valorProduto);
+        return valorEntrada
+            .subtract(valorProduto)
+            .doubleValue();
     }
 
     private Compra compraAtual;
@@ -163,28 +169,50 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
         qte.addQuantidade(quantidade);
     }
 
-    private Iterable<QuantidadeMoeda> calcularTrocoMaximoMoedas(Compra compra) {
+    private Troco calcularTrocoMaximoMoedas(Compra compra) {
 
-        Iterable<QuantidadeMoeda> troco = calcularTrocoMinimoMoedas(compra);
+        Troco troco = calcularTrocoMinimoMoedas(compra);
 
-        for (QuantidadeMoeda qte : troco) {
+        Moeda moedaAtual = null;
+        Iterable<Moeda> moedasParaTroco = null;
+        Moedeiro moedeiro = null;
 
-            Iterable<Moeda> moedasParaTroco = Moeda.moedasMenoresQue(qte.getMoeda());
+        for (QuantidadeMoeda qteTroco : troco.getMoedas()) {
 
-            Moedeiro moedeiro = Moedeiro.moedeiroComMoedasDe(moedasParaTroco);
+            moedaAtual = qteTroco.getMoeda();
+            moedasParaTroco = Moeda.moedasMenoresQue(moedaAtual);
 
-            // moedeiro.
+            // XXX Ajustando novo moedeiro
+            moedeiro = new Moedeiro();
 
-            calcularTroco(
-                valorMoeda(qte.getMoeda(), qte.getQuantidade()),
+            for (Moeda moeda : moedasParaTroco) {
+
+                moedeiro.addMoeda(
+                    moeda,
+                    quantidadeMoedas(moeda) - troco.quantidadeMoedas(moeda));
+            }
+
+            Troco novoTroco = calcularTroco(
+                qteTroco.getValor(),
                 // moedasParaTroco,
                 moedeiro);
+
+            if (novoTroco.getValor() == qteTroco.getValor()) {
+
+                // XXX Ajustando troco
+                for (QuantidadeMoeda qte : novoTroco.getMoedas()) {
+
+                    troco.addMoeda(
+                        qte.getMoeda(),
+                        qte.getQuantidade());
+                }
+            }
         }
 
         return troco;
     }
 
-    private Iterable<QuantidadeMoeda> calcularTrocoMinimoMoedas(Compra compra) {
+    private Troco calcularTrocoMinimoMoedas(Compra compra) {
 
         return calcularTroco(
             valorTroco(compra),
@@ -235,7 +263,7 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
 
         if (compra.getStatus() == STATUS_OK) {
 
-            Iterable<QuantidadeMoeda> troco = null;
+            Troco troco = null;
 
             switch (estrategiaTroco)
             {
@@ -249,7 +277,7 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
 
             this.removerProduto(produto);
 
-            compra.setTroco(troco);
+            compra.setTroco(troco.getMoedas());
             compra.setData(Date.from(Instant.now()));
 
             this.addCompra(compra);
@@ -261,7 +289,7 @@ public final class Maquina extends Moedeiro implements IMoedeiro {
 
             this.setCompraAtual(null);
 
-            for (QuantidadeMoeda qteTroco : troco) {
+            for (QuantidadeMoeda qteTroco : troco.getMoedas()) {
 
                 removeMoeda(
                     qteTroco.getMoeda(),

@@ -56,9 +56,12 @@ class QuantidadeMoeda implements IQuantidadeMoeda {
         return this.quantidade;
     }
 
+    @Override
     public double getValor() {
 
-        return moedasToDouble(this);
+        return BigDecimal.valueOf(this.getMoeda().getValor())
+            .multiply(BigDecimal.valueOf(this.getQuantidade()))
+            .doubleValue();
     }
 
     @Override
