@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.eng.augusteiner.poo.soda</groupId>
     <artifactId>augusteiner-poo-soda</artifactId>
-    <version>0.1.0-RELEASE</version>
+    <version>1.0.0-RC1</version>
     <name>augusteiner-poo-soda</name>
     <url>http://maven.apache.org</url>
     <dependencies>
