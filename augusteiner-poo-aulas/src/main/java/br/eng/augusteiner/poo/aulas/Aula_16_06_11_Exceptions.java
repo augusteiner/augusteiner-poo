@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Aula_11_06_16_Exceptions {
+public class Aula_16_06_11_Exceptions {
 
     public static void main(String[] args) {
 

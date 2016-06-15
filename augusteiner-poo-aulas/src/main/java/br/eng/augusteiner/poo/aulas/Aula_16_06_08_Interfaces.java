@@ -7,7 +7,7 @@ import br.eng.augusteiner.poo.IConta;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Aula_08_06_16_Interfaces {
+public class Aula_16_06_08_Interfaces {
 
     /**
      * @param args
