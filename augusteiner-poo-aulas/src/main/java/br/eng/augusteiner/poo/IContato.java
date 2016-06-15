@@ -7,4 +7,5 @@ package br.eng.augusteiner.poo;
 public interface IContato {
 
     String getNome();
+    String getFone();
 }

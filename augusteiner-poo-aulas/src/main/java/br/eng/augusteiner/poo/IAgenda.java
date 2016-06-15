@@ -6,11 +6,11 @@ package br.eng.augusteiner.poo;
  */
 public interface IAgenda {
 
+    IContato buscar(String nome) throws ContatoNaoEncontradoException;
+
     void inserir(IContato contato);
 
-    void remover(String nome);
-
-    IContato buscar(String nome);
-
     int quantidadeContatos();
+
+    void remover(String nome) throws ContatoNaoEncontradoException;
 }
