@@ -22,10 +22,14 @@ public class Aula_16_06_16_Exceptions_Cont {
 
         System.out.println(p1);
 
-        IAgenda agenda = new Agenda();
         String nomeContato = "José Augusto";
 
-        agenda.inserir(new Contato(nomeContato, "+55 (84) 9 9999-9999"));
+        IAgenda agenda = new Agenda();
+        IContato c1 = new Contato(
+            nomeContato,
+            "+55 (84) 9 9999-9999");
+
+        agenda.inserir(c1);
 
         try {
 
