@@ -8,6 +8,8 @@ public interface IAgenda {
 
     IContato buscar(String nome) throws ContatoNaoEncontradoException;
 
+    Iterable<IContato> getContatos();
+
     void inserir(IContato contato);
 
     int quantidadeContatos();

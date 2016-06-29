@@ -7,11 +7,11 @@ import java.util.Collection;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Agenda implements IAgenda {
+public class AgendaComList implements IAgenda {
 
     private Collection<IContato> contatos;
 
-    public Agenda() {
+    public AgendaComList() {
 
         contatos = new ArrayList<IContato>();
     }
@@ -44,7 +44,7 @@ public class Agenda implements IAgenda {
     @Override
     public int quantidadeContatos() {
 
-        return 0;
+        return this.contatos.size();
     }
 
     @Override

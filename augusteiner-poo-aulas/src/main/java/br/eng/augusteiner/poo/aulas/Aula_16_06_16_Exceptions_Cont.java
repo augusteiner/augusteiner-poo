@@ -1,7 +1,7 @@
 
 package br.eng.augusteiner.poo.aulas;
 
-import br.eng.augusteiner.poo.Agenda;
+import br.eng.augusteiner.poo.AgendaComList;
 import br.eng.augusteiner.poo.Contato;
 import br.eng.augusteiner.poo.ContatoNaoEncontradoException;
 import br.eng.augusteiner.poo.IAgenda;
@@ -24,7 +24,7 @@ public class Aula_16_06_16_Exceptions_Cont {
 
         String nomeContato = "José Augusto";
 
-        IAgenda agenda = new Agenda();
+        IAgenda agenda = new AgendaComList();
         IContato c1 = new Contato(
             nomeContato,
             "+55 (84) 9 9999-9999");
