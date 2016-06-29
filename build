@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+root_dir=$(cd $(dirname $0); echo $(pwd))
+
+mvn install eclipse:eclipse
+
+rm -rf */.settings/
+
