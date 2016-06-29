@@ -13,7 +13,7 @@ public class AgendaComList implements IAgenda {
 
     public AgendaComList() {
 
-        contatos = new ArrayList<IContato>();
+        this.contatos = new ArrayList<IContato>();
     }
 
     @Override
@@ -30,9 +30,17 @@ public class AgendaComList implements IAgenda {
         throw new ContatoNaoEncontradoException(nome);
     }
 
+    @Override
+    public Iterable<IContato> buscarTodos(String nome) throws ContatoNaoEncontradoException {
+
+        return AgendaUtils.buscarTodos(
+            nome,
+            this.getContatos());
+    }
+
     public Iterable<IContato> getContatos() {
 
-        return contatos;
+        return this.contatos;
     }
 
     @Override
@@ -52,6 +60,6 @@ public class AgendaComList implements IAgenda {
 
         IContato contato = buscar(nome);
 
-        contatos.remove(contato);
+        this.contatos.remove(contato);
     }
 }

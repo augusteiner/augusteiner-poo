@@ -29,6 +29,14 @@ public class AgendaComMapImpl implements IAgenda {
     }
 
     @Override
+    public Iterable<IContato> buscarTodos(String nome) throws ContatoNaoEncontradoException {
+
+        return AgendaUtils.buscarTodos(
+            nome,
+            this.getContatos());
+    }
+
+    @Override
     public Iterable<IContato> getContatos() {
 
         return this.contatos.values();

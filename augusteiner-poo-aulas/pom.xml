@@ -1,33 +1,39 @@
 <?xml version="1.0"?>
 <project
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>br.eng.augusteiner</groupId>
-        <artifactId>augusteiner</artifactId>
-        <version>0.1.0-RELEASE</version>
-    </parent>
-    <groupId>br.eng.augusteiner.poo.aulas</groupId>
-    <artifactId>augusteiner-poo-aulas</artifactId>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>br.eng.augusteiner</groupId>
+    <artifactId>augusteiner</artifactId>
     <version>0.1.0-RELEASE</version>
-    <name>augusteiner-poo-aulas</name>
-    <url>http://maven.apache.org</url>
-    <dependencies>
-        <dependency>
-            <groupId>br.eng.augusteiner.poo</groupId>
-            <artifactId>augusteiner-poo</artifactId>
-            <version>0.1.0-RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>br.eng.augusteiner.poo.cadturmas</groupId>
-            <artifactId>augusteiner-poo-cadturmas</artifactId>
-            <version>0.1.0-RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>br.eng.augusteiner.poo.hello.social</groupId>
-            <artifactId>augusteiner-poo-hello-social</artifactId>
-            <version>0.1.0-RELEASE</version>
-        </dependency>
-    </dependencies>
+  </parent>
+  <groupId>br.eng.augusteiner.poo.aulas</groupId>
+  <artifactId>augusteiner-poo-aulas</artifactId>
+  <version>0.1.0-RELEASE</version>
+  <name>augusteiner-poo-aulas</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>br.eng.augusteiner.poo</groupId>
+      <artifactId>augusteiner-poo</artifactId>
+      <version>0.1.0-RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>br.eng.augusteiner.poo.cadturmas</groupId>
+      <artifactId>augusteiner-poo-cadturmas</artifactId>
+      <version>0.1.0-RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>br.eng.augusteiner.poo.hello.social</groupId>
+      <artifactId>augusteiner-poo-hello-social</artifactId>
+      <version>0.1.0-RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.budhash.cliche</groupId>
+      <artifactId>cliche-shell</artifactId>
+      <version>0.9.3</version>
+    </dependency>
+  </dependencies>
 </project>
