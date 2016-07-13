@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>poo.jdbc.exemplo</groupId>
+  <artifactId>poo-jdbc-exemplo</artifactId>
+  <version>0.1.0-RELEASE</version>
+  <packaging>jar</packaging>
+
+  <name>poo-jdbc-exemplo</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <resources.dir>${project.basedir}/src/main/resources</resources.dir>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.mongojdbc</groupId>
+      <artifactId>mongojdbc</artifactId>
+      <version>1.2</version>
+      <scope>system</scope>
+      <type>jar</type>
+      <systemPath>${resources.dir}/mongojdbc1.2.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongo-java-driver</artifactId>
+      <version>3.2.2</version>
+    </dependency>
+
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>false</downloadJavadocs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

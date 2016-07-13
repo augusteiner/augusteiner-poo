@@ -9,7 +9,7 @@
     <name>augusteiner</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>1.8</jdk.version>
+        <jdk.version>1.5</jdk.version>
     </properties>
     <modules>
         <module>augusteiner-poo</module>
@@ -21,6 +21,7 @@
         <module>augusteiner-poo-hello-social</module>
         <module>augusteiner-poo-soda</module>
         <module>augusteiner-poo-soda-shell</module>
+        <module>poo-jdbc-exemplo</module>
     </modules>
     <build>
         <plugins>
