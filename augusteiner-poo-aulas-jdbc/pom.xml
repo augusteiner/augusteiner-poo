@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>br.eng.augusteiner</groupId>
+    <artifactId>augusteiner</artifactId>
+    <version>0.1.0-RELEASE</version>
+  </parent>
+  <groupId>br.eng.augusteiner.poo.aulas.jdbc</groupId>
+  <artifactId>augusteiner-poo-aulas-jdbc</artifactId>
+  <version>0.1.0-RELEASE</version>
+  <name>augusteiner-poo-aulas-jdbc</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.39</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sf.mongojdbcdriver</groupId>
+      <artifactId>mongojdbcdriver</artifactId>
+      <version>0.0.2</version>
+    </dependency>
+  </dependencies>
+</project>
