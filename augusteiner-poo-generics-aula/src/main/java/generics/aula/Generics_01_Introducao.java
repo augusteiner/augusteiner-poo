@@ -5,6 +5,7 @@ import static java.lang.System.out;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import generics.aula.basico.Carro;
 
@@ -13,7 +14,10 @@ import generics.aula.basico.Carro;
  */
 public class Generics_01_Introducao {
 
-    private static void sysout(Object... args) { out.println(args); }
+    private static void sysout(Object... args) {
+
+        out.println(args);
+    }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static void main1(String[] args) {
@@ -39,11 +43,23 @@ public class Generics_01_Introducao {
 
     public static void main(String[] args) {
 
+        List<String> listaDeStrings = new ArrayList<String>();
+
+        List<? super String> lista = listaDeStrings;
+
+//        for (String i : lista) {
+
+            //
+//        }
+    }
+
+    public static void main3(String[] args) {
+
         Collection<Carro> carros = new ArrayList<Carro>();
 
-        //carros.add("eu sou uma string"); // XXX Erro em compile-time
-        //carros.add(1.5); // XXX Erro em compile-time
-        //carros.add(1); // XXX Erro em compile-time
+        // carros.add("eu sou uma string"); // XXX Erro em compile-time
+        // carros.add(1.5); // XXX Erro em compile-time
+        // carros.add(1); // XXX Erro em compile-time
 
         carros.add(new Carro());
 
