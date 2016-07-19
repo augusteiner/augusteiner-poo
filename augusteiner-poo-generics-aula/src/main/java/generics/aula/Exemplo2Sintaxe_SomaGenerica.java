@@ -15,11 +15,11 @@ public class Exemplo2Sintaxe_SomaGenerica {
 
     public static void main(String[] args) {
 
-        println("Soma de inteiros: " + soma(1, 1));
+        println("Soma int: " + soma(1, 1));
 
-        println("Soma de doubles: " + soma(2.0, 3.0));
+        println("Soma double: " + soma(2.0, 3.0));
 
-        println("Soma de BigDecimals: " + soma(BigDecimal.ONE, BigDecimal.TEN));
+        println("Soma decimal: " + soma(BigDecimal.ONE, BigDecimal.TEN));
     }
 
     public static void println(Object arg) { System.out.println(arg); }

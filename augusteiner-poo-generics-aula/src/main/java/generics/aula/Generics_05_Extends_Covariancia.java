@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Generics_04_Extends_Covariancia {
+public class Generics_05_Extends_Covariancia {
 
     public static <T> List<T> novaListaGenerica() {
 
@@ -25,12 +25,12 @@ public class Generics_04_Extends_Covariancia {
 
         List<? extends String> listaDeStrings = novaLista();
 
+        //listaDeStrings.add("1ª string");
+        //listaDeStrings.add("2ª string");
+
         List<? extends Object> listaDeObjetos = listaDeStrings;
 
-        // listaDeStrings.add("1ª string");
-        // listaDeStrings.add("2ª string");
-
-        for (Object s : listaDeObjetos) {
+        for (String s : listaDeStrings) {
 
             System.out.println(s);
         }

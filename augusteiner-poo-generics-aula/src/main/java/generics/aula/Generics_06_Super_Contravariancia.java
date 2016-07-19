@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class Generics_05_Super_Contravariancia {
+public class Generics_06_Super_Contravariancia {
 
     public static <T> List<T> novaListaGenerica() {
 
@@ -26,6 +26,7 @@ public class Generics_05_Super_Contravariancia {
         lista.add("1ª string");
         lista.add("2ª string");
 
+        //for (String s : lista) {
         for (Object s : lista) {
 
             System.out.println(s);
