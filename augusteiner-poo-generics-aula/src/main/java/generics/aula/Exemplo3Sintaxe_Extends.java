@@ -12,7 +12,7 @@ import generics.aula.funcoes.StringInversa;
 /**
  * @author José Nascimento <joseaugustodearaujonascimento@gmail.com>
  */
-public class NomeDaClasse2 {
+public class Exemplo3Sintaxe_Extends {
 
     public static void main(String[] args) {
 
